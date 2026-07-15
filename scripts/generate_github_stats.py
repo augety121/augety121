@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Generate a repository-local, rate-limit-resistant GitHub profile SVG."""
-
+ 
 from __future__ import annotations
 
 import argparse
