@@ -1,0 +1,53 @@
+name: 更新主页动态
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 北京时间每天 08:15
+    - cron: "15 0 * * *"
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/generate_github_stats.py"
+      - ".github/workflows/update-profile-stats.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-profile-dynamics
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v6
+
+      - name: 配置 Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: 生成中文动态卡片
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: ${{ github.repository_owner }}
+        run: python scripts/generate_github_stats.py
+
+      - name: 提交更新
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add github-dynamics.svg
+          if git diff --cached --quiet; then
+            echo "动态数据没有变化"
+            exit 0
+          fi
+          git commit -m "chore: 更新主页动态"
+          git pull --rebase
+          git push
+
