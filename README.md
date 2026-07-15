@@ -105,19 +105,10 @@
 ## GitHub 动态
 
 <p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=augety121&theme=transparent" width="100%" alt="GitHub 活动概览" />
+  <img src="./github-dynamics.svg" width="100%" alt="GitHub 动态" />
 </p>
 
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=augety121&theme=transparent" width="49%" alt="GitHub 数据统计" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=augety121&theme=transparent&utcOffset=8" width="49%" alt="GitHub 活跃时间" />
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/github/followers/augety121?style=flat-square&label=%E5%85%B3%E6%B3%A8%E8%80%85&labelColor=EEF2FF&color=6672E5" alt="关注者" />
-  <img src="https://img.shields.io/github/last-commit/augety121/augety121?style=flat-square&label=%E6%9C%80%E8%BF%91%E6%9B%B4%E6%96%B0&labelColor=ECFDF5&color=42AFA4" alt="最近更新" />
-  <img src="https://komarev.com/ghpvc/?username=augety121&style=flat-square&color=8292E8&label=Profile+Views" alt="主页访问量" />
-</p>
+<p align="center"><sub>由 GitHub Actions 每日自动更新</sub></p>
 
 ## 交流
 
@@ -128,4 +119,3 @@
 </p>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:E6E2FF,50:DDEBFF,100:DDF7EF&height=80&section=footer" width="100%" alt="浅色渐变页尾" />
-
