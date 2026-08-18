@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="Engineering focus map">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="180" viewBox="0 0 1200 180" role="img" aria-label="augety121 footer">
 
 <defs>
   <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
@@ -42,7 +42,10 @@
   </style>
   
 </defs>
-<rect x="1" y="1" width="1198" height="298" rx="30" fill="#F7FBFF" stroke="#DCE8F6"/>
-<text x="28" y="34" class="micro">ENGINEERING RADAR / RELIABLE AGENT SYSTEMS</text>
-<rect x="28" y="58" width="350" height="90" rx="22" fill="#FFFFFF" stroke="#DCE8F6" filter="url(#shadowSmall)"/><rect x="46" y="76" width="42" height="42" rx="13" fill="#DCE9FF"/><circle cx="67" cy="97" r="7" fill="#4F7CFF"/><text x="106" y="96" class="card-title">Retrieval</text><text x="106" y="119" class="card-sub">evidence · hybrid · rerank</text><rect x="405" y="58" width="350" height="90" rx="22" fill="#FFFFFF" stroke="#DCE8F6" filter="url(#shadowSmall)"/><rect x="423" y="76" width="42" height="42" rx="13" fill="#DCF6FF"/><circle cx="444" cy="97" r="7" fill="#4CB9E9"/><text x="483" y="96" class="card-title">Context Engineering</text><text x="483" y="119" class="card-sub">memory · budget · selection</text><rect x="782" y="58" width="350" height="90" rx="22" fill="#FFFFFF" stroke="#DCE8F6" filter="url(#shadowSmall)"/><rect x="800" y="76" width="42" height="42" rx="13" fill="#EEE9FF"/><circle cx="821" cy="97" r="7" fill="#8D7CF7"/><text x="860" y="96" class="card-title">Agent Runtime</text><text x="860" y="119" class="card-sub">state · recover · checkpoint</text><rect x="28" y="176" width="350" height="90" rx="22" fill="#FFFFFF" stroke="#DCE8F6" filter="url(#shadowSmall)"/><rect x="46" y="194" width="42" height="42" rx="13" fill="#EAF3FF"/><circle cx="67" cy="215" r="7" fill="#4F7CFF"/><text x="106" y="214" class="card-title">MCP &amp; Tooling</text><text x="106" y="237" class="card-sub">contracts · isolation · permissions</text><rect x="405" y="176" width="350" height="90" rx="22" fill="#FFFFFF" stroke="#DCE8F6" filter="url(#shadowSmall)"/><rect x="423" y="194" width="42" height="42" rx="13" fill="#DDF8F1"/><circle cx="444" cy="215" r="7" fill="#48C9B0"/><text x="483" y="214" class="card-title">Evaluation</text><text x="483" y="237" class="card-sub">trace · assertions · terminal state</text><rect x="782" y="176" width="350" height="90" rx="22" fill="#FFFFFF" stroke="#DCE8F6" filter="url(#shadowSmall)"/><rect x="800" y="194" width="42" height="42" rx="13" fill="#DCF6FF"/><circle cx="821" cy="215" r="7" fill="#4CB9E9"/><text x="860" y="214" class="card-title">Safety</text><text x="860" y="237" class="card-sub">boundaries · least privilege · audit</text>
+<rect x="1" y="1" width="1198" height="178" rx="28" fill="url(#page)" stroke="#DCE8F6"/>
+<path d="M1 112 C160 64 300 154 460 104 C650 44 760 160 936 111 C1040 82 1110 88 1199 116 L1199 179 L1 179Z" fill="url(#brandSoft)"/>
+<path d="M0 116 C168 69 308 155 470 108 C646 58 790 151 946 116 C1047 93 1122 96 1200 120" fill="none" stroke="url(#brand)" stroke-width="2" opacity=".55"/>
+<text x="600" y="58" text-anchor="middle" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;font-size:20px;font-weight:760;fill:#10233F">Evidence · Context · Action · State · Evaluation</text>
+<text x="600" y="87" text-anchor="middle" class="body-sm">Retrieval with evidence. Context with intent. Actions with boundaries. Evaluation with state.</text>
+<text x="600" y="149" text-anchor="middle" class="micro">AUGETY121 · AGENT SYSTEMS · OPEN SOURCE</text>
 </svg>

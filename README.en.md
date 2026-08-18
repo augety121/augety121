@@ -1,9 +1,5 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.svg">
-    <img src="./assets/hero-light.svg" width="100%" alt="augety121 — Building reliable agent systems" />
-  </picture>
+  <img src="./assets/hero-en-light.svg" width="100%" alt="augety121 — Reliable Agent Systems" />
 </p>
 
 <p align="center">
@@ -13,46 +9,42 @@
 </p>
 
 <p align="center">
-  <a href="#selected-work">Selected Work</a>
+  <a href="#featured">Selected Work</a>
   &nbsp;·&nbsp;
-  <a href="#engineering-radar">Engineering Radar</a>
+  <a href="#focus">Focus</a>
   &nbsp;·&nbsp;
-  <a href="#system-view">System View</a>
+  <a href="#system">System View</a>
   &nbsp;·&nbsp;
-  <a href="#tech-stack">Tech Stack</a>
+  <a href="#stack">Tech Stack</a>
   &nbsp;·&nbsp;
-  <a href="#github-dynamics">GitHub Dynamics</a>
+  <a href="#activity">GitHub Activity</a>
+</p>
+
+<p align="center">
+  I care less about one impressive demo and more about agent systems that can
+  <strong>retrieve evidence, engineer context, bound tool use, trace state and be evaluated reproducibly</strong>.
+</p>
+
+<p align="center">
+  <sub>RAG Agent · Context Engineering · MCP · Agent Runtime · Reproducible Evaluation</sub>
 </p>
 
 ---
 
-<table>
-<tr>
-<td width="25%" align="center"><strong>RETRIEVE</strong><br/><sub>Find evidence that actually matters</sub></td>
-<td width="25%" align="center"><strong>CONTEXT</strong><br/><sub>Put the right information in the window</sub></td>
-<td width="25%" align="center"><strong>ACT</strong><br/><sub>Keep tool use inside explicit boundaries</sub></td>
-<td width="25%" align="center"><strong>EVALUATE</strong><br/><sub>Make outcomes reproducible and verifiable</sub></td>
-</tr>
-</table>
+<a id="featured"></a>
+<p><sub>SELECTED WORK</sub></p>
 
-I focus on **RAG agents, context engineering, MCP, agent runtimes, and reproducible evaluation**.
-
-Rather than optimizing for an agent that merely looks impressive in a one-off demo, I care about whether a real system can keep answering: **Where did the evidence come from? Why was this context selected? Why was this tool allowed to run? What state changed? How can the result be verified?**
-
-> **Retrieval with evidence. Reasoning with grounding. Actions with boundaries. Evaluation with state.**
-
-<a id="selected-work"></a>
-## Selected Work
+## Featured project
 
 <p align="center">
   <a href="https://github.com/augety121/MCP-State-Twin">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/mcp-state-twin-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="./assets/mcp-state-twin-light.svg">
-      <img src="./assets/mcp-state-twin-light.svg" width="100%" alt="MCP State Twin — reproducible AI agent evaluation environments" />
-    </picture>
+    <img src="./assets/mcp-state-twin-light.svg" width="100%" alt="MCP State Twin" />
   </a>
 </p>
+
+**MCP State Twin** is my main open-source project: deterministic, forkable, stateful MCP test worlds for reproducible AI agent evaluation.
+
+Different agents or models can start from the same immutable snapshot, take different valid tool trajectories, and be compared by terminal state and declared invariants without writing test side effects into production services.
 
 <p align="center">
   <a href="https://github.com/augety121/MCP-State-Twin"><strong>Repository</strong></a>
@@ -64,96 +56,80 @@ Rather than optimizing for an agent that merely looks impressive in a one-off de
   <a href="https://github.com/augety121/MCP-State-Twin/issues">Issues</a>
 </p>
 
-**MCP State Twin** is my current flagship open-source project: deterministic, forkable, stateful MCP test worlds for reproducible AI agent evaluation. Different agents or models can start from the same immutable snapshot, take different valid tool trajectories, and be compared by terminal state and declared invariants without writing test side effects into production services.
-
 <details>
-<summary><strong>Expand: why state should be a first-class evaluation primitive</strong></summary>
+<summary><strong>Why I treat state as a first-class evaluation primitive</strong></summary>
 <br/>
 
-A multi-step agent problem is not merely “what should the next message be?” Every tool call can change what later calls should observe. Reproducible evaluation therefore needs a stable environment identity, initial snapshot, tool contract, state-transition semantics, trace evidence, assertions, and terminal-state comparison — while still allowing models to take different valid trajectories.
+A multi-step agent problem is not just “what should the next message be?” Every tool call can change what later calls should observe. Reproducible evaluation therefore needs explicit environment identity, starting state, transitions, failure semantics, traces, assertions, and terminal state.
 
-That is why MCP State Twin centers its workflow on **snapshot → fork → act → assert → diff**.
+That is why MCP State Twin centers its workflow around **snapshot → fork → act → assert → diff**.
 
 </details>
 
-<a id="engineering-radar"></a>
-## Engineering Radar
+---
+
+<a id="focus"></a>
+<p><sub>ENGINEERING RADAR</sub></p>
+
+## What I work on
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/focus-map-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/focus-map-light.svg">
-    <img src="./assets/focus-map-light.svg" width="100%" alt="augety121 Engineering Radar" />
-  </picture>
+  <img src="./assets/focus-map-light.svg" width="100%" alt="Engineering focus map" />
 </p>
 
-<table>
-<tr>
-<td width="33%" valign="top"><strong>Retrieval & Context</strong><br/><br/>Sparse / Dense / Hybrid Retrieval, reranking, knowledge graphs, memory, context budgets, evidence selection.</td>
-<td width="33%" valign="top"><strong>Runtime & Tooling</strong><br/><br/>MCP, planning, routing, tool calling, state, permissions, checkpoints, rollback, failure recovery.</td>
-<td width="33%" valign="top"><strong>Evaluation & Safety</strong><br/><br/>Tracing, terminal state, assertions, cost, latency, prompt injection, auditability, reproducibility.</td>
-</tr>
-</table>
+My interests span the complete engineering path of agent systems:
 
-<a id="system-view"></a>
-## System View
+- **Retrieval** — sparse / dense / hybrid retrieval, RRF, rerank, knowledge graphs;
+- **Context Engineering** — evidence selection, memory, context budgets, query planning;
+- **Agent Runtime** — planning, routing, state, checkpoints, rollback and recovery;
+- **MCP & Tooling** — contracts, permissions, isolation, idempotency and failure semantics;
+- **Evaluation** — traces, assertions, terminal state, cost, latency and reproducibility;
+- **Safety** — prompt injection, least privilege, auditability and irreversible side effects.
 
-I prefer to think of an agent as a **complete runtime system**, not an isolated prompt.
+---
+
+<a id="system"></a>
+<p><sub>SYSTEM VIEW</sub></p>
+
+## From knowledge to verifiable action
+
+<p align="center">
+  <img src="./assets/system-map-light.svg" width="100%" alt="From knowledge to verifiable action" />
+</p>
+
+I think of an agent as an operating system rather than an isolated prompt: retrieval supplies evidence, context engineering selects what matters, runtime manages state and control, tools act, and evaluation verifies the result.
 
 <details open>
-<summary><strong>Expand / collapse: a context engine from knowledge to reliable action</strong></summary>
+<summary><strong>Engineering Principles</strong></summary>
 <br/>
 
-<p align="center">
-  <img src="./assets/context-engine-flow.webp" width="100%" alt="System flow from retrieval and context construction to reliable action and evaluation" />
-</p>
-
-```text
-Knowledge
-   ↓
-Retrieval → Rerank → Evidence
-   ↓
-Context Engine
-   ↓
-Reasoning / Planning
-   ↓
-Tools + Memory + State
-   ↓
-Action
-   ↓
-Trace / Assertion / Evaluation
-```
-
-For important system decisions, I want to be able to answer three questions: **What was the evidence? What happened? How was the result verified?**
+1. **Context quality > context length.** More context is not automatically better context.
+2. **State is part of the problem.** Later behavior must be grounded in observable state changes.
+3. **Tool calls need boundaries.** Permissions, budgets, idempotency, failure semantics and rollback belong in the system.
+4. **Evaluation should be reproducible.** Fix the environment, starting state, contracts and evidence.
+5. **Observability is a feature.** Traces, audit, cost, latency and terminal state should be inspectable.
+6. **Safety belongs in architecture.** High-risk actions need real authorization boundaries, not only prompt instructions.
 
 </details>
 
-<details>
-<summary><strong>Expand: Engineering Principles</strong></summary>
-<br/>
+---
 
-1. **Context quality > context length.** More context is not automatically better; relevant, grounded context is.
-2. **State is part of the problem.** Later steps must depend on real, observable state transitions.
-3. **Tool calls need boundaries.** Permissions, budgets, idempotency, failure semantics, and rollback are part of the tool system.
-4. **Evaluation should be reproducible.** Fix environment identity, initial state, tool contracts, and evidence instead of relying on one lucky run.
-5. **Observability is a feature.** Traces, audits, cost, latency, and terminal state should be inspectable and comparable.
-6. **Safety belongs in architecture.** High-risk actions should not rely on prompt instructions alone; control boundaries belong in system design.
+<a id="stack"></a>
+<p><sub>TOOLBOX</sub></p>
 
-</details>
-
-<a id="tech-stack"></a>
-## Tech Stack
+## Tech stack
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=py,ts,go,kotlin,docker,postgres,redis,git,github&theme=dark&perline=9">
-    <source media="(prefers-color-scheme: light)" srcset="https://skillicons.dev/icons?i=py,ts,go,kotlin,docker,postgres,redis,git,github&theme=light&perline=9">
-    <img src="https://skillicons.dev/icons?i=py,ts,go,kotlin,docker,postgres,redis,git,github&theme=light&perline=9" alt="Python, TypeScript, Go, Kotlin, Docker, PostgreSQL, Redis, Git and GitHub" />
-  </picture>
+  <img src="https://skillicons.dev/icons?i=py,ts,go,kotlin,docker,postgres,redis,git,github&theme=light&perline=9" alt="Python, TypeScript, Go, Kotlin, Docker, PostgreSQL, Redis, Git and GitHub" />
+</p>
+
+<p align="center">
+  <code>Python</code> · <code>TypeScript</code> · <code>Go</code> · <code>Kotlin</code> ·
+  <code>Docker</code> · <code>PostgreSQL</code> · <code>Redis</code> · <code>GitHub Actions</code>
 </p>
 
 <details>
-<summary><strong>Expand: full technical focus</strong></summary>
+<summary><strong>Full engineering stack</strong></summary>
 <br/>
 
 | Layer | Tools / Concepts |
@@ -169,26 +145,30 @@ For important system decisions, I want to be able to answer three questions: **W
 
 </details>
 
-<a id="github-dynamics"></a>
-## GitHub Dynamics
+---
+
+<a id="activity"></a>
+<p><sub>PUBLIC ACTIVITY</sub></p>
+
+## GitHub activity
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./github-dynamics-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./github-dynamics-light.svg">
-    <img src="./github-dynamics-light.svg" width="100%" alt="GitHub public activity overview" />
-  </picture>
+  <img src="./github-dynamics-light.svg" width="100%" alt="GitHub public activity overview" />
 </p>
 
-<p align="center"><sub>Updated daily by this repository's own GitHub Actions workflow · no third-party stats-card service required</sub></p>
-
 <details>
-<summary><strong>How is this card generated?</strong></summary>
+<summary><strong>Contribution Playground</strong></summary>
 <br/>
 
-`scripts/generate_github_stats.py` reads public activity through the GitHub GraphQL API. `.github/workflows/update-profile-stats.yml` generates both light and dark SVG cards every day, and the README selects the appropriate version based on the visitor's GitHub theme.
+<p align="center">
+  <img src="./assets/contribution-snake.svg" width="100%" alt="GitHub contribution snake animation" />
+</p>
+
+<p align="center"><sub>Generated by GitHub Actions + Platane/snk and stored in this repository.</sub></p>
 
 </details>
+
+---
 
 ## Connect
 
@@ -204,5 +184,6 @@ For important system decisions, I want to be able to answer three questions: **W
 
 <br/>
 
-<p align="center"><strong>Retrieval with evidence. Context with intent. Actions with boundaries. Evaluation with state.</strong></p>
-<p align="center"><sub>augety121 · RAG Agent · Context Engineering · MCP · Reliable Agent Systems</sub></p>
+<p align="center">
+  <img src="./assets/footer-light.svg" width="100%" alt="Evidence, Context, Action, State, Evaluation" />
+</p>

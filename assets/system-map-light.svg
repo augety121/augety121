@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="250" viewBox="0 0 1200 250" role="img" aria-label="From knowledge to reliable action and evaluation">
+
+<defs>
+  <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FBFDFF"/>
+    <stop offset="0.55" stop-color="#F6FAFF"/>
+    <stop offset="1" stop-color="#F0F7FF"/>
+  </linearGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#4F7CFF"/>
+    <stop offset="0.53" stop-color="#4CB9E9"/>
+    <stop offset="1" stop-color="#48C9B0"/>
+  </linearGradient>
+  <linearGradient id="brandSoft" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#E9F0FF"/>
+    <stop offset="0.55" stop-color="#EAFBFF"/>
+    <stop offset="1" stop-color="#ECFBF6"/>
+  </linearGradient>
+  <radialGradient id="blobBlue"><stop offset="0" stop-color="#BED4FF" stop-opacity=".6"/><stop offset="1" stop-color="#BED4FF" stop-opacity="0"/></radialGradient>
+  <radialGradient id="blobCyan"><stop offset="0" stop-color="#C5F0FF" stop-opacity=".55"/><stop offset="1" stop-color="#C5F0FF" stop-opacity="0"/></radialGradient>
+  <radialGradient id="blobMint"><stop offset="0" stop-color="#CCF5E9" stop-opacity=".5"/><stop offset="1" stop-color="#CCF5E9" stop-opacity="0"/></radialGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+    <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#466887" flood-opacity=".10"/>
+  </filter>
+  <filter id="shadowSmall" x="-20%" y="-20%" width="140%" height="150%">
+    <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#466887" flood-opacity=".08"/>
+  </filter>
+  <filter id="blur"><feGaussianBlur stdDeviation="28"/></filter>
+  <style>
+    text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace}
+    .eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace;font-size:13px;font-weight:700;letter-spacing:2.2px;fill:#8AA0BB}
+    .title{font-size:48px;font-weight:800;letter-spacing:-2px;fill:#10233F}
+    .title-en{font-size:50px;font-weight:800;letter-spacing:-1.7px;fill:#10233F}
+    .body{font-size:18px;fill:#61738D}
+    .body-sm{font-size:14px;fill:#61738D}
+    .label{font-size:12px;font-weight:700;fill:#61738D}
+    .card-title{font-size:17px;font-weight:760;fill:#10233F}
+    .card-sub{font-size:12px;fill:#61738D}
+    .micro{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace;font-size:10px;letter-spacing:1.1px;fill:#8AA0BB}
+    .tag{font-size:12px;font-weight:700;fill:#10233F}
+  </style>
+  
+</defs>
+<rect x="1" y="1" width="1198" height="248" rx="30" fill="url(#page)" stroke="#DCE8F6"/>
+<text x="30" y="38" class="micro">SYSTEM VIEW / FROM KNOWLEDGE TO VERIFIABLE ACTION</text>
+<text x="30" y="65" class="body-sm">Reliable agents connect evidence, context, tools, state and evaluation into one inspectable system.</text>
+<rect x="30" y="92" width="146" height="92" rx="22" fill="#FFFFFF" stroke="#DCE8F6" filter="url(#shadowSmall)"/><rect x="46" y="108" width="34" height="34" rx="11" fill="#DCE9FF"/><circle cx="63" cy="125" r="6" fill="#4F7CFF"/><text x="46" y="164" class="card-title">Knowledge</text><text x="160" y="122" class="micro" text-anchor="end">SOURCE</text><path d="M178 138 H186" stroke="#AFC4DA" stroke-width="2.2" stroke-linecap="round"/><path d="M183 134 L188 138 L183 142" fill="none" stroke="#AFC4DA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="188" y="92" width="146" height="92" rx="22" fill="#FFFFFF" stroke="#DCE8F6" filter="url(#shadowSmall)"/><rect x="204" y="108" width="34" height="34" rx="11" fill="#EAF3FF"/><circle cx="221" cy="125" r="6" fill="#4F7CFF"/><text x="204" y="164" class="card-title">Retrieve</text><text x="318" y="122" class="micro" text-anchor="end">SEARCH</text><path d="M336 138 H344" stroke="#AFC4DA" stroke-width="2.2" stroke-linecap="round"/><path d="M341 134 L346 138 L341 142" fill="none" stroke="#AFC4DA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="346" y="92" width="146" height="92" rx="22" fill="#FFFFFF" stroke="#DCE8F6" filter="url(#shadowSmall)"/><rect x="362" y="108" width="34" height="34" rx="11" fill="#DCF6FF"/><circle cx="379" cy="125" r="6" fill="#4CB9E9"/><text x="362" y="164" class="card-title">Evidence</text><text x="476" y="122" class="micro" text-anchor="end">RERANK</text><path d="M494 138 H502" stroke="#AFC4DA" stroke-width="2.2" stroke-linecap="round"/><path d="M499 134 L504 138 L499 142" fill="none" stroke="#AFC4DA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="504" y="92" width="146" height="92" rx="22" fill="#FFFFFF" stroke="#DCE8F6" filter="url(#shadowSmall)"/><rect x="520" y="108" width="34" height="34" rx="11" fill="#EEE9FF"/><circle cx="537" cy="125" r="6" fill="#8D7CF7"/><text x="520" y="164" class="card-title">Context</text><text x="634" y="122" class="micro" text-anchor="end">SELECT</text><path d="M652 138 H660" stroke="#AFC4DA" stroke-width="2.2" stroke-linecap="round"/><path d="M657 134 L662 138 L657 142" fill="none" stroke="#AFC4DA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="662" y="92" width="146" height="92" rx="22" fill="#FFFFFF" stroke="#DCE8F6" filter="url(#shadowSmall)"/><rect x="678" y="108" width="34" height="34" rx="11" fill="#DCE9FF"/><circle cx="695" cy="125" r="6" fill="#4F7CFF"/><text x="678" y="164" class="card-title">Runtime</text><text x="792" y="122" class="micro" text-anchor="end">REASON</text><path d="M810 138 H818" stroke="#AFC4DA" stroke-width="2.2" stroke-linecap="round"/><path d="M815 134 L820 138 L815 142" fill="none" stroke="#AFC4DA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="820" y="92" width="146" height="92" rx="22" fill="#FFFFFF" stroke="#DCE8F6" filter="url(#shadowSmall)"/><rect x="836" y="108" width="34" height="34" rx="11" fill="#DDF8F1"/><circle cx="853" cy="125" r="6" fill="#48C9B0"/><text x="836" y="164" class="card-title">Tools</text><text x="950" y="122" class="micro" text-anchor="end">ACT</text><path d="M968 138 H976" stroke="#AFC4DA" stroke-width="2.2" stroke-linecap="round"/><path d="M973 134 L978 138 L973 142" fill="none" stroke="#AFC4DA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="978" y="92" width="146" height="92" rx="22" fill="#FFFFFF" stroke="#DCE8F6" filter="url(#shadowSmall)"/><rect x="994" y="108" width="34" height="34" rx="11" fill="#DCF6FF"/><circle cx="1011" cy="125" r="6" fill="#4CB9E9"/><text x="994" y="164" class="card-title">Evaluate</text><text x="1108" y="122" class="micro" text-anchor="end">VERIFY</text>
+<text x="30" y="222" class="micro">WHY THIS CONTEXT? · WHAT CHANGED? · HOW DO WE VERIFY IT?</text>
+</svg>

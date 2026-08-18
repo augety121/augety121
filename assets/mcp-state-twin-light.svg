@@ -1,36 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="MCP State Twin 项目卡片">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="350" viewBox="0 0 1200 350" role="img" aria-label="MCP State Twin — deterministic forkable stateful MCP test worlds">
+
 <defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F3F7FF"/></linearGradient>
-  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6C63FF"/><stop offset=".52" stop-color="#38BDF8"/><stop offset="1" stop-color="#2DD4BF"/></linearGradient>
-  <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity=".10"/></filter>
-  <style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei','PingFang SC',Arial,sans-serif} .k{font:600 12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:2px;fill:#64748B}.t{font-size:30px;font-weight:760;fill:#172033}.s{font-size:15px;fill:#64748B}.chip{font-size:11px;font-weight:650;fill:#172033}.n{font-size:12px;font-weight:700;fill:#172033}.m{font-size:10px;fill:#94A3B8}</style>
+  <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FBFDFF"/>
+    <stop offset="0.55" stop-color="#F6FAFF"/>
+    <stop offset="1" stop-color="#F0F7FF"/>
+  </linearGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#4F7CFF"/>
+    <stop offset="0.53" stop-color="#4CB9E9"/>
+    <stop offset="1" stop-color="#48C9B0"/>
+  </linearGradient>
+  <linearGradient id="brandSoft" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#E9F0FF"/>
+    <stop offset="0.55" stop-color="#EAFBFF"/>
+    <stop offset="1" stop-color="#ECFBF6"/>
+  </linearGradient>
+  <radialGradient id="blobBlue"><stop offset="0" stop-color="#BED4FF" stop-opacity=".6"/><stop offset="1" stop-color="#BED4FF" stop-opacity="0"/></radialGradient>
+  <radialGradient id="blobCyan"><stop offset="0" stop-color="#C5F0FF" stop-opacity=".55"/><stop offset="1" stop-color="#C5F0FF" stop-opacity="0"/></radialGradient>
+  <radialGradient id="blobMint"><stop offset="0" stop-color="#CCF5E9" stop-opacity=".5"/><stop offset="1" stop-color="#CCF5E9" stop-opacity="0"/></radialGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+    <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#466887" flood-opacity=".10"/>
+  </filter>
+  <filter id="shadowSmall" x="-20%" y="-20%" width="140%" height="150%">
+    <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#466887" flood-opacity=".08"/>
+  </filter>
+  <filter id="blur"><feGaussianBlur stdDeviation="28"/></filter>
+  <style>
+    text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace}
+    .eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace;font-size:13px;font-weight:700;letter-spacing:2.2px;fill:#8AA0BB}
+    .title{font-size:48px;font-weight:800;letter-spacing:-2px;fill:#10233F}
+    .title-en{font-size:50px;font-weight:800;letter-spacing:-1.7px;fill:#10233F}
+    .body{font-size:18px;fill:#61738D}
+    .body-sm{font-size:14px;fill:#61738D}
+    .label{font-size:12px;font-weight:700;fill:#61738D}
+    .card-title{font-size:17px;font-weight:760;fill:#10233F}
+    .card-sub{font-size:12px;fill:#61738D}
+    .micro{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace;font-size:10px;letter-spacing:1.1px;fill:#8AA0BB}
+    .tag{font-size:12px;font-weight:700;fill:#10233F}
+  </style>
+  
 </defs>
-<rect x="1" y="1" width="1198" height="298" rx="28" fill="url(#bg)" stroke="#DDE5F0"/>
-<rect x="0" y="0" width="10" height="300" rx="5" fill="url(#accent)"/>
-<text x="48" y="54" class="k">SELECTED WORK / OPEN SOURCE</text>
-<text x="48" y="98" class="t">MCP State Twin</text>
-<text x="48" y="132" class="s">用于可复现 AI Agent 评测的确定性、可分叉、有状态 MCP 测试世界。</text>
-<text x="48" y="158" class="s">从同一快照分叉多个世界，让不同 Agent 走不同合法轨迹，再比较最终状态。</text>
-<g transform="translate(48 192)">
-  <g><rect width="56" height="28" rx="14" fill="#F3F4FF" stroke="#D9D6FF"/><text x="28" y="18" text-anchor="middle" class="chip">Go</text></g>
-  <g transform="translate(66)"><rect width="68" height="28" rx="14" fill="#F3F4FF" stroke="#D9D6FF"/><text x="34" y="18" text-anchor="middle" class="chip">MCP</text></g>
-  <g transform="translate(144)"><rect width="118" height="28" rx="14" fill="#F3F4FF" stroke="#D9D6FF"/><text x="59" y="18" text-anchor="middle" class="chip">Stateful Eval</text></g>
-  <g transform="translate(272)"><rect width="108" height="28" rx="14" fill="#F3F4FF" stroke="#D9D6FF"/><text x="54" y="18" text-anchor="middle" class="chip">SQLite</text></g>
-  <g transform="translate(390)"><rect width="126" height="28" rx="14" fill="#F3F4FF" stroke="#D9D6FF"/><text x="63" y="18" text-anchor="middle" class="chip">Deterministic</text></g>
+<rect x="1" y="1" width="1198" height="348" rx="30" fill="url(#page)" stroke="#DCE8F6"/>
+<circle cx="1060" cy="32" r="180" fill="url(#blobCyan)" filter="url(#blur)"/>
+<rect x="36" y="34" width="78" height="26" rx="13" fill="#DCE9FF"/><text x="75" y="51" text-anchor="middle" class="micro" style="fill:#4F7CFF;font-weight:800">FEATURED</text>
+<text x="36" y="104" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;font-size:36px;font-weight:820;fill:#10233F;letter-spacing:-1px">MCP State Twin</text>
+<text x="36" y="137" class="body">Deterministic · Forkable · Stateful · Reproducible</text>
+<text x="36" y="181" class="body-sm">Stateful MCP test worlds for reproducible AI agent evaluation.</text>
+<text x="36" y="205" class="body-sm">Fork one immutable snapshot, execute isolated trajectories, compare terminal worlds.</text>
+
+<g transform="translate(36 236)">
+  <g><rect x="0" y="0" width="120" height="42" rx="14" fill="#FFFFFF" stroke="#DCE8F6"/><text x="60" y="26" text-anchor="middle" class="tag">Go</text></g>
+  <g transform="translate(130 0)"><rect x="0" y="0" width="140" height="42" rx="14" fill="#FFFFFF" stroke="#DCE8F6"/><text x="70" y="26" text-anchor="middle" class="tag">MCP</text></g>
+  <g transform="translate(280 0)"><rect x="0" y="0" width="180" height="42" rx="14" fill="#FFFFFF" stroke="#DCE8F6"/><text x="90" y="26" text-anchor="middle" class="tag">Agent Evaluation</text></g>
+  <g transform="translate(470 0)"><rect x="0" y="0" width="140" height="42" rx="14" fill="#FFFFFF" stroke="#DCE8F6"/><text x="70" y="26" text-anchor="middle" class="tag">SQLite</text></g>
 </g>
-<text x="48" y="263" class="m">github.com/augety121/MCP-State-Twin</text>
-<!-- fork visual -->
-<g transform="translate(700 34)">
-  <rect width="452" height="232" rx="24" fill="#F8FAFC" stroke="#DDE5F0"/>
-  <text x="25" y="30" class="k">SNAPSHOT → FORK → ACT → DIFF</text>
-  <g transform="translate(28 56)">
-    <rect x="0" y="44" width="100" height="54" rx="15" fill="#FFFFFF" stroke="#DDE5F0"/><text x="50" y="68" text-anchor="middle" class="n">Snapshot S₀</text><text x="50" y="84" text-anchor="middle" class="m">immutable</text>
-    <path d="M100 71 H154 M154 71 V24 H204 M154 71 V118 H204" fill="none" stroke="#6C63FF" stroke-width="2"/>
-    <g transform="translate(204 0)"><rect width="86" height="48" rx="14" fill="#FFFFFF" stroke="#DDE5F0"/><text x="43" y="21" text-anchor="middle" class="n">Fork A</text><text x="43" y="36" text-anchor="middle" class="m">Agent A</text></g>
-    <g transform="translate(204 94)"><rect width="86" height="48" rx="14" fill="#FFFFFF" stroke="#DDE5F0"/><text x="43" y="21" text-anchor="middle" class="n">Fork B</text><text x="43" y="36" text-anchor="middle" class="m">Agent B</text></g>
-    <path d="M290 24 H334 M290 118 H334" fill="none" stroke="#38BDF8" stroke-width="2"/>
-    <g transform="translate(334 48)"><rect width="72" height="48" rx="14" fill="url(#accent)"/><text x="36" y="21" text-anchor="middle" style="font:700 12px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;fill:#fff">Diff</text><text x="36" y="36" text-anchor="middle" style="font:500 9px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;fill:#fff;opacity:.85">terminal</text></g>
-    <path d="M334 24 C320 24 320 64 334 72 M334 118 C320 118 320 80 334 72" fill="none" stroke="#2DD4BF" stroke-width="2"/>
+
+<!-- fork visualization -->
+<g transform="translate(660 42)">
+  <text x="0" y="20" class="micro">SNAPSHOT · FORK · ACT · ASSERT · DIFF</text>
+  <g transform="translate(8 58)">
+    <rect x="0" y="0" width="150" height="56" rx="18" fill="#FFFFFF" stroke="#DCE8F6" filter="url(#shadowSmall)"/>
+    <circle cx="24" cy="28" r="7" fill="#4F7CFF"/>
+    <text x="45" y="25" class="card-title">Snapshot S₀</text><text x="45" y="43" class="card-sub">immutable start</text>
+  </g>
+  <path d="M158 86 C198 86 198 50 230 50" fill="none" stroke="#4F7CFF" stroke-width="2.2"/>
+  <path d="M158 86 C198 86 198 122 230 122" fill="none" stroke="#4CB9E9" stroke-width="2.2"/>
+  <path d="M158 86 C198 86 198 194 230 194" fill="none" stroke="#48C9B0" stroke-width="2.2"/>
+  <g transform="translate(230 21)"><rect x="0" y="0" width="140" height="58" rx="18" fill="#FFFFFF" stroke="#DCE8F6"/><circle cx="22" cy="29" r="6" fill="#4F7CFF"/><text x="42" y="26" class="card-title">Fork A</text><text x="42" y="44" class="card-sub">trajectory α</text></g>
+  <g transform="translate(230 93)"><rect x="0" y="0" width="140" height="58" rx="18" fill="#FFFFFF" stroke="#DCE8F6"/><circle cx="22" cy="29" r="6" fill="#4CB9E9"/><text x="42" y="26" class="card-title">Fork B</text><text x="42" y="44" class="card-sub">trajectory β</text></g>
+  <g transform="translate(230 165)"><rect x="0" y="0" width="140" height="58" rx="18" fill="#FFFFFF" stroke="#DCE8F6"/><circle cx="22" cy="29" r="6" fill="#48C9B0"/><text x="42" y="26" class="card-title">Fork C</text><text x="42" y="44" class="card-sub">trajectory γ</text></g>
+  <path d="M370 50 C386 50 390 90 395 118" fill="none" stroke="#B7C9DE" stroke-width="2"/>
+  <path d="M370 122 L395 122" fill="none" stroke="#B7C9DE" stroke-width="2"/>
+  <path d="M370 194 C386 194 390 154 395 126" fill="none" stroke="#B7C9DE" stroke-width="2"/>
+  <g transform="translate(395 88)">
+    <rect x="0" y="0" width="120" height="70" rx="20" fill="url(#brand)"/>
+    <text x="60" y="30" text-anchor="middle" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;font-size:15px;font-weight:800;fill:#fff">Terminal</text>
+    <text x="60" y="51" text-anchor="middle" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;font-size:11px;fill:#fff;opacity:.9">canonical diff</text>
   </g>
 </g>
+<text x="36" y="323" class="micro">PRODUCTION WRITES: NONE · MODEL TRAJECTORIES MAY DIFFER · TERMINAL STATE IS COMPARABLE</text>
 </svg>

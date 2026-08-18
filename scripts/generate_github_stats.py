@@ -37,17 +37,17 @@ query ProfileDynamics($login: String!) {
 
 PALETTES = {
     "light": {
-        "bg": "#F8FAFF",
+        "bg": "#F7FBFF",
         "panel": "#FFFFFF",
-        "panel2": "#F8FAFC",
-        "stroke": "#DDE5F0",
-        "text": "#172033",
-        "muted": "#64748B",
-        "muted2": "#94A3B8",
-        "indigo": "#6C63FF",
-        "cyan": "#38BDF8",
-        "mint": "#2DD4BF",
-        "heat": ["#E8EDF5", "#DCE7FF", "#BFCBFF", "#858DFF", "#2DD4BF"],
+        "panel2": "#F3F8FF",
+        "stroke": "#DCE8F6",
+        "text": "#10233F",
+        "muted": "#61738D",
+        "muted2": "#8AA0BB",
+        "indigo": "#4F7CFF",
+        "cyan": "#4CB9E9",
+        "mint": "#48C9B0",
+        "heat": ["#EEF4FB", "#DCE9FF", "#BDD3FF", "#7DA5FF", "#48C9B0"],
     },
     "dark": {
         "bg": "#070B14",
@@ -141,7 +141,7 @@ def heat_color(count: int, colors: list[str]) -> str:
 def render_svg(profile: dict, theme: str) -> str:
     p = PALETTES[theme]
     width, height = 1200, 356
-    labels = ("公开仓库", "累计星标", "年度贡献", "关注者")
+    labels = ("PUBLIC REPOS", "STARS", "CONTRIBUTIONS", "FOLLOWERS")
     keys = ("repositories", "stars", "contributions", "followers")
 
     parts = [
@@ -169,7 +169,7 @@ def render_svg(profile: dict, theme: str) -> str:
 
     parts += [
         f'<rect x="42" y="150" width="1116" height="154" rx="20" fill="{p["panel"]}" stroke="{p["stroke"]}"/>',
-        '<text x="68" y="178" class="panel">过去 12 个月贡献</text>',
+        '<text x="68" y="178" class="panel">Last 12 months</text>',
     ]
 
     cell, gap_cell = 12, 4
@@ -189,23 +189,23 @@ def render_svg(profile: dict, theme: str) -> str:
             x = grid_x + week_index * (cell + gap_cell)
             y = grid_y + row * (cell + gap_cell)
             color = heat_color(count, p["heat"])
-            parts.append(f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3" fill="{color}"><title>{date}：{count} 次贡献</title></rect>')
+            parts.append(f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3" fill="{color}"><title>{date}: {count} contributions</title></rect>')
 
-    for label, row in (("一", 1), ("三", 3), ("五", 5)):
+    for label, row in (("M", 1), ("W", 3), ("F", 5)):
         y = grid_y + row * (cell + gap_cell) + 10
         parts.append(f'<text x="94" y="{y}" class="small" text-anchor="middle">{label}</text>')
 
     legend_x = 965
-    parts.append(f'<text x="{legend_x-28}" y="178" class="small">少</text>')
+    parts.append(f'<text x="{legend_x-28}" y="178" class="small">LESS</text>')
     for i, color in enumerate(p["heat"]):
         parts.append(f'<rect x="{legend_x+i*17}" y="168" width="11" height="11" rx="3" fill="{color}"/>')
-    parts.append(f'<text x="{legend_x+92}" y="178" class="small">多</text>')
+    parts.append(f'<text x="{legend_x+92}" y="178" class="small">MORE</text>')
 
     if profile["placeholder"]:
-        footer = "首次运行工作流后自动填充真实数据"
+        footer = "Real public activity will be populated after the first workflow run"
     else:
         updated = datetime.now(ZoneInfo("Asia/Shanghai")).strftime("%Y-%m-%d %H:%M")
-        footer = f"每日自动更新 · 提交 {profile['commits']} · PR {profile['pull_requests']} · Issue {profile['issues']} · 北京时间 {updated}"
+        footer = f"Daily update · commits {profile['commits']} · PRs {profile['pull_requests']} · issues {profile['issues']} · Asia/Shanghai {updated}"
     parts += [
         f'<circle cx="48" cy="328" r="4" fill="{p["mint"]}"/>',
         f'<text x="62" y="332" class="small">{footer}</text>',

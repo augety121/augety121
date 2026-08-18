@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="180" viewBox="0 0 1200 180" role="img" aria-label="Contribution playground placeholder">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBFDFF"/><stop offset="1" stop-color="#F2F8FF"/></linearGradient>
+  <linearGradient id="snake" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4F7CFF"/><stop offset=".55" stop-color="#4CB9E9"/><stop offset="1" stop-color="#48C9B0"/></linearGradient>
+  <style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}.small{font-size:12px;fill:#61738D}.mono{font:700 10px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:1.2px;fill:#8AA0BB}</style>
+</defs>
+<rect x="1" y="1" width="1198" height="178" rx="26" fill="url(#bg)" stroke="#DCE8F6"/>
+<text x="30" y="35" class="mono">CONTRIBUTION PLAYGROUND</text>
+<g transform="translate(30 62)">
+  <g fill="#EAF3FF">
+    <rect x="0" y="0" width="14" height="14" rx="4"/><rect x="20" y="0" width="14" height="14" rx="4"/><rect x="40" y="0" width="14" height="14" rx="4"/><rect x="60" y="0" width="14" height="14" rx="4"/><rect x="80" y="0" width="14" height="14" rx="4"/><rect x="100" y="0" width="14" height="14" rx="4"/><rect x="120" y="0" width="14" height="14" rx="4"/><rect x="140" y="0" width="14" height="14" rx="4"/><rect x="160" y="0" width="14" height="14" rx="4"/><rect x="180" y="0" width="14" height="14" rx="4"/><rect x="200" y="0" width="14" height="14" rx="4"/><rect x="220" y="0" width="14" height="14" rx="4"/>
+    <rect x="0" y="20" width="14" height="14" rx="4"/><rect x="20" y="20" width="14" height="14" rx="4"/><rect x="40" y="20" width="14" height="14" rx="4"/><rect x="60" y="20" width="14" height="14" rx="4"/><rect x="80" y="20" width="14" height="14" rx="4"/><rect x="100" y="20" width="14" height="14" rx="4"/><rect x="120" y="20" width="14" height="14" rx="4"/><rect x="140" y="20" width="14" height="14" rx="4"/><rect x="160" y="20" width="14" height="14" rx="4"/><rect x="180" y="20" width="14" height="14" rx="4"/><rect x="200" y="20" width="14" height="14" rx="4"/><rect x="220" y="20" width="14" height="14" rx="4"/>
+    <rect x="0" y="40" width="14" height="14" rx="4"/><rect x="20" y="40" width="14" height="14" rx="4"/><rect x="40" y="40" width="14" height="14" rx="4"/><rect x="60" y="40" width="14" height="14" rx="4"/><rect x="80" y="40" width="14" height="14" rx="4"/><rect x="100" y="40" width="14" height="14" rx="4"/><rect x="120" y="40" width="14" height="14" rx="4"/><rect x="140" y="40" width="14" height="14" rx="4"/><rect x="160" y="40" width="14" height="14" rx="4"/><rect x="180" y="40" width="14" height="14" rx="4"/><rect x="200" y="40" width="14" height="14" rx="4"/><rect x="220" y="40" width="14" height="14" rx="4"/>
+  </g>
+  <path d="M18 48 C60 48 59 8 102 8 S145 48 188 48 S230 8 274 8 S318 48 360 48 S406 8 450 8 S492 48 538 48 S580 8 626 8 S670 48 714 48 S758 8 804 8 S846 48 892 48" fill="none" stroke="url(#snake)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="900" cy="48" r="10" fill="#48C9B0"/>
+  <circle cx="904" cy="44" r="2" fill="#fff"/>
+</g>
+<text x="30" y="150" class="small">The first scheduled workflow run will replace this placeholder with your live contribution snake.</text>
+</svg>

@@ -1,9 +1,5 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.svg">
-    <img src="./assets/hero-light.svg" width="100%" alt="augety121 — 构建可靠的 Agent 系统" />
-  </picture>
+  <img src="./assets/hero-zh-light.svg" width="100%" alt="augety121 — Reliable Agent Systems" />
 </p>
 
 <p align="center">
@@ -13,61 +9,46 @@
 </p>
 
 <p align="center">
-  <a href="#selected-work">代表项目</a>
+  <a href="#featured">代表项目</a>
   &nbsp;·&nbsp;
-  <a href="#engineering-radar">Engineering Radar</a>
+  <a href="#focus">关注方向</a>
   &nbsp;·&nbsp;
-  <a href="#system-view">系统视角</a>
+  <a href="#system">系统视角</a>
   &nbsp;·&nbsp;
-  <a href="#tech-stack">技术栈</a>
+  <a href="#stack">技术栈</a>
   &nbsp;·&nbsp;
-  <a href="#github-dynamics">GitHub 动态</a>
+  <a href="#activity">GitHub 动态</a>
+</p>
+
+<p align="center">
+  我关注的不是一次“看起来很聪明”的回答，而是一个能够
+  <strong>找到证据、组织上下文、受控调用工具、追踪状态并重复评测</strong>
+  的 Agent 系统。
+</p>
+
+<p align="center">
+  <sub>RAG Agent · Context Engineering · MCP · Agent Runtime · Reproducible Evaluation</sub>
 </p>
 
 ---
 
-<table>
-<tr>
-<td width="25%" align="center">
-<strong>RETRIEVE</strong><br/>
-<sub>检索真正相关的证据</sub>
-</td>
-<td width="25%" align="center">
-<strong>CONTEXT</strong><br/>
-<sub>把正确的信息放进窗口</sub>
-</td>
-<td width="25%" align="center">
-<strong>ACT</strong><br/>
-<sub>让工具调用有边界</sub>
-</td>
-<td width="25%" align="center">
-<strong>EVALUATE</strong><br/>
-<sub>让结果可以重复验证</sub>
-</td>
-</tr>
-</table>
+<a id="featured"></a>
+<p><sub>SELECTED WORK</sub></p>
 
-我主要关注 **RAG Agent、Context Engineering、MCP、Agent Runtime 与可复现评测**。
-
-比起让 Agent 在一次 Demo 中“看起来很聪明”，我更在意它能否在真实任务里持续回答这些问题：**证据从哪里来？上下文为什么被选中？工具为什么可以调用？状态发生了什么变化？最终结果如何被验证？**
-
-> **让知识可检索，让推理有依据，让行动有边界，让评测有状态。**
-
-<a id="selected-work"></a>
-## Selected Work
+## 代表项目
 
 <p align="center">
   <a href="https://github.com/augety121/MCP-State-Twin">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/mcp-state-twin-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="./assets/mcp-state-twin-light.svg">
-      <img src="./assets/mcp-state-twin-light.svg" width="100%" alt="MCP State Twin — 可复现 AI Agent 评测环境" />
-    </picture>
+    <img src="./assets/mcp-state-twin-light.svg" width="100%" alt="MCP State Twin" />
   </a>
 </p>
 
+**MCP State Twin** 是我当前重点推进的开源项目：为 AI Agent 评测提供**确定性、可分叉、有状态**的 MCP 测试世界。
+
+它允许不同 Agent / 模型从同一个不可变快照出发，采取不同但合法的工具轨迹，再依据**最终状态与声明的不变量**进行比较，而不把测试副作用写入生产服务。
+
 <p align="center">
-  <a href="https://github.com/augety121/MCP-State-Twin"><strong>查看仓库</strong></a>
+  <a href="https://github.com/augety121/MCP-State-Twin"><strong>Repository</strong></a>
   &nbsp;·&nbsp;
   <a href="https://github.com/augety121/MCP-State-Twin#readme">README</a>
   &nbsp;·&nbsp;
@@ -76,107 +57,111 @@
   <a href="https://github.com/augety121/MCP-State-Twin/issues">Issues</a>
 </p>
 
-**MCP State Twin** 是我当前重点推进的开源项目：为 AI Agent 评测提供确定性、可分叉、有状态的 MCP 测试世界。不同 Agent / 模型可以从同一个不可变快照出发，采取不同但合法的工具轨迹，再依据最终状态与声明的不变量进行比较，而不是把测试副作用写进生产服务。
-
 <details>
-<summary><strong>展开：为什么我认为“状态”是 Agent 评测的一等公民</strong></summary>
+<summary><strong>为什么我把“状态”看成 Agent 评测的一等公民？</strong></summary>
 <br/>
 
-多步 Agent 的问题并不只是“下一句话是什么”。一次工具调用会改变下一次调用应该看到的世界，因此真正可重复的评测需要固定：
+多步 Agent 的问题不只是“下一句话是什么”。一次工具调用会改变下一次调用应该看到的世界，因此真正可复现的评测需要固定并记录：
 
 - 环境身份与工具契约；
 - 初始快照与世界状态；
 - 状态转换与失败语义；
 - trace、断言与最终状态；
-- 允许不同合法 trajectory，而不是强制模型走同一条路径。
+- 允许不同合法 trajectory，而不是强制模型逐步走同一条路径。
 
-这也是 MCP State Twin 选择 **snapshot → fork → act → assert → diff** 作为核心工作流的原因。
-
-</details>
-
-<a id="engineering-radar"></a>
-## Engineering Radar
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/focus-map-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/focus-map-light.svg">
-    <img src="./assets/focus-map-light.svg" width="100%" alt="augety121 Engineering Radar" />
-  </picture>
-</p>
-
-<table>
-<tr>
-<td width="33%" valign="top">
-<strong>Retrieval & Context</strong><br/><br/>
-Sparse / Dense / Hybrid Retrieval、Rerank、Knowledge Graph、Memory、Context Budget、Evidence Selection。
-</td>
-<td width="33%" valign="top">
-<strong>Runtime & Tooling</strong><br/><br/>
-MCP、Planning、Routing、Tool Calling、State、Permission、Checkpoint、Rollback、Failure Recovery。
-</td>
-<td width="33%" valign="top">
-<strong>Evaluation & Safety</strong><br/><br/>
-Trace、Terminal State、Assertions、Cost、Latency、Prompt Injection、Audit、Reproducibility。
-</td>
-</tr>
-</table>
-
-<a id="system-view"></a>
-## System View
-
-我更倾向把 Agent 看成一个**完整运行系统**，而不是一个孤立 Prompt。
-
-<details open>
-<summary><strong>展开 / 收起：从知识到可靠行动的 Context Engine</strong></summary>
-<br/>
-
-<p align="center">
-  <img src="./assets/context-engine-flow.webp" width="100%" alt="从知识检索、上下文构建到可靠行动与验证的系统流程" />
-</p>
-
-```text
-Knowledge
-   ↓
-Retrieval → Rerank → Evidence
-   ↓
-Context Engine
-   ↓
-Reasoning / Planning
-   ↓
-Tools + Memory + State
-   ↓
-Action
-   ↓
-Trace / Assertion / Evaluation
-```
-
-我希望系统中的关键决策最终都能回答三个问题：**依据是什么？发生了什么？结果如何验证？**
+这也是 MCP State Twin 采用 **snapshot → fork → act → assert → diff** 工作流的原因。
 
 </details>
+
+---
+
+<a id="focus"></a>
+<p><sub>ENGINEERING RADAR</sub></p>
+
+## 我在构建什么
+
+<p align="center">
+  <img src="./assets/focus-map-light.svg" width="100%" alt="Engineering focus map" />
+</p>
+
+我的关注点横跨 Agent 的完整工程链路，而不是只停留在 Prompt 或模型调用层：
+
+- **Retrieval**：Sparse / Dense / Hybrid Retrieval、RRF、Rerank、Knowledge Graph；
+- **Context Engineering**：Evidence Selection、Memory、Context Budget、Query Planning；
+- **Agent Runtime**：Planning、Routing、State、Checkpoint、Rollback、Failure Recovery；
+- **MCP & Tooling**：工具契约、权限边界、隔离、幂等性与失败语义；
+- **Evaluation**：Trace、Assertions、Terminal State、Cost、Latency、Reproducibility；
+- **Safety**：Prompt Injection、Least Privilege、Auditability、不可逆副作用控制。
 
 <details>
-<summary><strong>展开：Engineering Principles</strong></summary>
+<summary><strong>展开：我更在意哪些工程问题？</strong></summary>
+<br/>
+
+我更愿意持续追问这些问题：
+
+1. **证据从哪里来？** 检索结果是否真的与当前任务相关，而不是“语义上看起来接近”？
+2. **为什么这段上下文应该进入窗口？** Memory、工具描述、任务状态和历史信息是否有明确预算与选择逻辑？
+3. **为什么 Agent 可以执行这个动作？** 权限、幂等性、预算和失败语义是否属于运行时，而不是只写在 Prompt 里？
+4. **世界发生了什么变化？** 多步调用后的状态是否可观察、可审计、可回滚？
+5. **成功如何被验证？** 是否能够根据状态、断言与证据评估，而不是只比较最终文本像不像参考答案？
+
+</details>
+
+---
+
+<a id="system"></a>
+<p><sub>SYSTEM VIEW</sub></p>
+
+## 从知识到可验证行动
+
+<p align="center">
+  <img src="./assets/system-map-light.svg" width="100%" alt="From knowledge to verifiable action" />
+</p>
+
+我更倾向把 Agent 看成一个**完整运行系统**：检索负责证据，Context Engine 负责选择，Runtime 负责状态与控制，工具负责行动，Evaluation 负责验证。
+
+<details open>
+<summary><strong>我的 Engineering Principles</strong></summary>
 <br/>
 
 1. **Context quality > context length.** 上下文不是越多越好，而是越相关、越有证据越好。
 2. **State is part of the problem.** 多步 Agent 的后续行为必须建立在真实、可观察的状态变化之上。
-3. **Tool calls need boundaries.** 权限、预算、幂等性、失败语义和回滚能力都属于工具系统的一部分。
-4. **Evaluation should be reproducible.** 评测应固定环境身份、起始状态、工具契约和证据，而不是依赖一次偶然成功。
-5. **Observability is a feature.** Trace、audit、cost、latency 与 terminal state 应该能够被检查和比较。
+3. **Tool calls need boundaries.** 权限、预算、幂等性、失败语义和回滚能力属于工具系统本身。
+4. **Evaluation should be reproducible.** 评测应固定环境身份、起始状态、工具契约与证据，而不是依赖一次偶然成功。
+5. **Observability is a feature.** Trace、audit、cost、latency 与 terminal state 应当可检查、可比较。
 6. **Safety belongs in architecture.** 高风险动作不能只依赖 Prompt 约束，权限与控制边界必须进入系统设计。
 
 </details>
 
-<a id="tech-stack"></a>
-## Tech Stack
+<details>
+<summary><strong>展开：我如何判断一个 Agent 系统是否“可靠”？</strong></summary>
+<br/>
+
+- [ ] 关键回答能够回到证据；
+- [ ] 上下文来源和选择过程可以解释；
+- [ ] 工具调用有明确权限、预算和错误模型；
+- [ ] 多步执行中的状态变化可以追踪；
+- [ ] 失败后可以恢复、重试或安全终止；
+- [ ] 评测能够从同一环境重新开始；
+- [ ] 成功标准不仅依赖文本相似度，还包含状态与断言；
+- [ ] 系统能够暴露 cost、latency、trace 与 audit 信息。
+
+</details>
+
+---
+
+<a id="stack"></a>
+<p><sub>TOOLBOX</sub></p>
+
+## 技术栈
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=py,ts,go,kotlin,docker,postgres,redis,git,github&theme=dark&perline=9">
-    <source media="(prefers-color-scheme: light)" srcset="https://skillicons.dev/icons?i=py,ts,go,kotlin,docker,postgres,redis,git,github&theme=light&perline=9">
-    <img src="https://skillicons.dev/icons?i=py,ts,go,kotlin,docker,postgres,redis,git,github&theme=light&perline=9" alt="Python, TypeScript, Go, Kotlin, Docker, PostgreSQL, Redis, Git and GitHub" />
-  </picture>
+  <img src="https://skillicons.dev/icons?i=py,ts,go,kotlin,docker,postgres,redis,git,github&theme=light&perline=9" alt="Python, TypeScript, Go, Kotlin, Docker, PostgreSQL, Redis, Git and GitHub" />
+</p>
+
+<p align="center">
+  <code>Python</code> · <code>TypeScript</code> · <code>Go</code> · <code>Kotlin</code> ·
+  <code>Docker</code> · <code>PostgreSQL</code> · <code>Redis</code> · <code>GitHub Actions</code>
 </p>
 
 <details>
@@ -196,28 +181,46 @@ Trace / Assertion / Evaluation
 
 </details>
 
-<a id="github-dynamics"></a>
-## GitHub Dynamics
+---
+
+<a id="activity"></a>
+<p><sub>PUBLIC ACTIVITY</sub></p>
+
+## GitHub 动态
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./github-dynamics-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./github-dynamics-light.svg">
-    <img src="./github-dynamics-light.svg" width="100%" alt="GitHub 公开活动概览" />
-  </picture>
+  <img src="./github-dynamics-light.svg" width="100%" alt="GitHub 公开活动概览" />
 </p>
 
 <p align="center">
-  <sub>仓库内 GitHub Actions 每日自动更新 · 不依赖第三方统计卡服务</sub>
+  <sub>仓库内 GitHub Actions 每日自动更新 · 数据来自公开 GitHub 活动</sub>
 </p>
 
 <details>
-<summary><strong>动态卡片是怎么生成的？</strong></summary>
+<summary><strong>Contribution Playground · 展开查看贡献动画</strong></summary>
 <br/>
 
-仓库中的 `scripts/generate_github_stats.py` 通过 GitHub GraphQL API 读取公开活动数据，并由 `.github/workflows/update-profile-stats.yml` 每日生成亮色 / 暗色两张 SVG。README 根据访客的 GitHub 主题自动选择对应版本。
+<p align="center">
+  <img src="./assets/contribution-snake.svg" width="100%" alt="GitHub contribution snake animation" />
+</p>
+
+<p align="center">
+  <sub>由 GitHub Actions + Platane/snk 自动生成并保存在本仓库。</sub>
+</p>
 
 </details>
+
+<details>
+<summary><strong>这些动态数据是怎么生成的？</strong></summary>
+<br/>
+
+仓库中的 `scripts/generate_github_stats.py` 通过 GitHub GraphQL API 读取公开活动数据，并由 `.github/workflows/update-profile-stats.yml` 每日生成 SVG。
+
+贡献动画由 `.github/workflows/update-contribution-snake.yml` 定期生成，因此主页打开时读取的是仓库内静态 SVG，而不是每次访问都实时请求第三方统计服务。
+
+</details>
+
+---
 
 ## Connect
 
@@ -231,12 +234,12 @@ Trace / Assertion / Evaluation
   <a href="https://github.com/augety121/augety121/issues"><strong>Profile Issues</strong></a>
 </p>
 
+<p align="center">
+  如果你也在研究 <strong>RAG、Context Engineering、MCP、Agent Runtime、Agent Evaluation 或可靠 AI 基础设施</strong>，欢迎通过 GitHub 交流。
+</p>
+
 <br/>
 
 <p align="center">
-  <strong>Retrieval with evidence. Context with intent. Actions with boundaries. Evaluation with state.</strong>
-</p>
-
-<p align="center">
-  <sub>augety121 · RAG Agent · Context Engineering · MCP · Reliable Agent Systems</sub>
+  <img src="./assets/footer-light.svg" width="100%" alt="Evidence, Context, Action, State, Evaluation" />
 </p>
