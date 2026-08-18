@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-label="Engineering Focus">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0F172A"/><stop offset="1" stop-color="#0B1020"/></linearGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B85FF"/><stop offset="1" stop-color="#4BE0C4"/></linearGradient>
+  <style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei','PingFang SC',Arial,sans-serif}.h{font-size:14px;font-weight:750;fill:#EAF1FF}.s{font-size:11px;fill:#9FB0C8}.tiny{font:600 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:2px;fill:#70829B}</style>
+</defs>
+<rect x="1" y="1" width="1198" height="358" rx="28" fill="url(#bg)" stroke="#24324A"/>
+<text x="42" y="42" class="tiny">ENGINEERING RADAR</text>
+<g transform="translate(600 184)">
+  <circle r="74" fill="url(#brand)" opacity=".96"/>
+  <text x="0" y="-5" text-anchor="middle" style="font:750 18px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;fill:#fff">Reliable</text>
+  <text x="0" y="18" text-anchor="middle" style="font:750 18px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;fill:#fff">Agent Systems</text>
+  <circle r="122" fill="none" stroke="#24324A" stroke-dasharray="3 9"/>
+  <circle r="164" fill="none" stroke="#24324A" stroke-dasharray="2 12" opacity=".7"/>
+</g>
+<g transform="translate(475 26)"><rect width="250" height="56" rx="17" fill="#111B30" stroke="#24324A"/><circle cx="21" cy="18" r="5" fill="#5BD5FF"/><text x="38" y="22" class="h">Retrieval</text><text x="21" y="42" class="s">hybrid · rerank · KG</text></g>
+<g transform="translate(789 70)"><rect width="250" height="56" rx="17" fill="#111B30" stroke="#24324A"/><circle cx="21" cy="18" r="5" fill="#8B85FF"/><text x="38" y="22" class="h">Context Engineering</text><text x="21" y="42" class="s">memory · budget · evidence</text></g>
+<g transform="translate(821 226)"><rect width="250" height="56" rx="17" fill="#111B30" stroke="#24324A"/><circle cx="21" cy="18" r="5" fill="#4BE0C4"/><text x="38" y="22" class="h">Agent Runtime</text><text x="21" y="42" class="s">state · permission · recovery</text></g>
+<g transform="translate(475 278)"><rect width="250" height="56" rx="17" fill="#111B30" stroke="#24324A"/><circle cx="21" cy="18" r="5" fill="#A78BFA"/><text x="38" y="22" class="h">Evaluation</text><text x="21" y="42" class="s">trace · terminal state · cost</text></g>
+<g transform="translate(129 226)"><rect width="250" height="56" rx="17" fill="#111B30" stroke="#24324A"/><circle cx="21" cy="18" r="5" fill="#4BE0C4"/><text x="38" y="22" class="h">Safety</text><text x="21" y="42" class="s">boundaries · rollback · audit</text></g>
+<g transform="translate(161 70)"><rect width="250" height="56" rx="17" fill="#111B30" stroke="#24324A"/><circle cx="21" cy="18" r="5" fill="#7CB8FF"/><text x="38" y="22" class="h">MCP &amp; Tooling</text><text x="21" y="42" class="s">tool surface · isolation · contracts</text></g>
+<!-- connectors -->
+<g fill="none" stroke="#24324A" stroke-width="1.5" opacity=".9">
+<path d="M600 104 V110"/><path d="M805 130 L718 151"/><path d="M829 232 L718 213"/><path d="M600 256 V238"/><path d="M371 232 L482 213"/><path d="M395 130 L482 151"/>
+</g>
+</svg>

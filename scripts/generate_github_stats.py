@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Generate a repository-local, rate-limit-resistant GitHub profile SVG."""
- 
+"""Generate repository-local GitHub profile dynamics cards (light/dark)."""
+
 from __future__ import annotations
 
 import argparse
@@ -13,18 +13,12 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-
 GRAPHQL_ENDPOINT = "https://api.github.com/graphql"
 QUERY = """
 query ProfileDynamics($login: String!) {
   user(login: $login) {
     followers { totalCount }
-    repositories(
-      first: 100
-      ownerAffiliations: [OWNER]
-      isFork: false
-      privacy: PUBLIC
-    ) {
+    repositories(first: 100, ownerAffiliations: [OWNER], isFork: false, privacy: PUBLIC) {
       totalCount
       nodes { stargazerCount }
     }
@@ -34,24 +28,45 @@ query ProfileDynamics($login: String!) {
       totalPullRequestContributions
       contributionCalendar {
         totalContributions
-        weeks {
-          contributionDays {
-            date
-            contributionCount
-            weekday
-          }
-        }
+        weeks { contributionDays { date contributionCount weekday } }
       }
     }
   }
 }
 """
 
+PALETTES = {
+    "light": {
+        "bg": "#F8FAFF",
+        "panel": "#FFFFFF",
+        "panel2": "#F8FAFC",
+        "stroke": "#DDE5F0",
+        "text": "#172033",
+        "muted": "#64748B",
+        "muted2": "#94A3B8",
+        "indigo": "#6C63FF",
+        "cyan": "#38BDF8",
+        "mint": "#2DD4BF",
+        "heat": ["#E8EDF5", "#DCE7FF", "#BFCBFF", "#858DFF", "#2DD4BF"],
+    },
+    "dark": {
+        "bg": "#070B14",
+        "panel": "#0F172A",
+        "panel2": "#111B30",
+        "stroke": "#24324A",
+        "text": "#EAF1FF",
+        "muted": "#9FB0C8",
+        "muted2": "#70829B",
+        "indigo": "#8B85FF",
+        "cyan": "#5BD5FF",
+        "mint": "#4BE0C4",
+        "heat": ["#18243A", "#253C64", "#405FA8", "#676FFF", "#36CDB5"],
+    },
+}
+
 
 def fetch_profile(token: str, username: str) -> dict:
-    payload = json.dumps(
-        {"query": QUERY, "variables": {"login": username}}
-    ).encode("utf-8")
+    payload = json.dumps({"query": QUERY, "variables": {"login": username}}).encode("utf-8")
     request = urllib.request.Request(
         GRAPHQL_ENDPOINT,
         data=payload,
@@ -59,11 +74,10 @@ def fetch_profile(token: str, username: str) -> dict:
             "Authorization": f"bearer {token}",
             "Content-Type": "application/json",
             "Accept": "application/vnd.github+json",
-            "User-Agent": "repository-local-profile-dynamics",
+            "User-Agent": "augety121-profile-dynamics",
         },
         method="POST",
     )
-
     try:
         with urllib.request.urlopen(request, timeout=30) as response:
             result = json.load(response)
@@ -78,13 +92,12 @@ def fetch_profile(token: str, username: str) -> dict:
     if not user:
         raise RuntimeError(f"GitHub user not found: {username}")
 
-    repositories = user["repositories"]
+    repos = user["repositories"]
     contributions = user["contributionsCollection"]
     calendar = contributions["contributionCalendar"]
-
     return {
-        "repositories": repositories["totalCount"],
-        "stars": sum(repo["stargazerCount"] for repo in repositories["nodes"]),
+        "repositories": repos["totalCount"],
+        "stars": sum(repo["stargazerCount"] for repo in repos["nodes"]),
         "contributions": calendar["totalContributions"],
         "followers": user["followers"]["totalCount"],
         "commits": contributions["totalCommitContributions"],
@@ -109,153 +122,102 @@ def placeholder_profile() -> dict:
     }
 
 
-def contribution_color(count: int) -> str:
-    if count <= 0:
-        return "#E9EFF4"
-    if count == 1:
-        return "#DDE9FF"
-    if count <= 3:
-        return "#C4CBFF"
-    if count <= 6:
-        return "#8C93F4"
-    return "#67BDB3"
-
-
-def format_value(value: object) -> str:
+def fmt(value: object) -> str:
     return f"{value:,}" if isinstance(value, int) else str(value)
 
 
-def render_svg(profile: dict) -> str:
-    width = 920
-    height = 338
-    cell = 10
-    gap = 3
-    grid_x = 115
-    grid_y = 206
-    stat_labels = ("公开仓库", "累计星标", "年度贡献", "关注者")
-    stat_keys = ("repositories", "stars", "contributions", "followers")
+def heat_color(count: int, colors: list[str]) -> str:
+    if count <= 0:
+        return colors[0]
+    if count == 1:
+        return colors[1]
+    if count <= 3:
+        return colors[2]
+    if count <= 6:
+        return colors[3]
+    return colors[4]
+
+
+def render_svg(profile: dict, theme: str) -> str:
+    p = PALETTES[theme]
+    width, height = 1200, 356
+    labels = ("公开仓库", "累计星标", "年度贡献", "关注者")
+    keys = ("repositories", "stars", "contributions", "followers")
 
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="GitHub 动态">',
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="GitHub 公开活动概览">',
         "<defs>",
-        '<linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">',
-        '<stop offset="0%" stop-color="#FEFDF9"/>',
-        '<stop offset="48%" stop-color="#F8F8FF"/>',
-        '<stop offset="100%" stop-color="#F3FBF9"/>',
-        "</linearGradient>",
-        '<linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">',
-        '<stop offset="0%" stop-color="#A8DDF0"/>',
-        '<stop offset="48%" stop-color="#9EA6F8"/>',
-        '<stop offset="100%" stop-color="#92D5C9"/>',
-        "</linearGradient>",
-        '<radialGradient id="orb-blue" cx="32%" cy="24%" r="78%">',
-        '<stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.98"/>',
-        '<stop offset="60%" stop-color="#EAF4FF" stop-opacity="0.88"/>',
-        '<stop offset="100%" stop-color="#D9E8FA" stop-opacity="0.72"/>',
-        "</radialGradient>",
-        '<radialGradient id="orb-mint" cx="32%" cy="24%" r="78%">',
-        '<stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.98"/>',
-        '<stop offset="60%" stop-color="#EAF9F5" stop-opacity="0.88"/>',
-        '<stop offset="100%" stop-color="#D9F0EB" stop-opacity="0.72"/>',
-        "</radialGradient>",
-        '<radialGradient id="orb-violet" cx="32%" cy="24%" r="78%">',
-        '<stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.98"/>',
-        '<stop offset="60%" stop-color="#F0EFFF" stop-opacity="0.9"/>',
-        '<stop offset="100%" stop-color="#E2E1FA" stop-opacity="0.74"/>',
-        "</radialGradient>",
-        '<filter id="soft-shadow" x="-35%" y="-35%" width="170%" height="180%">',
-        '<feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#7283A8" flood-opacity="0.13"/>',
-        "</filter>",
-        '<filter id="blur" x="-50%" y="-50%" width="200%" height="200%">',
-        '<feGaussianBlur stdDeviation="18"/>',
-        "</filter>",
-        "<style>",
-        "text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',Arial,sans-serif}",
-        ".eyebrow{font-size:12px;font-weight:600;letter-spacing:2px;fill:#77839A}",
-        ".subtitle{font-size:11px;fill:#9AA4B5}",
-        ".value{font-size:22px;font-weight:700;fill:#3D4864}",
-        ".label{font-size:11px;font-weight:500;fill:#7A869C}",
-        ".panel-title{font-size:12px;font-weight:600;fill:#6E7A91}",
-        ".micro{font-size:10px;fill:#98A2B3}",
-        "</style>",
+        f'<linearGradient id="brand" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{p["indigo"]}"/><stop offset=".52" stop-color="{p["cyan"]}"/><stop offset="1" stop-color="{p["mint"]}"/></linearGradient>',
+        f'<style>text{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",Arial,sans-serif}}.eyebrow{{font:600 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:2px;fill:{p["muted2"]}}}.value{{font-size:24px;font-weight:760;fill:{p["text"]}}}.label{{font-size:11px;font-weight:600;fill:{p["muted"]}}}.small{{font-size:10px;fill:{p["muted2"]}}}.panel{{font-size:12px;font-weight:700;fill:{p["text"]}}}</style>',
         "</defs>",
-        '<rect x="1" y="1" width="918" height="336" rx="24" fill="url(#surface)" stroke="#E7EAF0"/>',
-        '<ellipse cx="112" cy="54" rx="95" ry="46" fill="#DDF2FF" opacity="0.42" filter="url(#blur)"/>',
-        '<ellipse cx="778" cy="78" rx="108" ry="48" fill="#E7E4FF" opacity="0.46" filter="url(#blur)"/>',
-        '<ellipse cx="704" cy="280" rx="120" ry="42" fill="#DCF5EE" opacity="0.38" filter="url(#blur)"/>',
-        '<text x="34" y="32" class="eyebrow">公开活动概览</text>',
-        '<text x="886" y="32" class="subtitle" text-anchor="end">由仓库工作流每日更新</text>',
-        '<path d="M96 103 C166 50 229 147 306 98 S442 50 516 101 S655 149 724 97 S825 65 866 103" fill="none" stroke="url(#flow)" stroke-width="2" opacity="0.55"/>',
-        '<path d="M100 114 C180 151 239 64 319 110 S461 151 538 108 S676 65 754 111 S839 132 870 107" fill="none" stroke="#FFFFFF" stroke-width="5" opacity="0.52"/>',
+        f'<rect x="1" y="1" width="1198" height="354" rx="28" fill="{p["bg"]}" stroke="{p["stroke"]}"/>',
+        f'<rect x="0" y="0" width="10" height="356" rx="5" fill="url(#brand)"/>',
+        '<text x="42" y="34" class="eyebrow">GITHUB DYNAMICS / PUBLIC ACTIVITY</text>',
     ]
 
-    orb_gradients = ("orb-blue", "orb-mint", "orb-violet", "orb-blue")
-    orb_strokes = ("#CFE5F6", "#CDEAE3", "#D9D7F5", "#D5E6F4")
-    orb_centers = (145, 355, 565, 775)
-    for index, (label, key) in enumerate(zip(stat_labels, stat_keys)):
-        x = orb_centers[index]
-        parts.extend(
-            [
-                f'<circle cx="{x}" cy="104" r="45" fill="url(#{orb_gradients[index]})" stroke="{orb_strokes[index]}" stroke-width="1.2" filter="url(#soft-shadow)"/>',
-                f'<circle cx="{x - 13}" cy="88" r="12" fill="#FFFFFF" opacity="0.3"/>',
-                f'<text x="{x}" y="105" class="value" text-anchor="middle">{format_value(profile[key])}</text>',
-                f'<text x="{x}" y="126" class="label" text-anchor="middle">{label}</text>',
-            ]
-        )
-
-    parts.extend(
-        [
-            '<rect x="34" y="166" width="852" height="132" rx="18" fill="#FFFFFF" fill-opacity="0.58" stroke="#FFFFFF" stroke-opacity="0.92" filter="url(#soft-shadow)"/>',
-            '<rect x="35" y="167" width="850" height="130" rx="17" fill="none" stroke="#DEE7F0" stroke-opacity="0.72"/>',
-            '<text x="58" y="191" class="panel-title">过去 12 个月的贡献记录</text>',
-            '<text x="94" y="222" class="micro" text-anchor="middle">一</text>',
-            '<text x="94" y="248" class="micro" text-anchor="middle">三</text>',
-            '<text x="94" y="274" class="micro" text-anchor="middle">五</text>',
+    start_x = 42
+    card_w = 252
+    gap = 18
+    for idx, (label, key) in enumerate(zip(labels, keys)):
+        x = start_x + idx * (card_w + gap)
+        parts += [
+            f'<rect x="{x}" y="52" width="{card_w}" height="78" rx="18" fill="{p["panel"]}" stroke="{p["stroke"]}"/>',
+            f'<circle cx="{x+24}" cy="75" r="5" fill="{(p["indigo"], p["cyan"], p["mint"], p["indigo"])[idx]}"/>',
+            f'<text x="{x+22}" y="105" class="value">{fmt(profile[key])}</text>',
+            f'<text x="{x+card_w-18}" y="104" class="label" text-anchor="end">{label}</text>',
         ]
-    )
 
+    parts += [
+        f'<rect x="42" y="150" width="1116" height="154" rx="20" fill="{p["panel"]}" stroke="{p["stroke"]}"/>',
+        '<text x="68" y="178" class="panel">过去 12 个月贡献</text>',
+    ]
+
+    cell, gap_cell = 12, 4
+    grid_x, grid_y = 118, 198
     weeks = profile["weeks"][-53:]
     offset = 53 - len(weeks)
-    day_lookup: dict[tuple[int, int], dict] = {}
+    lookup: dict[tuple[int, int], dict] = {}
     for week_index, week in enumerate(weeks):
         for day in week.get("contributionDays", []):
-            row = int(day.get("weekday", 0)) % 7
-            day_lookup[(week_index + offset, row)] = day
+            lookup[(week_index + offset, int(day.get("weekday", 0)) % 7)] = day
 
     for week_index in range(53):
         for row in range(7):
-            day = day_lookup.get((week_index, row), {})
+            day = lookup.get((week_index, row), {})
             count = int(day.get("contributionCount", 0))
             date = day.get("date", "暂无数据")
-            x = grid_x + week_index * (cell + gap)
-            y = grid_y + row * (cell + gap)
-            parts.append(
-                f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3" fill="{contribution_color(count)}"><title>{date}：{count} 次贡献</title></rect>'
-            )
+            x = grid_x + week_index * (cell + gap_cell)
+            y = grid_y + row * (cell + gap_cell)
+            color = heat_color(count, p["heat"])
+            parts.append(f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3" fill="{color}"><title>{date}：{count} 次贡献</title></rect>')
 
-    legend_x = 750
-    parts.append(f'<text x="{legend_x - 23}" y="191" class="micro">少</text>')
-    for index, color in enumerate(("#E9EFF4", "#DDE9FF", "#C4CBFF", "#8C93F4", "#67BDB3")):
-        parts.append(f'<rect x="{legend_x + index * 14}" y="181" width="9" height="9" rx="3" fill="{color}"/>')
-    parts.append(f'<text x="{legend_x + 74}" y="191" class="micro">多</text>')
+    for label, row in (("一", 1), ("三", 3), ("五", 5)):
+        y = grid_y + row * (cell + gap_cell) + 10
+        parts.append(f'<text x="94" y="{y}" class="small" text-anchor="middle">{label}</text>')
+
+    legend_x = 965
+    parts.append(f'<text x="{legend_x-28}" y="178" class="small">少</text>')
+    for i, color in enumerate(p["heat"]):
+        parts.append(f'<rect x="{legend_x+i*17}" y="168" width="11" height="11" rx="3" fill="{color}"/>')
+    parts.append(f'<text x="{legend_x+92}" y="178" class="small">多</text>')
 
     if profile["placeholder"]:
-        footer = "首次运行工作流后自动更新"
+        footer = "首次运行工作流后自动填充真实数据"
     else:
         updated = datetime.now(ZoneInfo("Asia/Shanghai")).strftime("%Y-%m-%d %H:%M")
-        footer = (
-            f"提交 {profile['commits']} · Pull Request {profile['pull_requests']} · "
-            f"Issue {profile['issues']} · 更新于 {updated}"
-        )
-    parts.append('<circle cx="35" cy="318" r="3" fill="#8C93F4" opacity="0.72"/>')
-    parts.append(f'<text x="46" y="322" class="micro">{footer}</text>')
-    parts.append("</svg>")
+        footer = f"每日自动更新 · 提交 {profile['commits']} · PR {profile['pull_requests']} · Issue {profile['issues']} · 北京时间 {updated}"
+    parts += [
+        f'<circle cx="48" cy="328" r="4" fill="{p["mint"]}"/>',
+        f'<text x="62" y="332" class="small">{footer}</text>',
+        "</svg>",
+    ]
     return "".join(parts)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--output", default="github-dynamics.svg")
+    parser.add_argument("--output", default="github-dynamics-light.svg")
+    parser.add_argument("--theme", choices=("light", "dark"), default="light")
     parser.add_argument("--placeholder", action="store_true")
     return parser.parse_args()
 
@@ -272,9 +234,8 @@ def main() -> int:
             return 2
         profile = fetch_profile(token, username)
 
-    output = Path(args.output)
-    output.write_text(render_svg(profile), encoding="utf-8")
-    print(f"Generated {output}")
+    Path(args.output).write_text(render_svg(profile, args.theme), encoding="utf-8")
+    print(f"Generated {args.output} ({args.theme})")
     return 0
 
 
