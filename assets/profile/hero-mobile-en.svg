@@ -6,12 +6,13 @@
   <radialGradient id="glow"><stop stop-color="#A9D9EF" stop-opacity=".38"/><stop offset="1" stop-color="#A9D9EF" stop-opacity="0"/></radialGradient>
   <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#A3BCC8" opacity=".23"/></pattern>
   <clipPath id="clip"><rect x="1" y="1" width="718" height="513" rx="28"/></clipPath>
-  <style>text{font-family:'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif}
+  <style>text{font-family:'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif}.flow{stroke-dasharray:14 180}.flow-slow{stroke-dasharray:10 240}
       .flow{stroke-dasharray:14 180;animation:flow 7s linear infinite}
-      .flow-slow{stroke-dasharray:10 240;animation:flow 11s linear infinite reverse}
+      .flow-slow{stroke-dasharray:10 240;animation:flowSlow 11s linear infinite reverse}
       .float{animation:float 8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
       .breathe{animation:breathe 5s ease-in-out infinite}
       @keyframes flow{to{stroke-dashoffset:-776}}
+      @keyframes flowSlow{to{stroke-dashoffset:-1000}}
       @keyframes float{50%{transform:translateY(-9px)}}
       @keyframes breathe{50%{opacity:.45}}
       @media(prefers-reduced-motion:reduce){*{animation:none!important}}

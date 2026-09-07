@@ -6,7 +6,7 @@
   <radialGradient id="glow"><stop stop-color="#A9D9EF" stop-opacity=".38"/><stop offset="1" stop-color="#A9D9EF" stop-opacity="0"/></radialGradient>
   <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#A3BCC8" opacity=".23"/></pattern>
   <clipPath id="clip"><rect x="1" y="1" width="718" height="258" rx="28"/></clipPath>
-  <style>text{font-family:'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif}</style>
+  <style>text{font-family:'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif}.flow{stroke-dasharray:14 180}.flow-slow{stroke-dasharray:10 240}</style>
 </defs>
 <g clip-path="url(#clip)"><rect width="720" height="260" fill="url(#paper)"/><text x="36" y="40" font-size="18" fill="#607D8B" font-weight="600" >IN FOCUS / OPEN SOURCE</text><text x="36" y="105" font-size="46" fill="#243B53" font-weight="700" >MCP State Twin</text><text x="36" y="153" font-size="22" fill="#607D8B" font-weight="400" >Same start. Different paths. Comparable outcomes.</text><text x="36" y="198" font-size="20" fill="#309F8B" font-weight="500" >Development preview · Go · MCP · Evaluation</text><path d="M36 231 H684" stroke="#D0E4E6"/><path class="flow" d="M36 231 H684" stroke="#63ADBF" stroke-width="3"/></g>
 <rect x="1" y="1" width="718" height="258" rx="28" fill="none" stroke="#DDEBEA"/>

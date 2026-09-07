@@ -104,7 +104,7 @@ def write_assets(profile, out=OUT, placeholder=False):
         rendered["contribution-snake.svg"] = render_calendar({})
     out.mkdir(parents=True, exist_ok=True)
     for name, content in rendered.items():
-        (out / name).write_text(content, encoding="utf-8")
+        (out / name).write_text(content, encoding="utf-8", newline="\n")
 
 
 def main():

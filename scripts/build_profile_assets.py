@@ -15,10 +15,11 @@ def text(x, y, value, size=18, color=INK, weight=400, extra=""):
 def svg(body, height, title, animated=True, width=1200):
     animation = """
       .flow{stroke-dasharray:14 180;animation:flow 7s linear infinite}
-      .flow-slow{stroke-dasharray:10 240;animation:flow 11s linear infinite reverse}
+      .flow-slow{stroke-dasharray:10 240;animation:flowSlow 11s linear infinite reverse}
       .float{animation:float 8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
       .breathe{animation:breathe 5s ease-in-out infinite}
       @keyframes flow{to{stroke-dashoffset:-776}}
+      @keyframes flowSlow{to{stroke-dashoffset:-1000}}
       @keyframes float{50%{transform:translateY(-9px)}}
       @keyframes breathe{50%{opacity:.45}}
       @media(prefers-reduced-motion:reduce){*{animation:none!important}}
@@ -31,7 +32,7 @@ def svg(body, height, title, animated=True, width=1200):
   <radialGradient id="glow"><stop stop-color="#A9D9EF" stop-opacity=".38"/><stop offset="1" stop-color="#A9D9EF" stop-opacity="0"/></radialGradient>
   <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#A3BCC8" opacity=".23"/></pattern>
   <clipPath id="clip"><rect x="1" y="1" width="{width-2}" height="{height-2}" rx="28"/></clipPath>
-  <style>text{{font-family:'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif}}{animation}</style>
+  <style>text{{font-family:'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif}}.flow{{stroke-dasharray:14 180}}.flow-slow{{stroke-dasharray:10 240}}{animation}</style>
 </defs>
 <g clip-path="url(#clip)"><rect width="{width}" height="{height}" fill="url(#paper)"/>{body}</g>
 <rect x="1" y="1" width="{width-2}" height="{height-2}" rx="28" fill="none" stroke="#DDEBEA"/>
@@ -116,7 +117,7 @@ def main():
         for name, renderer in (("hero", hero), ("project", project), ("footer", footer), ("hero-mobile", hero_mobile), ("project-mobile", project_mobile)):
             for animated in (True, False):
                 suffix = "" if animated else "-static"
-                (OUT / f"{name}-{lang}{suffix}.svg").write_text(renderer(lang, animated), encoding="utf-8")
+                (OUT / f"{name}-{lang}{suffix}.svg").write_text(renderer(lang, animated), encoding="utf-8", newline="\n")
     print("Generated 20 bilingual desktop/mobile profile assets.")
 
 
