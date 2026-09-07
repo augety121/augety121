@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="310" viewBox="0 0 720 310" role="img" aria-label="GitHub 动态">
+<title>GitHub 动态</title>
+<defs>
+  <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#F6FBFF"/><stop offset=".55" stop-color="#F3FAFB"/><stop offset="1" stop-color="#EBF8F0"/></linearGradient>
+  <linearGradient id="accent"><stop stop-color="#69AFDD"/><stop offset="1" stop-color="#68C4AC"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#A9D9EF" stop-opacity=".38"/><stop offset="1" stop-color="#A9D9EF" stop-opacity="0"/></radialGradient>
+  <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#A3BCC8" opacity=".23"/></pattern>
+  <clipPath id="clip"><rect x="1" y="1" width="718" height="308" rx="28"/></clipPath>
+  <style>text{font-family:'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif}.flow{stroke-dasharray:14 180}.flow-slow{stroke-dasharray:10 240}</style>
+</defs>
+<g clip-path="url(#clip)"><rect width="720" height="310" fill="url(#paper)"/><text x="36" y="38" font-size="15" fill="#607D8B" font-weight="600" >持续积累 / GitHub 足迹</text><text x="36" y="98" font-size="44" fill="#438BC5" font-weight="650" >3</text><text x="36" y="129" font-size="20" fill="#607D8B" font-weight="400" >公开原创仓库</text><text x="386" y="98" font-size="44" fill="#309F8B" font-weight="650" >55</text><text x="386" y="129" font-size="20" fill="#607D8B" font-weight="400" >获得星标</text><text x="36" y="208" font-size="44" fill="#438BC5" font-weight="650" >380</text><text x="36" y="239" font-size="20" fill="#607D8B" font-weight="400" >近一年贡献</text><text x="386" y="208" font-size="44" fill="#309F8B" font-weight="650" >5</text><text x="386" y="239" font-size="20" fill="#607D8B" font-weight="400" >关注者</text><text x="36" y="283" font-size="16" fill="#607D8B" font-weight="400" >更新于 2026-09-08 07:18 UTC+8</text></g>
+<rect x="1" y="1" width="718" height="308" rx="28" fill="none" stroke="#DDEBEA"/>
+</svg>

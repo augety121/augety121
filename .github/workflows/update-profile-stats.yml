@@ -1,53 +1,83 @@
-name: 更新主页动态
+name: Update Profile Statistics
 
 on:
   workflow_dispatch:
   schedule:
-    # 北京时间每天 08:15
-    - cron: "15 0 * * *"
+    # 北京时间每天 08:15。GitHub 的定时任务可能延迟。
+    - cron: '15 0 * * *'
   push:
-    branches:
-      - main
     paths:
-      - "scripts/generate_github_stats.py"
-      - ".github/workflows/update-profile-stats.yml"
+      - 'scripts/update_profile_data.py'
+      - 'scripts/build_profile_assets.py'
+      - '.github/workflows/update-profile-stats.yml'
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: update-profile-dynamics
-  cancel-in-progress: true
+  group: profile-data-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  update:
+  generate:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: 检出仓库
-        uses: actions/checkout@v6
-
-      - name: 配置 Python
-        uses: actions/setup-python@v6
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
-          python-version: "3.13"
-
-      - name: 生成中文动态卡片
+          python-version: '3.13'
+      - name: 读取真实数据并生成中英文卡片
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USERNAME: ${{ github.repository_owner }}
-        run: python scripts/generate_github_stats.py
+        run: python scripts/update_profile_data.py
+      - name: 生成薄荷色贡献贪吃蛇
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            assets/profile/contribution-snake.svg?color_snake=#438BC5&color_dots=#EAF2F4,#D4EDE7,#ABDBCF,#75C4B3,#3CA28E
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 验证资源
+        run: python -m unittest discover -s tests -v
+      - uses: actions/upload-artifact@v4
+        with:
+          name: profile-data
+          retention-days: 1
+          path: |
+            assets/profile/stats-zh.svg
+            assets/profile/stats-en.svg
+            assets/profile/stats-mobile-zh.svg
+            assets/profile/stats-mobile-en.svg
+            assets/profile/contributions-static.svg
+            assets/profile/contribution-snake.svg
 
-      - name: 提交更新
+  publish:
+    needs: generate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: profile-data
+          path: assets/profile
+      - name: 只提交生成的数据图片
         shell: bash
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add github-dynamics.svg
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/profile/stats-zh.svg assets/profile/stats-en.svg assets/profile/stats-mobile-zh.svg assets/profile/stats-mobile-en.svg assets/profile/contributions-static.svg assets/profile/contribution-snake.svg
           if git diff --cached --quiet; then
-            echo "动态数据没有变化"
+            echo '数据没有变化'
             exit 0
           fi
-          git commit -m "chore: 更新主页动态"
-          git pull --rebase
+          git commit -m 'chore: refresh bilingual profile activity'
           git push
 

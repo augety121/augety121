@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="105" viewBox="0 0 1200 105" role="img" aria-label="保持好奇，持续构建">
+<title>保持好奇，持续构建</title>
+<defs>
+  <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#F6FBFF"/><stop offset=".55" stop-color="#F3FAFB"/><stop offset="1" stop-color="#EBF8F0"/></linearGradient>
+  <linearGradient id="accent"><stop stop-color="#69AFDD"/><stop offset="1" stop-color="#68C4AC"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#A9D9EF" stop-opacity=".38"/><stop offset="1" stop-color="#A9D9EF" stop-opacity="0"/></radialGradient>
+  <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#A3BCC8" opacity=".23"/></pattern>
+  <clipPath id="clip"><rect x="1" y="1" width="1198" height="103" rx="28"/></clipPath>
+  <style>text{font-family:'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif}.flow{stroke-dasharray:14 180}.flow-slow{stroke-dasharray:10 240}
+      .flow{stroke-dasharray:14 180;animation:flow 7s linear infinite}
+      .flow-slow{stroke-dasharray:10 240;animation:flowSlow 11s linear infinite reverse}
+      .float{animation:float 8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+      .breathe{animation:breathe 5s ease-in-out infinite}
+      @keyframes flow{to{stroke-dashoffset:-776}}
+      @keyframes flowSlow{to{stroke-dashoffset:-1000}}
+      @keyframes float{50%{transform:translateY(-9px)}}
+      @keyframes breathe{50%{opacity:.45}}
+      @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+    </style>
+</defs>
+<g clip-path="url(#clip)"><rect width="1200" height="105" fill="url(#paper)"/><path d="M0 78 Q180 -12 380 65 T790 56 T1230 46" fill="none" stroke="#BEDDDF" stroke-width="1.5"/><path class="flow-slow" d="M0 78 Q180 -12 380 65 T790 56 T1230 46" fill="none" stroke="#64ACAA" stroke-width="3"/><rect x="421" y="29" width="358" height="50" rx="25" fill="#F4FAFA"/><text x="600" y="60" font-size="21" fill="#607D8B" font-weight="500" text-anchor="middle">保持好奇，持续构建。</text></g>
+<rect x="1" y="1" width="1198" height="103" rx="28" fill="none" stroke="#DDEBEA"/>
+</svg>

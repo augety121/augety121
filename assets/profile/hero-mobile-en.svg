@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="515" viewBox="0 0 720 515" role="img" aria-label="Building reliable agent systems">
+<title>Building reliable agent systems</title>
+<defs>
+  <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#F6FBFF"/><stop offset=".55" stop-color="#F3FAFB"/><stop offset="1" stop-color="#EBF8F0"/></linearGradient>
+  <linearGradient id="accent"><stop stop-color="#69AFDD"/><stop offset="1" stop-color="#68C4AC"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#A9D9EF" stop-opacity=".38"/><stop offset="1" stop-color="#A9D9EF" stop-opacity="0"/></radialGradient>
+  <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#A3BCC8" opacity=".23"/></pattern>
+  <clipPath id="clip"><rect x="1" y="1" width="718" height="513" rx="28"/></clipPath>
+  <style>text{font-family:'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif}.flow{stroke-dasharray:14 180}.flow-slow{stroke-dasharray:10 240}
+      .flow{stroke-dasharray:14 180;animation:flow 7s linear infinite}
+      .flow-slow{stroke-dasharray:10 240;animation:flowSlow 11s linear infinite reverse}
+      .float{animation:float 8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+      .breathe{animation:breathe 5s ease-in-out infinite}
+      @keyframes flow{to{stroke-dashoffset:-776}}
+      @keyframes flowSlow{to{stroke-dashoffset:-1000}}
+      @keyframes float{50%{transform:translateY(-9px)}}
+      @keyframes breathe{50%{opacity:.45}}
+      @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+    </style>
+</defs>
+<g clip-path="url(#clip)"><rect width="720" height="515" fill="url(#paper)"/><text x="42" y="45" font-size="18" fill="#607D8B" font-weight="600" >DEVELOPER / OPEN SOURCE</text><text x="42" y="121" font-size="50" fill="#243B53" font-weight="700" >Building reliable</text><text x="42" y="195" font-size="61" fill="#438BC5" font-weight="750" >agent systems.</text><text x="44" y="250" font-size="25" fill="#607D8B" font-weight="400" >Grounded in evidence.</text><text x="44" y="287" font-size="25" fill="#607D8B" font-weight="400" >Built for verifiable action.</text><path d="M55 380 C158 320 199 440 304 380 S466 320 570 380 S680 405 710 365" fill="none" stroke="#D2E7E9" stroke-width="12"/><path class="flow" d="M55 380 C158 320 199 440 304 380 S466 320 570 380 S680 405 710 365" fill="none" stroke="#63ADBF" stroke-width="4"/><rect x="45" y="355" width="130" height="55" rx="18" fill="#FFFFFF" stroke="#D8E9EA"/><text x="110" y="390" font-size="21" fill="#243B53" font-weight="600" text-anchor="middle">Evidence</text><rect x="215" y="355" width="130" height="55" rx="18" fill="#FFFFFF" stroke="#D8E9EA"/><text x="280" y="390" font-size="21" fill="#243B53" font-weight="600" text-anchor="middle">Context</text><rect x="385" y="355" width="130" height="55" rx="18" fill="#FFFFFF" stroke="#D8E9EA"/><text x="450" y="390" font-size="21" fill="#243B53" font-weight="600" text-anchor="middle">Tools</text><rect x="555" y="355" width="130" height="55" rx="18" fill="#FFFFFF" stroke="#D8E9EA"/><text x="620" y="390" font-size="21" fill="#243B53" font-weight="600" text-anchor="middle">Verify</text><text x="44" y="478" font-size="20" fill="#607D8B" font-weight="400" >Learning in public. Building with care.</text></g>
+<rect x="1" y="1" width="718" height="513" rx="28" fill="none" stroke="#DDEBEA"/>
+</svg>
