@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="260" viewBox="0 0 720 260" role="img" aria-label="MCP State Twin">
+<title>MCP State Twin</title>
+<defs>
+  <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#F6FBFF"/><stop offset=".55" stop-color="#F3FAFB"/><stop offset="1" stop-color="#EBF8F0"/></linearGradient>
+  <linearGradient id="accent"><stop stop-color="#69AFDD"/><stop offset="1" stop-color="#68C4AC"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#A9D9EF" stop-opacity=".38"/><stop offset="1" stop-color="#A9D9EF" stop-opacity="0"/></radialGradient>
+  <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#A3BCC8" opacity=".23"/></pattern>
+  <clipPath id="clip"><rect x="1" y="1" width="718" height="258" rx="28"/></clipPath>
+  <style>text{font-family:'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif}</style>
+</defs>
+<g clip-path="url(#clip)"><rect width="720" height="260" fill="url(#paper)"/><text x="36" y="40" font-size="18" fill="#607D8B" font-weight="600" >正在探索 / 精选开源</text><text x="36" y="105" font-size="46" fill="#243B53" font-weight="700" >MCP State Twin</text><text x="36" y="153" font-size="24" fill="#607D8B" font-weight="400" >同一起点，不同路径，可比较的最终状态。</text><text x="36" y="198" font-size="20" fill="#309F8B" font-weight="500" >开发预览 · Go · MCP · 评测环境</text><path d="M36 231 H684" stroke="#D0E4E6"/><path class="flow" d="M36 231 H684" stroke="#63ADBF" stroke-width="3"/></g>
+<rect x="1" y="1" width="718" height="258" rx="28" fill="none" stroke="#DDEBEA"/>
+</svg>
