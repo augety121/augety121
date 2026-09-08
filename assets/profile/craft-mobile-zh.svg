@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="398" viewBox="0 0 720 398" role="img" aria-label="把问题变成可验证的进展">
+<title>把问题变成可验证的进展</title>
+<defs>
+  <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#F6FBFF"/><stop offset=".55" stop-color="#F3FAFB"/><stop offset="1" stop-color="#EBF8F0"/></linearGradient>
+  <linearGradient id="accent"><stop stop-color="#69AFDD"/><stop offset="1" stop-color="#68C4AC"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#A9D9EF" stop-opacity=".38"/><stop offset="1" stop-color="#A9D9EF" stop-opacity="0"/></radialGradient>
+  <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#A3BCC8" opacity=".23"/></pattern>
+  <clipPath id="clip"><rect x="1" y="1" width="718" height="396" rx="28"/></clipPath>
+  <style>text{font-family:'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif}.flow{stroke-dasharray:14 180}.flow-slow{stroke-dasharray:10 240}
+      .flow{stroke-dasharray:14 180;animation:flow 7s linear infinite}
+      .flow-slow{stroke-dasharray:10 240;animation:flowSlow 11s linear infinite reverse}
+      .float{animation:float 8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+      .breathe{animation:breathe 5s ease-in-out infinite}
+      @keyframes flow{to{stroke-dashoffset:-776}}
+      @keyframes flowSlow{to{stroke-dashoffset:-1000}}
+      @keyframes float{50%{transform:translateY(-9px)}}
+      @keyframes breathe{50%{opacity:.45}}
+      @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+    </style>
+</defs>
+<g clip-path="url(#clip)"><rect width="720" height="398" fill="url(#paper)"/><text x="36" y="44" font-size="24" fill="#243B53" font-weight="600" >把问题变成可验证的进展</text><path d="M336 138 H384 M534 196 V234 M384 292 H336 M186 234 V196" fill="none" stroke="#C2DFE3" stroke-width="2"/><path class="flow" d="M336 138 H384 M534 196 V234 M384 292 H336 M186 234 V196" fill="none" stroke="#59AAA9" stroke-width="3"/><rect x="36" y="80" width="300" height="116" rx="18" fill="#FFFFFF" fill-opacity=".88" stroke="#D8E9EA"/><rect x="58" y="104" width="4" height="25" rx="2" fill="#438BC5"/><text x="76" y="125" font-size="26" fill="#243B53" font-weight="600" >拆解问题</text><text x="58" y="166" font-size="20" fill="#607D8B" font-weight="400" >明确目标与边界</text><rect x="384" y="80" width="300" height="116" rx="18" fill="#FFFFFF" fill-opacity=".88" stroke="#D8E9EA"/><rect x="406" y="104" width="4" height="25" rx="2" fill="#438BC5"/><text x="424" y="125" font-size="26" fill="#243B53" font-weight="600" >小步实现</text><text x="406" y="166" font-size="20" fill="#607D8B" font-weight="400" >做出最小完整闭环</text><rect x="384" y="234" width="300" height="116" rx="18" fill="#FFFFFF" fill-opacity=".88" stroke="#D8E9EA"/><rect x="406" y="258" width="4" height="25" rx="2" fill="#309F8B"/><text x="424" y="279" font-size="26" fill="#243B53" font-weight="600" >证据验证</text><text x="406" y="320" font-size="20" fill="#607D8B" font-weight="400" >用测试与轨迹检查结果</text><rect x="36" y="234" width="300" height="116" rx="18" fill="#FFFFFF" fill-opacity=".88" stroke="#D8E9EA"/><rect x="58" y="258" width="4" height="25" rx="2" fill="#309F8B"/><text x="76" y="279" font-size="26" fill="#243B53" font-weight="600" >复盘迭代</text><text x="58" y="320" font-size="20" fill="#607D8B" font-weight="400" >把经验沉淀为下一步</text><text x="360.0" y="379" font-size="17" fill="#607D8B" font-weight="400" text-anchor="middle">保持反馈，让每次迭代都有依据。</text></g>
+<rect x="1" y="1" width="718" height="396" rx="28" fill="none" stroke="#DDEBEA"/>
+</svg>

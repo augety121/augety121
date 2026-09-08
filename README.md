@@ -10,7 +10,7 @@
 </picture>
 
 <p align="center">
-  <a href="#about">关于我</a> &nbsp; · &nbsp; <a href="#work">精选项目</a> &nbsp; · &nbsp; <a href="#stack">技术栈</a> &nbsp; · &nbsp; <a href="#activity">开源足迹</a>
+  <a href="#about">关于我</a> &nbsp; · &nbsp; <a href="#work">精选项目</a> &nbsp; · &nbsp; <a href="#craft">开发方式</a> &nbsp; · &nbsp; <a href="#stack">技术栈</a> &nbsp; · &nbsp; <a href="#activity">开源足迹</a>
 </p>
 
 <a id="about"></a>
@@ -25,6 +25,14 @@
 | :--- | :--- | :--- |
 | 检索 · 重排 · 知识图谱 | MCP · 状态 · 故障恢复 | 追踪 · 断言 · 可复现性 |
 | 让有用的信息进入上下文 | 让每一步行动有边界 | 让改进有证据可循 |
+
+### 最近在探索
+
+- **让检索更懂任务**：从相关性出发，关注查询规划、混合检索与重排，让证据真正服务于当前问题。
+- **让工具环境可以复现**：围绕 MCP、状态快照与隔离运行，探索多步 Agent 行为如何被可靠地比较。
+- **让上下文成为可管理的资源**：关注记忆选择、上下文预算与工具信息组织，在质量、成本和延迟之间寻找平衡。
+
+我希望把这些探索沉淀成清晰的代码、可运行的实验和有依据的文档，也让这里成为一个持续成长的工程笔记本。
 
 <details>
 <summary>我在意的工程细节</summary>
@@ -55,6 +63,23 @@
 
 <sub>项目处于开发预览阶段；已实现能力与边界以项目文档为准。</sub>
 
+<a id="craft"></a>
+
+## 我的开发方式
+
+我更喜欢从一个具体问题开始，先建立最小可验证闭环，再逐步补齐状态、边界与观测能力。
+
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/craft-mobile-zh-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/craft-zh-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/craft-mobile-zh.svg" />
+  <img src="./assets/profile/craft-zh.svg" width="100%" alt="开发反馈循环：拆解问题、小步实现、证据验证、复盘迭代。" />
+</picture>
+
+- **小而完整的实现**：让每次改动有清楚的目标、输入输出和适用范围。
+- **能够复查的结果**：把成功路径、失败案例和关键取舍一起记录下来。
+- **持续演进的设计**：先理解真实约束，再决定抽象、接口与扩展方式。
+
 <a id="stack"></a>
 
 ## 技术栈
@@ -67,6 +92,15 @@
 
 **编程语言** &nbsp; Python · TypeScript · Go · Kotlin<br/>
 **工程工具** &nbsp; Docker · PostgreSQL · Redis · Git · GitHub Actions
+
+<details>
+<summary>技术之外，我也关注</summary>
+
+接口与数据契约、测试与持续集成、日志与执行追踪、资源预算、权限边界，以及让后来者能快速理解系统的文档。
+
+工具会变化，我希望保留的是分析问题、验证假设和把系统做扎实的能力。
+
+</details>
 
 <a id="activity"></a>
 
@@ -89,13 +123,15 @@
 
 </details>
 
-<sub>统计与贡献动画由 GitHub Actions 每日更新，更新时间见卡片；不是实时在线状态。贡献动画由 <a href="https://github.com/Platane/snk">Platane/snk</a>.</sub>
+<sub>统计与贡献动画由 GitHub Actions 每日更新，更新时间见卡片；不是实时在线状态。贡献动画由 <a href="https://github.com/Platane/snk">Platane/snk</a> 生成。</sub>
 
 ---
 
 ### 一起交流
 
 如果你也关注 **RAG、上下文工程、MCP 或 Agent 评测**，欢迎从一个问题、一段代码或一次实验开始交流。
+
+可以聊一次检索效果的改进、一个工具接口的取舍、一种评测方法，或一个值得一起复现的想法。具体的问题和不同的视角，都很有价值。
 
 [我的仓库](https://github.com/augety121?tab=repositories) &nbsp; · &nbsp; [项目讨论](https://github.com/augety121/MCP-State-Twin/issues) &nbsp; · &nbsp; [主页反馈](https://github.com/augety121/augety121/issues)
 

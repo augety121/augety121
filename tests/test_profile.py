@@ -22,11 +22,27 @@ class ProfileTests(unittest.TestCase):
                 self.assertNotIn("<script", source)
                 self.assertNotIn("<foreignObject", source)
                 self.assertNotRegex(source, r'(?:href|src)=[\"\']https?://')
-        for renderer in (visuals.hero, visuals.project, visuals.footer):
+        for renderer in (visuals.hero, visuals.hero_mobile, visuals.project, visuals.project_mobile, visuals.footer, visuals.craft, visuals.craft_mobile):
             for lang in ("zh", "en"):
                 self.assertIn("@keyframes", renderer(lang, True))
                 self.assertIn("prefers-reduced-motion", renderer(lang, True))
                 self.assertNotIn("@keyframes", renderer(lang, False))
+
+    def test_hero_has_no_numbered_labels(self):
+        for renderer in (visuals.hero, visuals.hero_mobile):
+            for lang in ("zh", "en"):
+                for animated in (True, False):
+                    root = ET.fromstring(renderer(lang, animated))
+                    labels = [e.text for e in root.findall(".//{http://www.w3.org/2000/svg}text")]
+                    self.assertFalse(any(label in {"01", "02", "03", "04"} for label in labels))
+
+    def test_new_section_and_responsive_assets(self):
+        for lang, filename in (("zh", "README.md"), ("en", "README.en.md")):
+            source = (ROOT / filename).read_text(encoding="utf-8")
+            self.assertIn('href="#craft"', source)
+            self.assertIn('id="craft"', source)
+            for suffix in (f"craft-{lang}.svg", f"craft-{lang}-static.svg", f"craft-mobile-{lang}.svg", f"craft-mobile-{lang}-static.svg"):
+                self.assertIn(suffix, source)
 
     def test_local_links_and_languages(self):
         for lang, name in (("zh", "README.md"), ("en", "README.en.md")):

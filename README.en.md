@@ -10,7 +10,7 @@
 </picture>
 
 <p align="center">
-  <a href="#about">About</a> &nbsp; · &nbsp; <a href="#work">Selected work</a> &nbsp; · &nbsp; <a href="#stack">Toolbox</a> &nbsp; · &nbsp; <a href="#activity">Open-source activity</a>
+  <a href="#about">About</a> &nbsp; · &nbsp; <a href="#work">Selected work</a> &nbsp; · &nbsp; <a href="#craft">How I build</a> &nbsp; · &nbsp; <a href="#stack">Toolbox</a> &nbsp; · &nbsp; <a href="#activity">Open-source activity</a>
 </p>
 
 <a id="about"></a>
@@ -25,6 +25,14 @@ This is where I share open-source work, engineering experiments and things I lea
 | :--- | :--- | :--- |
 | Retrieval · Reranking · Knowledge graphs | MCP · State · Recovery | Tracing · Assertions · Reproducibility |
 | Bring useful information into context | Give every action clear boundaries | Make improvement measurable |
+
+### Currently exploring
+
+- **Task-aware retrieval**: query planning, hybrid search and reranking, with evidence that actually helps answer the question at hand.
+- **Reproducible tool environments**: MCP, state snapshots and isolated runs that make multi-step agent behavior easier to compare reliably.
+- **Context as a managed resource**: memory selection, context budgets and tool information, balancing quality, cost and latency.
+
+I want to turn these explorations into clear code, runnable experiments and evidence-backed documentation—and make this space a growing engineering notebook.
 
 <details>
 <summary>Engineering details I care about</summary>
@@ -55,6 +63,23 @@ Building **reproducible, forkable, stateful MCP test worlds** for AI agent evalu
 
 <sub>Development preview. See the project documentation for implemented capabilities and limitations.</sub>
 
+<a id="craft"></a>
+
+## How I build
+
+I prefer to start with a concrete problem and a small, verifiable loop, then gradually add state management, boundaries and observability.
+
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/craft-mobile-en-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/craft-en-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/craft-mobile-en.svg" />
+  <img src="./assets/profile/craft-en.svg" width="100%" alt="An engineering feedback loop: define, build, verify and iterate." />
+</picture>
+
+- **Small, complete implementations**: give each change a clear goal, inputs, outputs and scope.
+- **Reviewable results**: document successful paths, failure cases and important trade-offs together.
+- **Evolving designs**: understand real constraints before choosing abstractions, interfaces and extension points.
+
 <a id="stack"></a>
 
 ## Toolbox
@@ -67,6 +92,15 @@ Building **reproducible, forkable, stateful MCP test worlds** for AI agent evalu
 
 **Languages** &nbsp; Python · TypeScript · Go · Kotlin<br/>
 **Engineering tools** &nbsp; Docker · PostgreSQL · Redis · Git · GitHub Actions
+
+<details>
+<summary>Beyond the technology stack</summary>
+
+Interfaces and data contracts, testing and continuous integration, logs and execution traces, resource budgets, permission boundaries, and documentation that helps the next reader understand the system.
+
+Tools change. What I want to keep improving is the ability to analyze problems, test assumptions and build dependable systems.
+
+</details>
 
 <a id="activity"></a>
 
@@ -96,6 +130,8 @@ Building **reproducible, forkable, stateful MCP test worlds** for AI agent evalu
 ### Let's connect
 
 Interested in **RAG, context engineering, MCP or agent evaluation**? Let's start with a question, a piece of code, or an experiment.
+
+That could be a retrieval improvement, a tool-interface trade-off, an evaluation method, or an idea worth reproducing together. Specific questions and different perspectives are always valuable.
 
 [My repositories](https://github.com/augety121?tab=repositories) &nbsp; · &nbsp; [Project discussions](https://github.com/augety121/MCP-State-Twin/issues) &nbsp; · &nbsp; [Profile feedback](https://github.com/augety121/augety121/issues)
 

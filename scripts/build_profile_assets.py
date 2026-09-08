@@ -53,11 +53,10 @@ def hero(lang, animated):
     routes = [("M670 105 C735 105 731 193 824 193 S930 77 1108 77", BLUE), ("M663 264 C750 264 725 193 824 193 S949 326 1138 326", MINT), ("M690 357 C779 357 725 242 839 242 S955 174 1138 174", "#8CBBD4")]
     for i, (path, color) in enumerate(routes):
         body += f'<path d="{path}" fill="none" stroke="{color}" stroke-width="20" opacity=".08"/><path d="{path}" fill="none" stroke="{color}" stroke-width="1.4" opacity=".35"/><path class="flow" style="animation-delay:-{i*2}s" d="{path}" fill="none" stroke="{color}" stroke-width="4" stroke-linecap="round"/>'
-    nodes = [(710,107,"证据" if zh else "EVIDENCE","01",BLUE),(876,194,"上下文" if zh else "CONTEXT","02",BLUE),(1052,174,"工具" if zh else "TOOLS","03",MINT),(1051,326,"验证" if zh else "VERIFY","04",MINT)]
-    for x, y, label, idx, color in nodes:
-        body += f'<g class="float" style="animation-delay:-{int(idx)}s"><rect x="{x-57}" y="{y-33}" width="114" height="66" rx="18" fill="#FFFFFF" stroke="#D8E9EA"/>'
-        body += text(x, y-9, idx, 12, color, 600, 'text-anchor="middle" letter-spacing="2"')
-        body += text(x, y+16, label, 18 if zh else 14, INK, 600, 'text-anchor="middle"') + '</g>'
+    nodes = [(710,107,"证据" if zh else "EVIDENCE"),(876,194,"上下文" if zh else "CONTEXT"),(1052,174,"工具" if zh else "TOOLS"),(1051,326,"验证" if zh else "VERIFY")]
+    for delay, (x, y, label) in enumerate(nodes, 1):
+        body += f'<g class="float" style="animation-delay:-{delay}s"><rect x="{x-57}" y="{y-29}" width="114" height="58" rx="18" fill="#FFFFFF" stroke="#D8E9EA"/>'
+        body += text(x, y+7, label, 20 if zh else 15, INK, 600, 'text-anchor="middle"') + '</g>'
     body += '<circle class="breathe" cx="816" cy="357" r="5" fill="#77BFAE"/><circle cx="1164" cy="50" r="4" fill="#A4CBE2"/>'
     return svg(body, 440, "构建可靠的 Agent 系统" if zh else "Building reliable agent systems", animated)
 
@@ -111,14 +110,43 @@ def project_mobile(lang, animated):
     return svg(body, 260, "MCP State Twin", animated, 720)
 
 
+def craft(lang, animated, mobile=False):
+    zh = lang == "zh"
+    title = "把问题变成可验证的进展" if zh else "Turn questions into verifiable progress"
+    body = text(36, 44, title, 24 if mobile else 26, INK, 600)
+    labels = [("拆解问题", "明确目标与边界"), ("小步实现", "做出最小完整闭环"), ("证据验证", "用测试与轨迹检查结果"), ("复盘迭代", "把经验沉淀为下一步")] if zh else [("Define", "Goals and boundaries"), ("Build", "A small, complete loop"), ("Verify", "Tests, traces and results"), ("Iterate", "Learn and improve")]
+    if mobile:
+        positions = [(36, 80), (384, 80), (384, 234), (36, 234)]
+        width, height, card_width = 720, 398, 300
+        path = "M336 138 H384 M534 196 V234 M384 292 H336 M186 234 V196"
+    else:
+        positions = [(36 + i * 288, 83) for i in range(4)]
+        width, height, card_width = 1200, 260, 264
+        path = "M300 141 H324 M588 141 H612 M876 141 H900 M1032 199 V221 H168 V199"
+    body += f'<path d="{path}" fill="none" stroke="#C2DFE3" stroke-width="2"/><path class="flow" d="{path}" fill="none" stroke="#59AAA9" stroke-width="3"/>'
+    for i, ((x, y), (label, description)) in enumerate(zip(positions, labels)):
+        color = BLUE if i < 2 else MINT
+        body += f'<rect x="{x}" y="{y}" width="{card_width}" height="116" rx="18" fill="#FFFFFF" fill-opacity=".88" stroke="#D8E9EA"/>'
+        body += f'<rect x="{x+22}" y="{y+24}" width="4" height="25" rx="2" fill="{color}"/>'
+        body += text(x+40, y+45, label, 26 if mobile else 24, INK, 600)
+        body += text(x+22, y+86, description, 20 if mobile else 17, MUTED)
+    caption = "保持反馈，让每次迭代都有依据。" if zh else "Keep the feedback loop open."
+    body += text(width/2, height-19, caption, 17 if mobile else 15, MUTED, 400, 'text-anchor="middle"')
+    return svg(body, height, title, animated, width)
+
+
+def craft_mobile(lang, animated):
+    return craft(lang, animated, mobile=True)
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for lang in ("zh", "en"):
-        for name, renderer in (("hero", hero), ("project", project), ("footer", footer), ("hero-mobile", hero_mobile), ("project-mobile", project_mobile)):
+        for name, renderer in (("hero", hero), ("project", project), ("footer", footer), ("hero-mobile", hero_mobile), ("project-mobile", project_mobile), ("craft", craft), ("craft-mobile", craft_mobile)):
             for animated in (True, False):
                 suffix = "" if animated else "-static"
                 (OUT / f"{name}-{lang}{suffix}.svg").write_text(renderer(lang, animated), encoding="utf-8", newline="\n")
-    print("Generated 20 bilingual desktop/mobile profile assets.")
+    print("Generated 28 bilingual desktop/mobile profile assets.")
 
 
 if __name__ == "__main__":
