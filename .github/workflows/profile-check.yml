@@ -18,4 +18,4 @@ jobs:
       - name: Check reproducible visual assets
         run: |
           python scripts/build_profile_assets.py
-          git diff --exit-code -- assets/profile/hero* assets/profile/project* assets/profile/footer*
+          git diff --exit-code -- assets/profile/hero* assets/profile/project* assets/profile/footer* assets/profile/craft*
