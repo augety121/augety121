@@ -11,18 +11,21 @@
 
 浅蓝 `#438BC5`、薄荷绿 `#309F8B`、深灰蓝文字 `#243B53`，搭配近白色背景。
 
-头图、项目卡片、开发方式流程图与页脚采用 SVG 内嵌 CSS 循环动画，缓慢流动的路径代表知识、上下文与行动。无 JavaScript、外部字体、远程图片嵌套，不需要生成图片服务。头图只保留文字节点，不使用编号。
+头图、关注方向卡片、项目卡片、开发方式流程图与页脚采用 SVG 内嵌 CSS 循环动画，缓慢流动的路径代表知识、上下文与行动。无 JavaScript、外部字体、远程图片嵌套，不需要生成图片服务。头图只保留文字节点，不使用编号。
 
-头图、项目卡片、开发方式流程图和统计卡片有单独的窄屏版本。`picture` 在 600px 以下切换布局。减少动态效果偏好下，使用静态 SVG 与真实贡献日历。即使阅读器不支持动画，主体文字也始终可见。
+头图、关注方向卡片、项目卡片、开发方式流程图、贡献动画和统计卡片有单独的窄屏版本。`picture` 在 600px 以下切换布局。减少动态效果偏好下，使用静态 SVG 与真实贡献日历。即使阅读器不支持动画，主体文字也始终可见。
 
 重新生成设计资源：
 
 ```bash
 python scripts/build_profile_assets.py
+python scripts/frame_contribution_snake.py
 python -m unittest discover -s tests -v
 ```
 
 不要运行旧的 `generate_profile_visuals.py` 来修改新版资源；它只负责旧版目录。
+
+`frame_contribution_snake.py` 读取已有的真实 `contribution-snake.svg`，只嵌入浅色外框和中英文标题，不修改贡献格子、运动轨迹或动画关键帧。生成的 `contribution-zh.svg`、`contribution-en.svg` 及 `contribution-mobile-*.svg` 供 README 使用。数据更新工作流先运行 `snk`，再生成外框；不需要额外令牌或图片服务。
 
 ## 动态组件与来源
 
@@ -42,7 +45,7 @@ python -m unittest discover -s tests -v
 - 支持 `workflow_dispatch` 手动运行。
 - 修改对应生成脚本或工作流时，在当前分支触发一次更新，便于合并前验收。
 - 定时运行和手动运行入口需要该工作流位于默认分支；设计分支首次推送通过 `push` 触发。
-- `generate` 任务只读权限，读取数据并运行第三方动画生成器；`publish` 任务才有写入权限，仅提交六个指定 SVG 文件。
+- `generate` 任务只读权限，读取数据并运行第三方动画生成器；`publish` 任务才有写入权限，仅提交十个指定 SVG 文件。
 - 使用 GitHub 自动提供的 `GITHUB_TOKEN`，无需创建个人访问令牌，也不读取私人项目内容。
 - API 或生成过程失败时，任务报错，不提交部分结果，线上保留上次成功的图片。
 - 仓库分支保护若禁止 bot 直接推送，发布步骤会失败，需要仓库所有者决定如何允许这些生成资源更新；不要为此关闭全部保护。

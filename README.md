@@ -1,3 +1,5 @@
+<a id="top"></a>
+
 <p align="right">
   <strong>简体中文</strong> &nbsp;/&nbsp; <a href="./README.en.md">English</a>
 </p>
@@ -21,10 +23,12 @@
 
 这里记录我的开源实践、工程探索和持续学习。目前主要在研究 **MCP 工具环境与可复现评测**，也持续探索检索、记忆、运行时与安全边界。
 
-| 上下文 | 运行时 | 评测 |
-| :--- | :--- | :--- |
-| 检索 · 重排 · 知识图谱 | MCP · 状态 · 故障恢复 | 追踪 · 断言 · 可复现性 |
-| 让有用的信息进入上下文 | 让每一步行动有边界 | 让改进有证据可循 |
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/focus-mobile-zh-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/focus-zh-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/focus-mobile-zh.svg" />
+  <img src="./assets/profile/focus-zh.svg" width="100%" alt="关注方向：上下文工程（检索、重排、知识图谱）、工具运行时（MCP、状态、恢复）、可靠评测（追踪、断言、可复现性）。" />
+</picture>
 
 ### 最近在探索
 
@@ -62,6 +66,15 @@
 [查看源码 →](https://github.com/augety121/MCP-State-Twin) &nbsp; [阅读文档](https://github.com/augety121/MCP-State-Twin/tree/main/docs) &nbsp; [交流问题](https://github.com/augety121/MCP-State-Twin/issues)
 
 <sub>项目处于开发预览阶段；已实现能力与边界以项目文档为准。</sub>
+
+<details>
+<summary>从哪里开始阅读？</summary>
+
+- **快速了解**：从 [项目概览](https://github.com/augety121/MCP-State-Twin#readme) 了解它解决的问题与基本工作方式。
+- **深入设计**：在 [项目文档](https://github.com/augety121/MCP-State-Twin/tree/main/docs) 中查看状态、工具契约、评测与实现边界。
+- **交流改进**：通过 [Issues](https://github.com/augety121/MCP-State-Twin/issues) 讨论使用问题、复现案例和设计取舍。
+
+</details>
 
 <a id="craft"></a>
 
@@ -111,17 +124,13 @@
   <img src="./assets/profile/stats-zh.svg" width="100%" alt="GitHub 公开仓库、获得的星标、近一年贡献与关注者。统计时间见卡片。" />
 </picture>
 
-<details open>
-<summary>贡献轨迹 · 一点持续积累的乐趣</summary>
-
 <p>
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/contributions-static.svg" />
-    <img src="./assets/profile/contribution-snake.svg" width="100%" alt="由真实 GitHub 贡献日历生成的薄荷色贪吃蛇动画" />
+    <source media="(max-width: 600px)" srcset="./assets/profile/contribution-mobile-zh.svg" />
+    <img src="./assets/profile/contribution-zh.svg" width="100%" alt="由真实 GitHub 贡献日历生成的薄荷色贪吃蛇动画" />
   </picture>
 </p>
-
-</details>
 
 <sub>统计与贡献动画由 GitHub Actions 每日更新，更新时间见卡片；不是实时在线状态。贡献动画由 <a href="https://github.com/Platane/snk">Platane/snk</a> 生成。</sub>
 
@@ -139,3 +148,5 @@
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/footer-zh-static.svg" />
   <img src="./assets/profile/footer-zh.svg" width="100%" alt="保持好奇，持续构建。" />
 </picture>
+
+<p align="right"><a href="#top">返回顶部 ↑</a></p>
