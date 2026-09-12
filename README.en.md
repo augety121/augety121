@@ -1,3 +1,5 @@
+<a id="top"></a>
+
 <p align="right">
   <a href="./README.md">简体中文</a> &nbsp;/&nbsp; <strong>English</strong>
 </p>
@@ -21,10 +23,12 @@ I'm a developer focused on **RAG and agent systems engineering**: how knowledge 
 
 This is where I share open-source work, engineering experiments and things I learn along the way. My current focus is **MCP tool environments and reproducible evaluation**, alongside retrieval, memory, runtimes and safety boundaries.
 
-| Context | Runtime | Evaluation |
-| :--- | :--- | :--- |
-| Retrieval · Reranking · Knowledge graphs | MCP · State · Recovery | Tracing · Assertions · Reproducibility |
-| Bring useful information into context | Give every action clear boundaries | Make improvement measurable |
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/focus-mobile-en-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/focus-en-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/focus-mobile-en.svg" />
+  <img src="./assets/profile/focus-en.svg" width="100%" alt="Engineering focus: context (retrieval, reranking, knowledge graphs), runtime (MCP, state, recovery), and evaluation (traces, assertions, reproducibility)." />
+</picture>
 
 ### Currently exploring
 
@@ -62,6 +66,15 @@ Building **reproducible, forkable, stateful MCP test worlds** for AI agent evalu
 [Explore the code →](https://github.com/augety121/MCP-State-Twin) &nbsp; [Read the docs](https://github.com/augety121/MCP-State-Twin/tree/main/docs) &nbsp; [Discuss an issue](https://github.com/augety121/MCP-State-Twin/issues)
 
 <sub>Development preview. See the project documentation for implemented capabilities and limitations.</sub>
+
+<details>
+<summary>Where should I start?</summary>
+
+- **Get the idea**: the [project overview](https://github.com/augety121/MCP-State-Twin#readme) explains the problem and the basic workflow.
+- **Explore the design**: the [documentation](https://github.com/augety121/MCP-State-Twin/tree/main/docs) covers state, tool contracts, evaluation and implementation boundaries.
+- **Join the conversation**: use [Issues](https://github.com/augety121/MCP-State-Twin/issues) to discuss usage questions, reproducible examples and design trade-offs.
+
+</details>
 
 <a id="craft"></a>
 
@@ -106,22 +119,20 @@ Tools change. What I want to keep improving is the ability to analyze problems, 
 
 ## Open-source activity
 
+<p>
 <picture>
   <source media="(max-width: 600px)" srcset="./assets/profile/stats-mobile-en.svg" />
   <img src="./assets/profile/stats-en.svg" width="100%" alt="Public GitHub repositories, stars received, contributions in the last year, and followers. See the card for the update date." />
 </picture>
-
-<details open>
-<summary>Contribution trail · Small steps add up</summary>
+</p>
 
 <p>
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/contributions-static.svg" />
-    <img src="./assets/profile/contribution-snake.svg" width="100%" alt="Mint-colored snake animation generated from the real GitHub contribution calendar" />
+    <source media="(max-width: 600px)" srcset="./assets/profile/contribution-mobile-en.svg" />
+    <img src="./assets/profile/contribution-en.svg" width="100%" alt="Mint-colored snake animation generated from the real GitHub contribution calendar" />
   </picture>
 </p>
-
-</details>
 
 <sub>Stats and contribution animation update daily through GitHub Actions; the card shows the update date. This is not a live online indicator. Animation powered by <a href="https://github.com/Platane/snk">Platane/snk</a>.</sub>
 
@@ -139,3 +150,5 @@ That could be a retrieval improvement, a tool-interface trade-off, an evaluation
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/footer-en-static.svg" />
   <img src="./assets/profile/footer-en.svg" width="100%" alt="Stay curious. Keep building." />
 </picture>
+
+<p align="right"><a href="#top">Back to top ↑</a></p>

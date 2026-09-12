@@ -18,4 +18,6 @@ jobs:
       - name: Check reproducible visual assets
         run: |
           python scripts/build_profile_assets.py
-          git diff --exit-code -- assets/profile/hero* assets/profile/project* assets/profile/footer* assets/profile/craft*
+          git diff --exit-code -- assets/profile/hero* assets/profile/project* assets/profile/footer* assets/profile/craft* assets/profile/focus*
+          python scripts/frame_contribution_snake.py
+          git diff --exit-code -- assets/profile/contribution-zh.svg assets/profile/contribution-en.svg assets/profile/contribution-mobile-zh.svg assets/profile/contribution-mobile-en.svg

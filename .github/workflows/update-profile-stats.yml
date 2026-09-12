@@ -9,6 +9,7 @@ on:
     paths:
       - 'scripts/update_profile_data.py'
       - 'scripts/build_profile_assets.py'
+      - 'scripts/frame_contribution_snake.py'
       - '.github/workflows/update-profile-stats.yml'
 
 permissions:
@@ -41,7 +42,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 验证资源
-        run: python -m unittest discover -s tests -v
+        run: |
+          python scripts/frame_contribution_snake.py
+          python -m unittest discover -s tests -v
       - uses: actions/upload-artifact@v4
         with:
           name: profile-data
@@ -53,6 +56,10 @@ jobs:
             assets/profile/stats-mobile-en.svg
             assets/profile/contributions-static.svg
             assets/profile/contribution-snake.svg
+            assets/profile/contribution-zh.svg
+            assets/profile/contribution-en.svg
+            assets/profile/contribution-mobile-zh.svg
+            assets/profile/contribution-mobile-en.svg
 
   publish:
     needs: generate
@@ -74,6 +81,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add assets/profile/stats-zh.svg assets/profile/stats-en.svg assets/profile/stats-mobile-zh.svg assets/profile/stats-mobile-en.svg assets/profile/contributions-static.svg assets/profile/contribution-snake.svg
+          git add assets/profile/contribution-zh.svg assets/profile/contribution-en.svg assets/profile/contribution-mobile-zh.svg assets/profile/contribution-mobile-en.svg
           if git diff --cached --quiet; then
             echo '数据没有变化'
             exit 0

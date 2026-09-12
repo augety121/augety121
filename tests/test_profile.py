@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_profile_assets as visuals
 import update_profile_data as data
+import frame_contribution_snake as snake_frame
 
 
 class ProfileTests(unittest.TestCase):
@@ -22,7 +23,7 @@ class ProfileTests(unittest.TestCase):
                 self.assertNotIn("<script", source)
                 self.assertNotIn("<foreignObject", source)
                 self.assertNotRegex(source, r'(?:href|src)=[\"\']https?://')
-        for renderer in (visuals.hero, visuals.hero_mobile, visuals.project, visuals.project_mobile, visuals.footer, visuals.craft, visuals.craft_mobile):
+        for renderer in (visuals.hero, visuals.hero_mobile, visuals.project, visuals.project_mobile, visuals.footer, visuals.craft, visuals.craft_mobile, visuals.focus, visuals.focus_mobile):
             for lang in ("zh", "en"):
                 self.assertIn("@keyframes", renderer(lang, True))
                 self.assertIn("prefers-reduced-motion", renderer(lang, True))
@@ -35,6 +36,37 @@ class ProfileTests(unittest.TestCase):
                     root = ET.fromstring(renderer(lang, animated))
                     labels = [e.text for e in root.findall(".//{http://www.w3.org/2000/svg}text")]
                     self.assertFalse(any(label in {"01", "02", "03", "04"} for label in labels))
+
+    def test_craft_has_direction_indicators(self):
+        for mobile in (False, True):
+            root = ET.fromstring(visuals.craft("zh", True, mobile))
+            arrows = [e for e in root.iter() if e.attrib.get("class") == "craft-arrow"]
+            self.assertEqual(len(arrows), 4)
+
+    def test_contribution_frame_preserves_animation(self):
+        source = (ROOT / "assets/profile/contribution-snake.svg").read_text(encoding="utf-8")
+        original = ET.fromstring(source)
+        ns = {"s": "http://www.w3.org/2000/svg"}
+        for lang in ("zh", "en"):
+            for mobile in (False, True):
+                rendered = ET.fromstring(snake_frame.render(source, lang, mobile))
+                nested = rendered.find(".//s:svg", ns)
+                self.assertEqual(original.attrib["viewBox"], nested.attrib["viewBox"])
+                self.assertEqual([ET.tostring(e) for e in original], [ET.tostring(e) for e in nested])
+                self.assertEqual(rendered.attrib["width"], "720" if mobile else "1200")
+
+    def test_contribution_frame_rejects_unsafe_input(self):
+        prefix = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 192">'
+        for content in ('<script/>', '<image href="https://example.com/a.svg"/>', '<g onload="run()"/>', '<style>@import url(https://example.com/a.css)</style>'):
+            with self.assertRaises(ValueError):
+                snake_frame.render(prefix+content+'</svg>', "zh")
+
+    def test_focus_and_contribution_locales(self):
+        for lang, filename in (("zh", "README.md"), ("en", "README.en.md")):
+            source = (ROOT / filename).read_text(encoding="utf-8")
+            for asset in (f"focus-{lang}.svg", f"focus-mobile-{lang}.svg", f"contribution-{lang}.svg", f"contribution-mobile-{lang}.svg"):
+                self.assertIn(asset, source)
+            self.assertIn('href="#top"', source)
 
     def test_new_section_and_responsive_assets(self):
         for lang, filename in (("zh", "README.md"), ("en", "README.en.md")):

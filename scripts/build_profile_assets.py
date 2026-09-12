@@ -12,7 +12,7 @@ def text(x, y, value, size=18, color=INK, weight=400, extra=""):
     return f'<text x="{x}" y="{y}" font-size="{size}" fill="{color}" font-weight="{weight}" {extra}>{escape(str(value))}</text>'
 
 
-def svg(body, height, title, animated=True, width=1200):
+def svg(body, height, title, animated=True, width=1200, framed=True):
     animation = """
       .flow{stroke-dasharray:14 180;animation:flow 7s linear infinite}
       .flow-slow{stroke-dasharray:10 240;animation:flowSlow 11s linear infinite reverse}
@@ -34,8 +34,8 @@ def svg(body, height, title, animated=True, width=1200):
   <clipPath id="clip"><rect x="1" y="1" width="{width-2}" height="{height-2}" rx="28"/></clipPath>
   <style>text{{font-family:'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif}}.flow{{stroke-dasharray:14 180}}.flow-slow{{stroke-dasharray:10 240}}{animation}</style>
 </defs>
-<g clip-path="url(#clip)"><rect width="{width}" height="{height}" fill="url(#paper)"/>{body}</g>
-<rect x="1" y="1" width="{width-2}" height="{height-2}" rx="28" fill="none" stroke="#DDEBEA"/>
+<g clip-path="url(#clip)"><rect width="{width}" height="{height}" fill="{'url(#paper)' if framed else 'none'}"/>{body}</g>
+<rect x="1" y="1" width="{width-2}" height="{height-2}" rx="28" fill="none" stroke="{'#DDEBEA' if framed else 'none'}"/>
 </svg>\n'''
 
 
@@ -69,12 +69,12 @@ def project(lang, animated):
     body += '<rect x="44" y="168" width="110" height="29" rx="14" fill="#DCEFE8"/>'
     body += text(99, 188, "开发预览" if zh else "PREVIEW", 13, "#397565", 600, 'text-anchor="middle"')
     body += text(174, 188, "Go · MCP · 评测环境" if zh else "Go · MCP · Evaluation", 15, MUTED)
-    body += '<path d="M700 116 C786 116 762 64 839 64 H1119 M700 116 C786 116 762 174 839 174 H1119" fill="none" stroke="#CBDFE5" stroke-width="2"/>'
-    body += '<path class="flow" d="M700 116 C786 116 762 64 839 64 H1119" fill="none" stroke="#4A94C8" stroke-width="4" stroke-linecap="round"/><path class="flow-slow" d="M700 116 C786 116 762 174 839 174 H1119" fill="none" stroke="#4CAC96" stroke-width="4" stroke-linecap="round"/>'
-    for x, y, label, color in [(693,116,"快照" if zh else "Snapshot",BLUE),(894,64,"运行 A" if zh else "Run A",BLUE),(894,174,"运行 B" if zh else "Run B",MINT)]:
-        body += f'<circle cx="{x}" cy="{y}" r="27" fill="#FFFFFF" stroke="#D5E6E9"/><circle class="breathe" cx="{x}" cy="{y}" r="8" fill="{color}"/>'
-        body += text(x+40, y+6, label, 16, INK, 500)
-    body += text(1127, 122, "比较" if zh else "Diff", 15, MUTED, 500, 'text-anchor="middle"')
+    for route, color in [("M766 121 C797 121 795 74 826 74 M960 74 C1005 74 1006 127 1050 127", BLUE), ("M766 121 C797 121 795 190 826 190 M960 190 C1005 190 1006 127 1050 127", MINT)]:
+        body += f'<path d="{route}" fill="none" stroke="#C7E0E4" stroke-width="2"/><path class="flow" d="{route}" fill="none" stroke="{color}" stroke-width="3" stroke-linecap="round"/>'
+    for x, y, w, label, color in [(656,90,110,"快照" if zh else "Snapshot",BLUE),(826,47,134,"运行 A" if zh else "Run A",BLUE),(826,163,134,"运行 B" if zh else "Run B",MINT),(1050,100,104,"比较终态" if zh else "Compare",MINT)]:
+        body += f'<rect x="{x}" y="{y}" width="{w}" height="54" rx="17" fill="#FFFFFF" stroke="#D5E6E9"/>'
+        body += text(x+w/2, y+34, label, 17 if zh else 16, color, 600, 'text-anchor="middle"')
+    body += text(711, 175, "相同起点" if zh else "Same start", 14, MUTED, 400, 'text-anchor="middle"')
     return svg(body, 235, "MCP State Twin · " + ("开发预览" if zh else "Development preview"), animated)
 
 
@@ -119,11 +119,15 @@ def craft(lang, animated, mobile=False):
         positions = [(36, 80), (384, 80), (384, 234), (36, 234)]
         width, height, card_width = 720, 398, 300
         path = "M336 138 H384 M534 196 V234 M384 292 H336 M186 234 V196"
+        arrows = ["M358 133 L366 138 L358 143", "M529 211 L534 219 L539 211", "M362 287 L354 292 L362 297", "M181 219 L186 211 L191 219"]
     else:
         positions = [(36 + i * 288, 83) for i in range(4)]
         width, height, card_width = 1200, 260, 264
         path = "M300 141 H324 M588 141 H612 M876 141 H900 M1032 199 V221 H168 V199"
+        arrows = ["M307 136 L315 141 L307 146", "M595 136 L603 141 L595 146", "M883 136 L891 141 L883 146", "M614 216 L606 221 L614 226"]
     body += f'<path d="{path}" fill="none" stroke="#C2DFE3" stroke-width="2"/><path class="flow" d="{path}" fill="none" stroke="#59AAA9" stroke-width="3"/>'
+    for arrow in arrows:
+        body += f'<path class="craft-arrow" d="{arrow}" fill="none" stroke="#69AAA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
     for i, ((x, y), (label, description)) in enumerate(zip(positions, labels)):
         color = BLUE if i < 2 else MINT
         body += f'<rect x="{x}" y="{y}" width="{card_width}" height="116" rx="18" fill="#FFFFFF" fill-opacity=".88" stroke="#D8E9EA"/>'
@@ -139,14 +143,37 @@ def craft_mobile(lang, animated):
     return craft(lang, animated, mobile=True)
 
 
+def focus(lang, animated, mobile=False):
+    zh = lang == "zh"
+    topics = [("上下文工程", "检索 · 重排 · 知识图谱", "让有用的信息进入上下文"), ("工具运行时", "MCP · 状态 · 故障恢复", "让每一步行动有边界"), ("可靠评测", "追踪 · 断言 · 可复现性", "让改进有证据可循")] if zh else [("Context", "Retrieval · Reranking · Graphs", "Bring useful evidence into context"), ("Runtime", "MCP · State · Recovery", "Give each action clear boundaries"), ("Evaluation", "Traces · Assertions · Replay", "Make improvement measurable")]
+    body = ""
+    icons = ['<path d="M0 0 H24 V28 H0 Z M6 8 H18 M6 14 H18 M6 20 H14"/>', '<path d="M0 5 H28 M0 15 H28 M0 25 H28"/><circle cx="8" cy="5" r="3" fill="#F3FAFB"/><circle cx="20" cy="15" r="3" fill="#F3FAFB"/><circle cx="10" cy="25" r="3" fill="#F3FAFB"/>', '<path d="M14 0 L27 5 V16 Q26 24 14 30 Q2 24 1 16 V5 Z M7 14 L12 19 L21 10"/>']
+    for i, (title, tools, purpose) in enumerate(topics):
+        x, y, w, h = (1, 1+i*164, 718, 148) if mobile else (1+i*408, 1, 382, 187)
+        color = BLUE if i == 0 else MINT
+        body += f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="22" fill="{("#F4FAFE", "#F3FAFB", "#F0F9F5")[i]}" stroke="#DDEBEA"/>'
+        ix, iy = x+26, y+26
+        body += f'<g transform="translate({ix} {iy})" stroke="{color}" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">{icons[i]}</g>'
+        body += text(x+75, y+49 if mobile else y+48, title, 38 if mobile else 30, INK, 600)
+        body += text(x+75 if mobile else x+26, y+88 if mobile else y+105, tools, 30 if mobile else 23 if zh else 20, MUTED)
+        body += text(x+75 if mobile else x+26, y+127 if mobile else y+150, purpose, 30 if mobile else 22 if zh else 19, MUTED)
+        if not mobile:
+            body += f'<path d="M{x+26} {y+170} H{x+356}" stroke="#DCEAE9"/><path class="flow-slow" d="M{x+26} {y+170} H{x+356}" stroke="{color}" stroke-width="2"/>'
+    return svg(body, 478 if mobile else 189, "关注方向" if zh else "Engineering focus", animated, 720 if mobile else 1200, framed=False)
+
+
+def focus_mobile(lang, animated):
+    return focus(lang, animated, mobile=True)
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for lang in ("zh", "en"):
-        for name, renderer in (("hero", hero), ("project", project), ("footer", footer), ("hero-mobile", hero_mobile), ("project-mobile", project_mobile), ("craft", craft), ("craft-mobile", craft_mobile)):
+        for name, renderer in (("hero", hero), ("project", project), ("footer", footer), ("hero-mobile", hero_mobile), ("project-mobile", project_mobile), ("craft", craft), ("craft-mobile", craft_mobile), ("focus", focus), ("focus-mobile", focus_mobile)):
             for animated in (True, False):
                 suffix = "" if animated else "-static"
                 (OUT / f"{name}-{lang}{suffix}.svg").write_text(renderer(lang, animated), encoding="utf-8", newline="\n")
-    print("Generated 28 bilingual desktop/mobile profile assets.")
+    print("Generated 36 bilingual desktop/mobile profile assets.")
 
 
 if __name__ == "__main__":
