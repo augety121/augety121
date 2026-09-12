@@ -149,17 +149,17 @@ def focus(lang, animated, mobile=False):
     body = ""
     icons = ['<path d="M0 0 H24 V28 H0 Z M6 8 H18 M6 14 H18 M6 20 H14"/>', '<path d="M0 5 H28 M0 15 H28 M0 25 H28"/><circle cx="8" cy="5" r="3" fill="#F3FAFB"/><circle cx="20" cy="15" r="3" fill="#F3FAFB"/><circle cx="10" cy="25" r="3" fill="#F3FAFB"/>', '<path d="M14 0 L27 5 V16 Q26 24 14 30 Q2 24 1 16 V5 Z M7 14 L12 19 L21 10"/>']
     for i, (title, tools, purpose) in enumerate(topics):
-        x, y, w, h = (1, 1+i*136, 718, 119) if mobile else (1+i*408, 1, 382, 187)
+        x, y, w, h = (1, 1+i*164, 718, 148) if mobile else (1+i*408, 1, 382, 187)
         color = BLUE if i == 0 else MINT
         body += f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="22" fill="{("#F4FAFE", "#F3FAFB", "#F0F9F5")[i]}" stroke="#DDEBEA"/>'
         ix, iy = x+26, y+26
         body += f'<g transform="translate({ix} {iy})" stroke="{color}" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">{icons[i]}</g>'
-        body += text(x+75, y+48, title, 30, INK, 600)
-        body += text(x+75 if mobile else x+26, y+81 if mobile else y+105, tools, 23 if zh else 22 if mobile else 20, MUTED)
-        body += text(x+75 if mobile else x+26, y+108 if mobile else y+150, purpose, 22 if zh else 20 if mobile else 19, MUTED)
+        body += text(x+75, y+49 if mobile else y+48, title, 38 if mobile else 30, INK, 600)
+        body += text(x+75 if mobile else x+26, y+88 if mobile else y+105, tools, 30 if mobile else 23 if zh else 20, MUTED)
+        body += text(x+75 if mobile else x+26, y+127 if mobile else y+150, purpose, 30 if mobile else 22 if zh else 19, MUTED)
         if not mobile:
             body += f'<path d="M{x+26} {y+170} H{x+356}" stroke="#DCEAE9"/><path class="flow-slow" d="M{x+26} {y+170} H{x+356}" stroke="{color}" stroke-width="2"/>'
-    return svg(body, 394 if mobile else 189, "关注方向" if zh else "Engineering focus", animated, 720 if mobile else 1200, framed=False)
+    return svg(body, 478 if mobile else 189, "关注方向" if zh else "Engineering focus", animated, 720 if mobile else 1200, framed=False)
 
 
 def focus_mobile(lang, animated):
