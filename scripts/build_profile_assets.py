@@ -154,9 +154,9 @@ def focus(lang, animated, mobile=False):
         body += f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="22" fill="{("#F4FAFE", "#F3FAFB", "#F0F9F5")[i]}" stroke="#DDEBEA"/>'
         ix, iy = x+26, y+26
         body += f'<g transform="translate({ix} {iy})" stroke="{color}" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">{icons[i]}</g>'
-        body += text(x+75, y+48, title, 29, INK, 600)
-        body += text(x+75 if mobile else x+26, y+81 if mobile else y+105, tools, 22 if mobile else 20, MUTED)
-        body += text(x+75 if mobile else x+26, y+108 if mobile else y+150, purpose, 20 if mobile else 19, MUTED)
+        body += text(x+75, y+48, title, 30, INK, 600)
+        body += text(x+75 if mobile else x+26, y+81 if mobile else y+105, tools, 23 if zh else 22 if mobile else 20, MUTED)
+        body += text(x+75 if mobile else x+26, y+108 if mobile else y+150, purpose, 22 if zh else 20 if mobile else 19, MUTED)
         if not mobile:
             body += f'<path d="M{x+26} {y+170} H{x+356}" stroke="#DCEAE9"/><path class="flow-slow" d="M{x+26} {y+170} H{x+356}" stroke="{color}" stroke-width="2"/>'
     return svg(body, 394 if mobile else 189, "关注方向" if zh else "Engineering focus", animated, 720 if mobile else 1200, framed=False)

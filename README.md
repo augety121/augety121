@@ -119,10 +119,12 @@
 
 ## 开源足迹
 
+<p>
 <picture>
   <source media="(max-width: 600px)" srcset="./assets/profile/stats-mobile-zh.svg" />
   <img src="./assets/profile/stats-zh.svg" width="100%" alt="GitHub 公开仓库、获得的星标、近一年贡献与关注者。统计时间见卡片。" />
 </picture>
+</p>
 
 <p>
   <picture>

@@ -119,10 +119,12 @@ Tools change. What I want to keep improving is the ability to analyze problems, 
 
 ## Open-source activity
 
+<p>
 <picture>
   <source media="(max-width: 600px)" srcset="./assets/profile/stats-mobile-en.svg" />
   <img src="./assets/profile/stats-en.svg" width="100%" alt="Public GitHub repositories, stars received, contributions in the last year, and followers. See the card for the update date." />
 </picture>
+</p>
 
 <p>
   <picture>
