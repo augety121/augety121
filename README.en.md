@@ -52,6 +52,23 @@ I want to turn these explorations into clear code, runnable experiments and evid
 
 ## Selected work
 
+Public work spanning agent workspaces, evaluation environments and practical everyday tools.
+
+### Agents & evaluation
+
+<a href="https://github.com/augety121/HashMM-RAG-Agent">
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/project-hashmm-mobile-en-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/project-hashmm-en-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/project-hashmm-mobile-en.svg" />
+  <img src="./assets/profile/project-hashmm-en.svg" width="100%" alt="HashMM-RAG-Agent · A local-first agent workspace · Historical open-source edition" />
+</picture>
+</a>
+
+A workspace bringing together **knowledge retrieval, cited evidence and recoverable tasks**, with desktop, Android and tool extensions. This links to the published historical edition; see the repository for its capabilities and limitations.
+
+[Explore the code →](https://github.com/augety121/HashMM-RAG-Agent) &nbsp; [Overview](https://github.com/augety121/HashMM-RAG-Agent#readme) &nbsp; [Contribute](https://github.com/augety121/HashMM-RAG-Agent/blob/main/COMMUNITY.md)
+
 <a href="https://github.com/augety121/MCP-State-Twin">
 <picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/project-mobile-en-static.svg" />
@@ -75,6 +92,36 @@ Building **reproducible, forkable, stateful MCP test worlds** for AI agent evalu
 - **Join the conversation**: use [Issues](https://github.com/augety121/MCP-State-Twin/issues) to discuss usage questions, reproducible examples and design trade-offs.
 
 </details>
+
+### Practical tools
+
+<a href="https://github.com/augety121/ApplyKit">
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/project-applykit-mobile-en-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/project-applykit-en-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/project-applykit-mobile-en.svg" />
+  <img src="./assets/profile/project-applykit-en.svg" width="100%" alt="ApplyKit · A local PDF and image toolkit for application documents" />
+</picture>
+</a>
+
+A **local Windows utility** for preparing application documents: crop images, convert PDFs and compress files to meet upload limits. Keeps originals and does not upload documents to the internet.
+
+[Explore the code →](https://github.com/augety121/ApplyKit) &nbsp; [Download](https://github.com/augety121/ApplyKit/releases) &nbsp; [User guide](https://github.com/augety121/ApplyKit#readme)
+
+<a href="https://github.com/augety121/autumn-jobs-crawler">
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/project-autumn-mobile-en-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/project-autumn-en-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/project-autumn-mobile-en.svg" />
+  <img src="./assets/profile/project-autumn-en.svg" width="100%" alt="autumn-jobs-crawler · Safety-first campus hiring aggregation and Excel export" />
+</picture>
+</a>
+
+Turns **public campus hiring announcements from official company websites** into filterable Excel records. Includes source checks, rate limits, deduplication and a manual review queue; no automatic login, verification bypass or job applications.
+
+[Explore the code →](https://github.com/augety121/autumn-jobs-crawler) &nbsp; [User guide](https://github.com/augety121/autumn-jobs-crawler#readme) &nbsp; [Safety boundaries](https://github.com/augety121/autumn-jobs-crawler/blob/main/SECURITY.md)
+
+[Browse all public repositories →](https://github.com/augety121?tab=repositories&type=public)
 
 <a id="craft"></a>
 
