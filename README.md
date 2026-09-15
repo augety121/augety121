@@ -52,6 +52,23 @@
 
 ## 精选项目
 
+从 Agent 工作空间、评测环境，到解决日常问题的小工具，这些是我的公开实践。
+
+### Agent 与评测
+
+<a href="https://github.com/augety121/HashMM-RAG-Agent">
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/project-hashmm-mobile-zh-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/project-hashmm-zh-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/project-hashmm-mobile-zh.svg" />
+  <img src="./assets/profile/project-hashmm-zh.svg" width="100%" alt="HashMM-RAG-Agent · 本地优先的 Agent 工作空间 · 历史开源版本" />
+</picture>
+</a>
+
+将**知识检索、证据引用与可恢复任务**组织到一个工作空间，涵盖桌面端、Android 与工具扩展。这里展示的是已公开的历史版本，功能与使用边界以仓库说明为准。
+
+[查看源码 →](https://github.com/augety121/HashMM-RAG-Agent) &nbsp; [项目概览](https://github.com/augety121/HashMM-RAG-Agent#readme) &nbsp; [参与协作](https://github.com/augety121/HashMM-RAG-Agent/blob/main/COMMUNITY.md)
+
 <a href="https://github.com/augety121/MCP-State-Twin">
 <picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/project-mobile-zh-static.svg" />
@@ -75,6 +92,36 @@
 - **交流改进**：通过 [Issues](https://github.com/augety121/MCP-State-Twin/issues) 讨论使用问题、复现案例和设计取舍。
 
 </details>
+
+### 实用工具
+
+<a href="https://github.com/augety121/ApplyKit">
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/project-applykit-mobile-zh-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/project-applykit-zh-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/project-applykit-mobile-zh.svg" />
+  <img src="./assets/profile/project-applykit-zh.svg" width="100%" alt="ApplyKit · 本地处理 PDF 与图片的投递材料助手" />
+</picture>
+</a>
+
+面向投递材料的 **Windows 本地工具**：裁剪图片、转换 PDF、压缩文件，让材料符合网站的大小要求。保留原件，不上传材料到互联网。
+
+[查看源码 →](https://github.com/augety121/ApplyKit) &nbsp; [下载使用](https://github.com/augety121/ApplyKit/releases) &nbsp; [使用说明](https://github.com/augety121/ApplyKit#readme)
+
+<a href="https://github.com/augety121/autumn-jobs-crawler">
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/project-autumn-mobile-zh-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/project-autumn-zh-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/project-autumn-mobile-zh.svg" />
+  <img src="./assets/profile/project-autumn-zh.svg" width="100%" alt="autumn-jobs-crawler · 官方校园招聘公告安全聚合与 Excel 导出" />
+</picture>
+</a>
+
+把**企业官方公开校园招聘公告**整理成可筛选、可跟踪的 Excel。结合来源检查、限速、去重和人工确认队列；不自动登录、绕过验证或投递。
+
+[查看源码 →](https://github.com/augety121/autumn-jobs-crawler) &nbsp; [使用说明](https://github.com/augety121/autumn-jobs-crawler#readme) &nbsp; [安全边界](https://github.com/augety121/autumn-jobs-crawler/blob/main/SECURITY.md)
+
+[浏览全部公开仓库 →](https://github.com/augety121?tab=repositories&type=public)
 
 <a id="craft"></a>
 

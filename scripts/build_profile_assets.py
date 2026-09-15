@@ -166,6 +166,29 @@ def focus_mobile(lang, animated):
     return focus(lang, animated, mobile=True)
 
 
+PROJECT_CARDS = {
+    "hashmm": ("HashMM-RAG-Agent", ("本地优先的 Agent 工作空间", "A local-first agent workspace"), ("历史开源版本 · RAG · 可恢复任务", "Historical open-source edition · RAG · Durable tasks")),
+    "applykit": ("ApplyKit", ("把投递材料整理得刚刚好", "Application documents, ready to go"), ("Windows · 本地处理 · PDF 与图片", "Windows · Local processing · PDF & images")),
+    "autumn": ("autumn-jobs-crawler", ("从官方招聘公告到结构化信息", "From official job posts to structured data"), ("Python · 安全聚合 · Excel 导出", "Python · Safety-first aggregation · Excel")),
+}
+
+
+def project_card(key, lang, animated, mobile=False):
+    name, captions, tags = PROJECT_CARDS[key]
+    locale = 0 if lang == "zh" else 1
+    width = 720 if mobile else 1200
+    body = '<rect x="36" y="32" width="30" height="4" rx="2" fill="url(#accent)"/>'
+    body += text(36, 87, name, 40, INK, 700)
+    body += text(36, 132, captions[locale], 26 if mobile else 25, MUTED)
+    body += text(36, 176, tags[locale], 22 if mobile else 20, MINT, 500)
+    if not mobile:
+        route = "M820 95 C885 20 925 165 1000 95 S1100 55 1160 95"
+        body += f'<path d="{route}" fill="none" stroke="#D4E8E9" stroke-width="12"/><path class="flow" d="{route}" fill="none" stroke="#69B6B5" stroke-width="3"/>'
+        for x in (850, 990, 1130):
+            body += f'<circle cx="{x}" cy="95" r="8" fill="#FFFFFF" stroke="#84BFC5" stroke-width="2"/>'
+    return svg(body, 205, name + " · " + captions[locale], animated, width)
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for lang in ("zh", "en"):
@@ -173,7 +196,13 @@ def main():
             for animated in (True, False):
                 suffix = "" if animated else "-static"
                 (OUT / f"{name}-{lang}{suffix}.svg").write_text(renderer(lang, animated), encoding="utf-8", newline="\n")
-    print("Generated 36 bilingual desktop/mobile profile assets.")
+        for key in PROJECT_CARDS:
+            for mobile in (False, True):
+                for animated in (True, False):
+                    suffix = "" if animated else "-static"
+                    variant = "-mobile" if mobile else ""
+                    (OUT / f"project-{key}{variant}-{lang}{suffix}.svg").write_text(project_card(key, lang, animated, mobile), encoding="utf-8", newline="\n")
+    print("Generated 60 bilingual desktop/mobile profile assets.")
 
 
 if __name__ == "__main__":

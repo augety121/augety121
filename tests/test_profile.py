@@ -14,6 +14,26 @@ import frame_contribution_snake as snake_frame
 
 
 class ProfileTests(unittest.TestCase):
+    def test_public_project_showcase(self):
+        projects = {"hashmm": "HashMM-RAG-Agent", "applykit": "ApplyKit", "autumn": "autumn-jobs-crawler"}
+        for lang, filename in (("zh", "README.md"), ("en", "README.en.md")):
+            readme = (ROOT / filename).read_text(encoding="utf-8")
+            self.assertIn("https://github.com/augety121/MCP-State-Twin", readme)
+            for key, repo in projects.items():
+                self.assertIn(f'https://github.com/augety121/{repo}', readme)
+                for mobile in (False, True):
+                    for animated in (False, True):
+                        variant = "-mobile" if mobile else ""
+                        suffix = "" if animated else "-static"
+                        asset = f"project-{key}{variant}-{lang}{suffix}.svg"
+                        self.assertIn(asset, readme)
+                        rendered = visuals.project_card(key, lang, animated, mobile)
+                        self.assertEqual((ROOT / "assets/profile" / asset).read_text(encoding="utf-8"), rendered)
+                        root = ET.fromstring(rendered)
+                        self.assertEqual(root.attrib["width"], "720" if mobile else "1200")
+                        self.assertEqual("@keyframes" in rendered, animated)
+            self.assertIn("历史版本" if lang == "zh" else "historical edition", readme)
+
     def test_svg_safety_and_animation(self):
         for path in (ROOT / "assets/profile").glob("*.svg"):
             with self.subTest(path=path.name):
