@@ -104,10 +104,11 @@ def project_mobile(lang, animated):
     zh = lang == "zh"
     body = text(36, 40, "正在探索 / 精选开源" if zh else "IN FOCUS / OPEN SOURCE", 18, MUTED, 600)
     body += text(36, 105, "MCP State Twin", 46, INK, 700)
-    body += text(36, 153, "同一起点，不同路径，可比较的最终状态。" if zh else "Same start. Different paths. Comparable outcomes.", 24 if zh else 22, MUTED)
-    body += text(36, 198, "开发预览 · Go · MCP · 评测环境" if zh else "Development preview · Go · MCP · Evaluation", 20, MINT, 500)
-    body += '<path d="M36 231 H684" stroke="#D0E4E6"/><path class="flow" d="M36 231 H684" stroke="#63ADBF" stroke-width="3"/>'
-    return svg(body, 260, "MCP State Twin", animated, 720)
+    body += text(36, 153, "同一起点，不同路径，" if zh else "Same start. Different paths.", 30, MUTED)
+    body += text(36, 193, "可比较的最终状态。" if zh else "Comparable outcomes.", 30, MUTED)
+    body += text(36, 246, "开发预览 · Go · MCP" if zh else "Development preview · Go · MCP", 28, MINT, 500)
+    body += '<path d="M36 278 H684" stroke="#D0E4E6"/><path class="flow" d="M36 278 H684" stroke="#63ADBF" stroke-width="3"/>'
+    return svg(body, 300, "MCP State Twin", animated, 720)
 
 
 def craft(lang, animated, mobile=False):
@@ -174,21 +175,38 @@ PROJECT_CARDS = {
 }
 
 
+def project_motif(key):
+    """Distinct code-native line illustrations, all within a 180 x 125 box."""
+    motifs = {
+        "resume": '<rect x="4" y="6" width="164" height="112" rx="14"/><path d="M4 32 H168 M22 54 H70 M22 79 H70 M22 103 H70"/><circle cx="19" cy="19" r="2"/><circle cx="29" cy="19" r="2"/><rect x="91" y="47" width="57" height="14" rx="4"/><rect x="91" y="72" width="57" height="14" rx="4"/><path d="M111 99 L119 107 L134 92"/>',
+        "applykit": '<rect x="8" y="6" width="112" height="96" rx="12"/><rect x="48" y="26" width="112" height="96" rx="12"/><circle cx="130" cy="50" r="7"/><path d="M62 102 L87 72 L105 88 L121 70 L146 102 Z M64 43 H89 M62 108 H146"/>',
+        "autumn": '<rect x="2" y="5" width="44" height="25" rx="7"/><rect x="2" y="49" width="44" height="25" rx="7"/><rect x="2" y="93" width="44" height="25" rx="7"/><path d="M46 17 H65 V61 H90 M46 61 H90 M46 105 H65 V61"/><rect x="90" y="25" width="83" height="74" rx="10"/><path d="M90 48 H173 M90 72 H173 M117 25 V99 M146 25 V99"/>',
+        "hashmm": '<rect x="4" y="8" width="47" height="56" rx="10"/><path d="M15 25 H39 M15 37 H33 M51 37 H88 V65 H119 M51 97 H88 V65"/><rect x="4" y="78" width="47" height="37" rx="10"/><circle cx="142" cy="65" r="26"/><path d="M132 65 L139 72 L153 57"/>',
+    }
+    return f'<g class="project-motif" data-kind="{key}" fill="#FFFFFF" fill-opacity=".85" stroke="#80B8BD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{motifs[key]}</g>'
+
+
 def project_card(key, lang, animated, mobile=False):
     name, captions, tags = PROJECT_CARDS[key]
     locale = 0 if lang == "zh" else 1
     name = name[locale] if isinstance(name, tuple) else name
     width = 720 if mobile else 1200
-    body = '<rect x="36" y="32" width="30" height="4" rx="2" fill="url(#accent)"/>'
-    body += text(36, 87, name, 40, INK, 700)
-    body += text(36, 132, captions[locale], 26 if mobile else 25, MUTED)
-    body += text(36, 176, tags[locale], 22 if mobile else 20, MINT, 500)
-    if not mobile:
-        route = "M820 95 C885 20 925 165 1000 95 S1100 55 1160 95"
-        body += f'<path d="{route}" fill="none" stroke="#D4E8E9" stroke-width="12"/><path class="flow" d="{route}" fill="none" stroke="#69B6B5" stroke-width="3"/>'
-        for x in (850, 990, 1130):
-            body += f'<circle cx="{x}" cy="95" r="8" fill="#FFFFFF" stroke="#84BFC5" stroke-width="2"/>'
-    return svg(body, 205, name + " · " + captions[locale], animated, width)
+    featured = key == "hashmm"
+    height = 258 if mobile else 235 if featured else 181
+    body = '<rect x="36" y="14" width="30" height="3" rx="1.5" fill="url(#accent)"/>'
+    body += text(36, 82 if mobile or featured else 70, name, 44 if mobile else 42, INK, 700)
+    body += text(36, 129 if mobile or featured else 112, captions[locale], 30 if mobile else 25, "#526F7B")
+    if mobile:
+        tag_parts = tags[locale].split(" · ", 1)
+        for i, line in enumerate(tag_parts):
+            body += text(36, 177+i*38, line, 30, "#397565", 500)
+    else:
+        body += text(36, 182 if featured else 153, tags[locale], 21, "#397565", 500)
+        body += f'<g transform="translate(958 {55 if featured else 28})">{project_motif(key)}</g>'
+    y = height-18
+    end = width-36 if mobile else 820
+    body += f'<path d="M36 {y} H{end}" stroke="#DCEAEA"/><path class="flow-slow" d="M36 {y} H{end}" stroke="#69B6B5" stroke-width="2"/>'
+    return svg(body, height, name + " · " + captions[locale], animated, width)
 
 
 def main():

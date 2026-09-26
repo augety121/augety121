@@ -21,9 +21,7 @@
 
 I'm a developer focused on **RAG and agent systems engineering**: how knowledge becomes context, and how context turns into reliable action.
 
-This is where I share open-source work, engineering experiments and things I learn along the way. My current focus is **MCP tool environments and reproducible evaluation**, alongside retrieval, memory, runtimes and safety boundaries.
-
-I also apply these ideas to local tools and browser extensions, reducing repetitive work while keeping data boundaries clear.
+This is where I share open-source work, from **MCP tool environments and reproducible evaluation** to local tools and browser extensions. Less repetitive work, with clearer boundaries for data and actions.
 
 <picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/focus-mobile-en-static.svg" />
@@ -31,6 +29,9 @@ I also apply these ideas to local tools and browser extensions, reducing repetit
   <source media="(max-width: 600px)" srcset="./assets/profile/focus-mobile-en.svg" />
   <img src="./assets/profile/focus-en.svg" width="100%" alt="Engineering focus: context (retrieval, reranking, knowledge graphs), runtime (MCP, state, recovery), and evaluation (traces, assertions, reproducibility)." />
 </picture>
+
+<details>
+<summary>Current explorations & engineering details</summary>
 
 ### Currently exploring
 
@@ -40,8 +41,7 @@ I also apply these ideas to local tools and browser extensions, reducing repetit
 
 I want to turn these explorations into clear code, runnable experiments and evidence-backed documentation—and make this space a growing engineering notebook.
 
-<details>
-<summary>Engineering details I care about</summary>
+### Engineering details I care about
 
 - **Context quality**: relevance and evidence matter more than simply adding length.
 - **Tool boundaries**: permissions, budgets and failure semantics belong in the architecture.
@@ -57,8 +57,8 @@ I want to turn these explorations into clear code, runnable experiments and evid
 Public work spanning agent workspaces, evaluation environments and practical everyday tools.
 
 <p>
-  <a href="#project-hashmm">HashMM</a> &nbsp; · &nbsp; <a href="#project-twin">MCP State Twin</a><br/>
-  <a href="#project-resume">Resume Fill Assistant</a> &nbsp; · &nbsp; <a href="#project-applykit">ApplyKit</a> &nbsp; · &nbsp; <a href="#project-autumn">Autumn Jobs Crawler</a>
+  <strong>Agents</strong> &nbsp; <a href="#project-hashmm">Workspace</a> &nbsp; · &nbsp; <a href="#project-twin">Evaluation</a><br/>
+  <strong>Tools</strong> &nbsp; <a href="#project-resume">Form filling</a> &nbsp; · &nbsp; <a href="#project-applykit">Documents</a> &nbsp; · &nbsp; <a href="#project-autumn">Job posts</a>
 </p>
 
 ### Agents & evaluation
@@ -93,16 +93,7 @@ Building **reproducible, forkable, stateful MCP test worlds** for AI agent evalu
 
 [Explore the code →](https://github.com/augety121/MCP-State-Twin) &nbsp; [Read the docs](https://github.com/augety121/MCP-State-Twin/tree/main/docs) &nbsp; [Discuss an issue](https://github.com/augety121/MCP-State-Twin/issues)
 
-<sub>Development preview. See the project documentation for implemented capabilities and limitations.</sub>
-
-<details>
-<summary>Where should I start?</summary>
-
-- **Get the idea**: the [project overview](https://github.com/augety121/MCP-State-Twin#readme) explains the problem and the basic workflow.
-- **Explore the design**: the [documentation](https://github.com/augety121/MCP-State-Twin/tree/main/docs) covers state, tool contracts, evaluation and implementation boundaries.
-- **Join the conversation**: use [Issues](https://github.com/augety121/MCP-State-Twin/issues) to discuss usage questions, reproducible examples and design trade-offs.
-
-</details>
+<sub>Development preview; see the docs for implemented capabilities.</sub>
 
 ### Practical tools
 
@@ -117,11 +108,11 @@ Building **reproducible, forkable, stateful MCP test worlds** for AI agent evalu
 </picture>
 </a>
 
-A **local profile and form-filling assistant** for Chrome / Edge: store and verify facts, review field mappings, then fill only the selected information. The default local mode makes no model calls; temporary MCP collaboration is optional. It never submits applications automatically.
+A **local form-filling assistant** for Chrome / Edge: verify facts, review mappings and fill selected fields. Local mode makes no model calls; temporary MCP collaboration is optional. It never submits applications automatically.
 
 [Explore the code →](https://github.com/augety121/jianlitianxie) &nbsp; [Installation & usage](https://github.com/augety121/jianlitianxie/blob/main/docs/INSTALL-0.4.3.md) &nbsp; [Privacy & permissions](https://github.com/augety121/jianlitianxie/blob/main/docs/PRIVACY-0.4.3.md)
 
-<sub>An evolving browser extension. See the project for supported controls and site limitations; review the filled form yourself.</sub>
+<sub>See the project for supported sites and controls; always review the filled form.</sub>
 
 <a id="project-applykit"></a>
 
@@ -155,6 +146,16 @@ Turns **public campus hiring announcements from official company websites** into
 
 [Browse all public repositories →](https://github.com/augety121?tab=repositories&type=public)
 
+<details>
+<summary>Reading guide & project boundaries</summary>
+
+- **Start with the overview**: each README explains the use case and setup; documentation covers design and limitations.
+- **HashMM** is a historical open-source edition; **MCP State Twin** remains a development preview. Roadmaps are not implemented features.
+- **Resume Fill Assistant** uses explicitly selected facts and never submits applications automatically; **ApplyKit** preserves originals; **Autumn Jobs Crawler** routes restricted or uncertain sources to manual review.
+- Explore MCP State Twin through its [overview](https://github.com/augety121/MCP-State-Twin#readme), [design docs](https://github.com/augety121/MCP-State-Twin/tree/main/docs) and [Issues](https://github.com/augety121/MCP-State-Twin/issues).
+
+</details>
+
 <a id="craft"></a>
 
 ## How I build
@@ -168,9 +169,14 @@ I prefer to start with a concrete problem and a small, verifiable loop, then gra
   <img src="./assets/profile/craft-en.svg" width="100%" alt="An engineering feedback loop: define, build, verify and iterate." />
 </picture>
 
+<details>
+<summary>Explore my engineering principles</summary>
+
 - **Small, complete implementations**: give each change a clear goal, inputs, outputs and scope.
 - **Reviewable results**: document successful paths, failure cases and important trade-offs together.
 - **Evolving designs**: understand real constraints before choosing abstractions, interfaces and extension points.
+
+</details>
 
 <a id="stack"></a>
 
@@ -219,9 +225,7 @@ Tools change. What I want to keep improving is the ability to analyze problems, 
 
 ### Let's connect
 
-Interested in **RAG, context engineering, MCP or agent evaluation**? Let's start with a question, a piece of code, or an experiment.
-
-That could be a retrieval improvement, a tool-interface trade-off, an evaluation method, or an idea worth reproducing together. Specific questions and different perspectives are always valuable.
+Interested in **RAG, context engineering, MCP or agent evaluation**? Let's start with a specific question, a piece of code or a reproducible experiment.
 
 [My repositories](https://github.com/augety121?tab=repositories) &nbsp; · &nbsp; [Project discussions](https://github.com/augety121/MCP-State-Twin/issues) &nbsp; · &nbsp; [Profile feedback](https://github.com/augety121/augety121/issues)
 

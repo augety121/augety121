@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="205" viewBox="0 0 1200 205" role="img" aria-label="Resume Fill Assistant · Local facts. Reviewed before filling.">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="181" viewBox="0 0 1200 181" role="img" aria-label="Resume Fill Assistant · Local facts. Reviewed before filling.">
 <title>Resume Fill Assistant · Local facts. Reviewed before filling.</title>
 <defs>
   <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#F6FBFF"/><stop offset=".55" stop-color="#F3FAFB"/><stop offset="1" stop-color="#EBF8F0"/></linearGradient>
   <linearGradient id="accent"><stop stop-color="#69AFDD"/><stop offset="1" stop-color="#68C4AC"/></linearGradient>
   <radialGradient id="glow"><stop stop-color="#A9D9EF" stop-opacity=".38"/><stop offset="1" stop-color="#A9D9EF" stop-opacity="0"/></radialGradient>
   <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#A3BCC8" opacity=".23"/></pattern>
-  <clipPath id="clip"><rect x="1" y="1" width="1198" height="203" rx="28"/></clipPath>
+  <clipPath id="clip"><rect x="1" y="1" width="1198" height="179" rx="28"/></clipPath>
   <style>text{font-family:'Segoe UI','Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif}.flow{stroke-dasharray:14 180}.flow-slow{stroke-dasharray:10 240}
       .flow{stroke-dasharray:14 180;animation:flow 7s linear infinite}
       .flow-slow{stroke-dasharray:10 240;animation:flowSlow 11s linear infinite reverse}
@@ -18,6 +18,6 @@
       @media(prefers-reduced-motion:reduce){*{animation:none!important}}
     </style>
 </defs>
-<g clip-path="url(#clip)"><rect width="1200" height="205" fill="url(#paper)"/><rect x="36" y="32" width="30" height="4" rx="2" fill="url(#accent)"/><text x="36" y="87" font-size="40" fill="#243B53" font-weight="700" >Resume Fill Assistant</text><text x="36" y="132" font-size="25" fill="#607D8B" font-weight="400" >Local facts. Reviewed before filling.</text><text x="36" y="176" font-size="20" fill="#309F8B" font-weight="500" >Chrome / Edge · Local-first · Optional MCP</text><path d="M820 95 C885 20 925 165 1000 95 S1100 55 1160 95" fill="none" stroke="#D4E8E9" stroke-width="12"/><path class="flow" d="M820 95 C885 20 925 165 1000 95 S1100 55 1160 95" fill="none" stroke="#69B6B5" stroke-width="3"/><circle cx="850" cy="95" r="8" fill="#FFFFFF" stroke="#84BFC5" stroke-width="2"/><circle cx="990" cy="95" r="8" fill="#FFFFFF" stroke="#84BFC5" stroke-width="2"/><circle cx="1130" cy="95" r="8" fill="#FFFFFF" stroke="#84BFC5" stroke-width="2"/></g>
-<rect x="1" y="1" width="1198" height="203" rx="28" fill="none" stroke="#DDEBEA"/>
+<g clip-path="url(#clip)"><rect width="1200" height="181" fill="url(#paper)"/><rect x="36" y="14" width="30" height="3" rx="1.5" fill="url(#accent)"/><text x="36" y="70" font-size="42" fill="#243B53" font-weight="700" >Resume Fill Assistant</text><text x="36" y="112" font-size="25" fill="#526F7B" font-weight="400" >Local facts. Reviewed before filling.</text><text x="36" y="153" font-size="21" fill="#397565" font-weight="500" >Chrome / Edge · Local-first · Optional MCP</text><g transform="translate(958 28)"><g class="project-motif" data-kind="resume" fill="#FFFFFF" fill-opacity=".85" stroke="#80B8BD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="164" height="112" rx="14"/><path d="M4 32 H168 M22 54 H70 M22 79 H70 M22 103 H70"/><circle cx="19" cy="19" r="2"/><circle cx="29" cy="19" r="2"/><rect x="91" y="47" width="57" height="14" rx="4"/><rect x="91" y="72" width="57" height="14" rx="4"/><path d="M111 99 L119 107 L134 92"/></g></g><path d="M36 163 H820" stroke="#DCEAEA"/><path class="flow-slow" d="M36 163 H820" stroke="#69B6B5" stroke-width="2"/></g>
+<rect x="1" y="1" width="1198" height="179" rx="28" fill="none" stroke="#DDEBEA"/>
 </svg>
