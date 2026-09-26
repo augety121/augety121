@@ -15,7 +15,8 @@ import frame_contribution_snake as snake_frame
 
 class ProfileTests(unittest.TestCase):
     def test_public_project_showcase(self):
-        projects = {"hashmm": "HashMM-RAG-Agent", "applykit": "ApplyKit", "autumn": "autumn-jobs-crawler"}
+        projects = {"hashmm": "HashMM-RAG-Agent", "applykit": "ApplyKit", "autumn": "autumn-jobs-crawler", "resume": "jianlitianxie"}
+        self.assertEqual(set(projects), set(visuals.PROJECT_CARDS))
         for lang, filename in (("zh", "README.md"), ("en", "README.en.md")):
             readme = (ROOT / filename).read_text(encoding="utf-8")
             self.assertIn("https://github.com/augety121/MCP-State-Twin", readme)
@@ -33,6 +34,17 @@ class ProfileTests(unittest.TestCase):
                         self.assertEqual(root.attrib["width"], "720" if mobile else "1200")
                         self.assertEqual("@keyframes" in rendered, animated)
             self.assertIn("历史版本" if lang == "zh" else "historical edition", readme)
+
+    def test_project_navigation_and_resume_boundaries(self):
+        for lang, filename in (("zh", "README.md"), ("en", "README.en.md")):
+            source = (ROOT / filename).read_text(encoding="utf-8")
+            for key in ("hashmm", "twin", "resume", "applykit", "autumn"):
+                self.assertIn(f'href="#project-{key}"', source)
+                self.assertEqual(source.count(f'id="project-{key}"'), 1)
+            self.assertIn("不自动提交申请" if lang == "zh" else "never submits applications automatically", source)
+            for mobile in (False, True):
+                rendered = visuals.project_card("resume", lang, True, mobile)
+                self.assertIn("简历填写助手" if lang == "zh" else "Resume Fill Assistant", rendered)
 
     def test_svg_safety_and_animation(self):
         for path in (ROOT / "assets/profile").glob("*.svg"):

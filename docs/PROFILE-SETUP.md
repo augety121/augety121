@@ -27,6 +27,16 @@ python -m unittest discover -s tests -v
 
 `frame_contribution_snake.py` 读取已有的真实 `contribution-snake.svg`，只嵌入浅色外框和中英文标题，不修改贡献格子、运动轨迹或动画关键帧。生成的 `contribution-zh.svg`、`contribution-en.svg` 及 `contribution-mobile-*.svg` 供 README 使用。数据更新工作流先运行 `snk`，再生成外框；不需要额外令牌或图片服务。
 
+## 公开项目维护
+
+项目区按「Agent 与评测」「实用工具」分组，提供五个独立锚点用于快速跳转。默认中文和英文版需同步更新。
+
+截至 2026-09-26，本轮核对的公开项目为 HashMM-RAG-Agent、MCP-State-Twin、jianlitianxie、ApplyKit、autumn-jobs-crawler。介绍以各仓库公开 README 为依据，不读取或自动展示私有项目。HashMM 保留历史开源版本说明；MCP State Twin 保留开发预览说明；简历填写助手保留人工核对、不自动提交和网站兼容范围的边界。
+
+通用项目卡片在 `scripts/build_profile_assets.py` 的 `PROJECT_CARDS` 中维护。名称可使用单个字符串或中英文二元组；新项目需同时补充两份 README 的图片、锚点、简介和链接，再生成资源并运行测试。MCP State Twin 沿用专属状态分叉图。
+
+简历填写助手的安装与隐私链接指向公开的 0.4.3 文档；后续版本更换入口时应再次核对，不把路线图能力写成已实现功能。
+
 ## 动态组件与来源
 
 | 组件 | 用途 | 依赖与失败行为 |

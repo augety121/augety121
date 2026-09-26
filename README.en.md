@@ -23,6 +23,8 @@ I'm a developer focused on **RAG and agent systems engineering**: how knowledge 
 
 This is where I share open-source work, engineering experiments and things I learn along the way. My current focus is **MCP tool environments and reproducible evaluation**, alongside retrieval, memory, runtimes and safety boundaries.
 
+I also apply these ideas to local tools and browser extensions, reducing repetitive work while keeping data boundaries clear.
+
 <picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/focus-mobile-en-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/focus-en-static.svg" />
@@ -54,7 +56,14 @@ I want to turn these explorations into clear code, runnable experiments and evid
 
 Public work spanning agent workspaces, evaluation environments and practical everyday tools.
 
+<p>
+  <a href="#project-hashmm">HashMM</a> &nbsp; · &nbsp; <a href="#project-twin">MCP State Twin</a><br/>
+  <a href="#project-resume">Resume Fill Assistant</a> &nbsp; · &nbsp; <a href="#project-applykit">ApplyKit</a> &nbsp; · &nbsp; <a href="#project-autumn">Autumn Jobs Crawler</a>
+</p>
+
 ### Agents & evaluation
+
+<a id="project-hashmm"></a>
 
 <a href="https://github.com/augety121/HashMM-RAG-Agent">
 <picture>
@@ -68,6 +77,8 @@ Public work spanning agent workspaces, evaluation environments and practical eve
 A workspace bringing together **knowledge retrieval, cited evidence and recoverable tasks**, with desktop, Android and tool extensions. This links to the published historical edition; see the repository for its capabilities and limitations.
 
 [Explore the code →](https://github.com/augety121/HashMM-RAG-Agent) &nbsp; [Overview](https://github.com/augety121/HashMM-RAG-Agent#readme) &nbsp; [Contribute](https://github.com/augety121/HashMM-RAG-Agent/blob/main/COMMUNITY.md)
+
+<a id="project-twin"></a>
 
 <a href="https://github.com/augety121/MCP-State-Twin">
 <picture>
@@ -95,6 +106,25 @@ Building **reproducible, forkable, stateful MCP test worlds** for AI agent evalu
 
 ### Practical tools
 
+<a id="project-resume"></a>
+
+<a href="https://github.com/augety121/jianlitianxie">
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/project-resume-mobile-en-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/project-resume-en-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/project-resume-mobile-en.svg" />
+  <img src="./assets/profile/project-resume-en.svg" width="100%" alt="Resume Fill Assistant · Local profile management, reviewed form filling and optional MCP collaboration" />
+</picture>
+</a>
+
+A **local profile and form-filling assistant** for Chrome / Edge: store and verify facts, review field mappings, then fill only the selected information. The default local mode makes no model calls; temporary MCP collaboration is optional. It never submits applications automatically.
+
+[Explore the code →](https://github.com/augety121/jianlitianxie) &nbsp; [Installation & usage](https://github.com/augety121/jianlitianxie/blob/main/docs/INSTALL-0.4.3.md) &nbsp; [Privacy & permissions](https://github.com/augety121/jianlitianxie/blob/main/docs/PRIVACY-0.4.3.md)
+
+<sub>An evolving browser extension. See the project for supported controls and site limitations; review the filled form yourself.</sub>
+
+<a id="project-applykit"></a>
+
 <a href="https://github.com/augety121/ApplyKit">
 <picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/project-applykit-mobile-en-static.svg" />
@@ -107,6 +137,8 @@ Building **reproducible, forkable, stateful MCP test worlds** for AI agent evalu
 A **local Windows utility** for preparing application documents: crop images, convert PDFs and compress files to meet upload limits. Keeps originals and does not upload documents to the internet.
 
 [Explore the code →](https://github.com/augety121/ApplyKit) &nbsp; [Download](https://github.com/augety121/ApplyKit/releases) &nbsp; [User guide](https://github.com/augety121/ApplyKit#readme)
+
+<a id="project-autumn"></a>
 
 <a href="https://github.com/augety121/autumn-jobs-crawler">
 <picture>

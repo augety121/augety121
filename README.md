@@ -23,6 +23,8 @@
 
 这里记录我的开源实践、工程探索和持续学习。目前主要在研究 **MCP 工具环境与可复现评测**，也持续探索检索、记忆、运行时与安全边界。
 
+我也把这些工程思路用于本地工具与浏览器扩展，让重复工作更少、数据边界更清楚。
+
 <picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/focus-mobile-zh-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/focus-zh-static.svg" />
@@ -54,7 +56,14 @@
 
 从 Agent 工作空间、评测环境，到解决日常问题的小工具，这些是我的公开实践。
 
+<p>
+  <a href="#project-hashmm">HashMM</a> &nbsp; · &nbsp; <a href="#project-twin">MCP State Twin</a><br/>
+  <a href="#project-resume">简历填写助手</a> &nbsp; · &nbsp; <a href="#project-applykit">ApplyKit</a> &nbsp; · &nbsp; <a href="#project-autumn">秋招公告聚合</a>
+</p>
+
 ### Agent 与评测
+
+<a id="project-hashmm"></a>
 
 <a href="https://github.com/augety121/HashMM-RAG-Agent">
 <picture>
@@ -68,6 +77,8 @@
 将**知识检索、证据引用与可恢复任务**组织到一个工作空间，涵盖桌面端、Android 与工具扩展。这里展示的是已公开的历史版本，功能与使用边界以仓库说明为准。
 
 [查看源码 →](https://github.com/augety121/HashMM-RAG-Agent) &nbsp; [项目概览](https://github.com/augety121/HashMM-RAG-Agent#readme) &nbsp; [参与协作](https://github.com/augety121/HashMM-RAG-Agent/blob/main/COMMUNITY.md)
+
+<a id="project-twin"></a>
 
 <a href="https://github.com/augety121/MCP-State-Twin">
 <picture>
@@ -95,6 +106,25 @@
 
 ### 实用工具
 
+<a id="project-resume"></a>
+
+<a href="https://github.com/augety121/jianlitianxie">
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/project-resume-mobile-zh-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/project-resume-zh-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/project-resume-mobile-zh.svg" />
+  <img src="./assets/profile/project-resume-zh.svg" width="100%" alt="简历填写助手 · 本地资料管理、核对后填写与可选 MCP 协作" />
+</picture>
+</a>
+
+面向 Chrome / Edge 的**本地资料与填表助手**：保存并核实资料，预览字段映射，再填写本次选中的内容。默认本地模式不调用模型，可按需临时授权 MCP 协作；不自动提交申请。
+
+[查看源码 →](https://github.com/augety121/jianlitianxie) &nbsp; [安装与使用](https://github.com/augety121/jianlitianxie/blob/main/docs/INSTALL-0.4.3.md) &nbsp; [隐私与权限](https://github.com/augety121/jianlitianxie/blob/main/docs/PRIVACY-0.4.3.md)
+
+<sub>持续迭代中的浏览器扩展；复杂控件与网站兼容范围以项目说明为准，填写后仍需人工检查。</sub>
+
+<a id="project-applykit"></a>
+
 <a href="https://github.com/augety121/ApplyKit">
 <picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/project-applykit-mobile-zh-static.svg" />
@@ -107,6 +137,8 @@
 面向投递材料的 **Windows 本地工具**：裁剪图片、转换 PDF、压缩文件，让材料符合网站的大小要求。保留原件，不上传材料到互联网。
 
 [查看源码 →](https://github.com/augety121/ApplyKit) &nbsp; [下载使用](https://github.com/augety121/ApplyKit/releases) &nbsp; [使用说明](https://github.com/augety121/ApplyKit#readme)
+
+<a id="project-autumn"></a>
 
 <a href="https://github.com/augety121/autumn-jobs-crawler">
 <picture>

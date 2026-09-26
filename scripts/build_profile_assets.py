@@ -167,6 +167,7 @@ def focus_mobile(lang, animated):
 
 
 PROJECT_CARDS = {
+    "resume": (("简历填写助手", "Resume Fill Assistant"), ("资料在本地，填写前先核对", "Local facts. Reviewed before filling."), ("Chrome / Edge · 本地优先 · 可选 MCP", "Chrome / Edge · Local-first · Optional MCP")),
     "hashmm": ("HashMM-RAG-Agent", ("本地优先的 Agent 工作空间", "A local-first agent workspace"), ("历史开源版本 · RAG · 可恢复任务", "Historical open-source edition · RAG · Durable tasks")),
     "applykit": ("ApplyKit", ("把投递材料整理得刚刚好", "Application documents, ready to go"), ("Windows · 本地处理 · PDF 与图片", "Windows · Local processing · PDF & images")),
     "autumn": ("autumn-jobs-crawler", ("从官方招聘公告到结构化信息", "From official job posts to structured data"), ("Python · 安全聚合 · Excel 导出", "Python · Safety-first aggregation · Excel")),
@@ -176,6 +177,7 @@ PROJECT_CARDS = {
 def project_card(key, lang, animated, mobile=False):
     name, captions, tags = PROJECT_CARDS[key]
     locale = 0 if lang == "zh" else 1
+    name = name[locale] if isinstance(name, tuple) else name
     width = 720 if mobile else 1200
     body = '<rect x="36" y="32" width="30" height="4" rx="2" fill="url(#accent)"/>'
     body += text(36, 87, name, 40, INK, 700)
@@ -202,7 +204,7 @@ def main():
                     suffix = "" if animated else "-static"
                     variant = "-mobile" if mobile else ""
                     (OUT / f"project-{key}{variant}-{lang}{suffix}.svg").write_text(project_card(key, lang, animated, mobile), encoding="utf-8", newline="\n")
-    print("Generated 60 bilingual desktop/mobile profile assets.")
+    print(f"Generated {36 + len(PROJECT_CARDS) * 8} bilingual desktop/mobile profile assets.")
 
 
 if __name__ == "__main__":
