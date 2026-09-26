@@ -21,9 +21,7 @@
 
 我是一名专注于 **RAG 与 Agent 系统工程**的开发者，关注知识如何成为上下文，以及上下文如何转化为可靠的行动。
 
-这里记录我的开源实践、工程探索和持续学习。目前主要在研究 **MCP 工具环境与可复现评测**，也持续探索检索、记忆、运行时与安全边界。
-
-我也把这些工程思路用于本地工具与浏览器扩展，让重复工作更少、数据边界更清楚。
+这里记录我的开源实践：从 **MCP 工具环境与可复现评测**，到本地工具与浏览器扩展。让重复工作更少，让数据与行动的边界更清楚。
 
 <picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/focus-mobile-zh-static.svg" />
@@ -31,6 +29,9 @@
   <source media="(max-width: 600px)" srcset="./assets/profile/focus-mobile-zh.svg" />
   <img src="./assets/profile/focus-zh.svg" width="100%" alt="关注方向：上下文工程（检索、重排、知识图谱）、工具运行时（MCP、状态、恢复）、可靠评测（追踪、断言、可复现性）。" />
 </picture>
+
+<details>
+<summary>最近在探索 · 我在意的工程细节</summary>
 
 ### 最近在探索
 
@@ -40,8 +41,7 @@
 
 我希望把这些探索沉淀成清晰的代码、可运行的实验和有依据的文档，也让这里成为一个持续成长的工程笔记本。
 
-<details>
-<summary>我在意的工程细节</summary>
+### 我在意的工程细节
 
 - **上下文的质量**：相关、有依据，比单纯增加长度更重要。
 - **工具的边界**：权限、预算和失败语义，是系统设计的一部分。
@@ -57,8 +57,8 @@
 从 Agent 工作空间、评测环境，到解决日常问题的小工具，这些是我的公开实践。
 
 <p>
-  <a href="#project-hashmm">HashMM</a> &nbsp; · &nbsp; <a href="#project-twin">MCP State Twin</a><br/>
-  <a href="#project-resume">简历填写助手</a> &nbsp; · &nbsp; <a href="#project-applykit">ApplyKit</a> &nbsp; · &nbsp; <a href="#project-autumn">秋招公告聚合</a>
+  <strong>Agent</strong> &nbsp; <a href="#project-hashmm">知识工作空间</a> &nbsp; · &nbsp; <a href="#project-twin">评测环境</a><br/>
+  <strong>工具</strong> &nbsp; <a href="#project-resume">简历填写</a> &nbsp; · &nbsp; <a href="#project-applykit">材料处理</a> &nbsp; · &nbsp; <a href="#project-autumn">招聘信息</a>
 </p>
 
 ### Agent 与评测
@@ -74,7 +74,7 @@
 </picture>
 </a>
 
-将**知识检索、证据引用与可恢复任务**组织到一个工作空间，涵盖桌面端、Android 与工具扩展。这里展示的是已公开的历史版本，功能与使用边界以仓库说明为准。
+将**知识检索、证据引用与可恢复任务**组织到一个工作空间，涵盖桌面端、Android 与工具扩展。公开仓库保留历史版本，功能边界见项目说明。
 
 [查看源码 →](https://github.com/augety121/HashMM-RAG-Agent) &nbsp; [项目概览](https://github.com/augety121/HashMM-RAG-Agent#readme) &nbsp; [参与协作](https://github.com/augety121/HashMM-RAG-Agent/blob/main/COMMUNITY.md)
 
@@ -93,16 +93,7 @@
 
 [查看源码 →](https://github.com/augety121/MCP-State-Twin) &nbsp; [阅读文档](https://github.com/augety121/MCP-State-Twin/tree/main/docs) &nbsp; [交流问题](https://github.com/augety121/MCP-State-Twin/issues)
 
-<sub>项目处于开发预览阶段；已实现能力与边界以项目文档为准。</sub>
-
-<details>
-<summary>从哪里开始阅读？</summary>
-
-- **快速了解**：从 [项目概览](https://github.com/augety121/MCP-State-Twin#readme) 了解它解决的问题与基本工作方式。
-- **深入设计**：在 [项目文档](https://github.com/augety121/MCP-State-Twin/tree/main/docs) 中查看状态、工具契约、评测与实现边界。
-- **交流改进**：通过 [Issues](https://github.com/augety121/MCP-State-Twin/issues) 讨论使用问题、复现案例和设计取舍。
-
-</details>
+<sub>开发预览；已实现能力以项目文档为准。</sub>
 
 ### 实用工具
 
@@ -117,11 +108,11 @@
 </picture>
 </a>
 
-面向 Chrome / Edge 的**本地资料与填表助手**：保存并核实资料，预览字段映射，再填写本次选中的内容。默认本地模式不调用模型，可按需临时授权 MCP 协作；不自动提交申请。
+面向 Chrome / Edge 的**本地资料与填表助手**：核实资料、预览映射、填写选中内容。默认本地模式不调用模型，可选临时 MCP 协作；不自动提交申请。
 
 [查看源码 →](https://github.com/augety121/jianlitianxie) &nbsp; [安装与使用](https://github.com/augety121/jianlitianxie/blob/main/docs/INSTALL-0.4.3.md) &nbsp; [隐私与权限](https://github.com/augety121/jianlitianxie/blob/main/docs/PRIVACY-0.4.3.md)
 
-<sub>持续迭代中的浏览器扩展；复杂控件与网站兼容范围以项目说明为准，填写后仍需人工检查。</sub>
+<sub>网站与控件支持范围见项目说明；填写后仍需人工检查。</sub>
 
 <a id="project-applykit"></a>
 
@@ -155,6 +146,16 @@
 
 [浏览全部公开仓库 →](https://github.com/augety121?tab=repositories&type=public)
 
+<details>
+<summary>项目阅读指南与使用边界</summary>
+
+- **先看概览，再看实现**：每个仓库的 README 说明用途和上手方式，文档记录设计与限制。
+- **HashMM** 展示历史开源版本；**MCP State Twin** 仍处于开发预览阶段，不把路线图当作已实现功能。
+- **简历填写助手** 只处理明确选中的资料，不自动提交；**ApplyKit** 保留原材料；**秋招公告聚合** 在访问受限或不确定时交人工确认。
+- 深入了解 MCP State Twin 可从 [项目概览](https://github.com/augety121/MCP-State-Twin#readme)、[设计文档](https://github.com/augety121/MCP-State-Twin/tree/main/docs) 和 [Issues](https://github.com/augety121/MCP-State-Twin/issues) 开始。
+
+</details>
+
 <a id="craft"></a>
 
 ## 我的开发方式
@@ -168,9 +169,14 @@
   <img src="./assets/profile/craft-zh.svg" width="100%" alt="开发反馈循环：拆解问题、小步实现、证据验证、复盘迭代。" />
 </picture>
 
+<details>
+<summary>展开开发原则</summary>
+
 - **小而完整的实现**：让每次改动有清楚的目标、输入输出和适用范围。
 - **能够复查的结果**：把成功路径、失败案例和关键取舍一起记录下来。
 - **持续演进的设计**：先理解真实约束，再决定抽象、接口与扩展方式。
+
+</details>
 
 <a id="stack"></a>
 
@@ -219,9 +225,7 @@
 
 ### 一起交流
 
-如果你也关注 **RAG、上下文工程、MCP 或 Agent 评测**，欢迎从一个问题、一段代码或一次实验开始交流。
-
-可以聊一次检索效果的改进、一个工具接口的取舍、一种评测方法，或一个值得一起复现的想法。具体的问题和不同的视角，都很有价值。
+如果你也关注 **RAG、上下文工程、MCP 或 Agent 评测**，欢迎从一个具体问题、一段代码或一次可复现的实验开始交流。
 
 [我的仓库](https://github.com/augety121?tab=repositories) &nbsp; · &nbsp; [项目讨论](https://github.com/augety121/MCP-State-Twin/issues) &nbsp; · &nbsp; [主页反馈](https://github.com/augety121/augety121/issues)
 

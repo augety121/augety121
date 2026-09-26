@@ -1,4 +1,5 @@
 import re
+from html.parser import HTMLParser
 import sys
 import tempfile
 import unittest
@@ -13,7 +14,56 @@ import update_profile_data as data
 import frame_contribution_snake as snake_frame
 
 
+class LayoutParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.details_depth = 0
+        self.project_anchors = []
+        self.invalid_details = False
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == "details":
+            self.details_depth += 1
+            self.invalid_details |= "open" in attrs or self.details_depth > 1
+        if tag == "a" and attrs.get("id", "").startswith("project-"):
+            self.project_anchors.append((attrs["id"], self.details_depth))
+
+    def handle_endtag(self, tag):
+        if tag == "details":
+            self.details_depth -= 1
+            self.invalid_details |= self.details_depth < 0
+
+
 class ProfileTests(unittest.TestCase):
+    def test_progressive_layout_keeps_projects_visible(self):
+        for filename in ("README.md", "README.en.md"):
+            source = (ROOT / filename).read_text(encoding="utf-8")
+            parser = LayoutParser()
+            parser.feed(source)
+            self.assertFalse(parser.invalid_details)
+            self.assertEqual(parser.details_depth, 0)
+            self.assertEqual(len(parser.project_anchors), 5)
+            self.assertTrue(all(depth == 0 for _, depth in parser.project_anchors))
+            before_projects = source.split('<a id="work">')[0]
+            self.assertIn("<details>", before_projects)
+            self.assertIn("</details>", before_projects)
+
+    def test_project_visual_hierarchy_and_mobile_type(self):
+        ns = "{http://www.w3.org/2000/svg}"
+        for lang in ("zh", "en"):
+            featured = ET.fromstring(visuals.project_card("hashmm", lang, True))
+            for key in visuals.PROJECT_CARDS:
+                desktop = ET.fromstring(visuals.project_card(key, lang, True))
+                motif = [el for el in desktop.iter() if el.attrib.get("class") == "project-motif"]
+                self.assertEqual(motif[0].attrib["data-kind"], key)
+                if key != "hashmm":
+                    self.assertLess(int(desktop.attrib["height"]), int(featured.attrib["height"]))
+                mobile = ET.fromstring(visuals.project_card(key, lang, True, True))
+                labels = mobile.findall(f".//{ns}text")
+                self.assertTrue(all(int(el.attrib["font-size"]) >= 30 for el in labels))
+                self.assertTrue(any(el.attrib.get("class") == "flow-slow" for el in mobile.iter()))
+
     def test_public_project_showcase(self):
         projects = {"hashmm": "HashMM-RAG-Agent", "applykit": "ApplyKit", "autumn": "autumn-jobs-crawler", "resume": "jianlitianxie"}
         self.assertEqual(set(projects), set(visuals.PROJECT_CARDS))
