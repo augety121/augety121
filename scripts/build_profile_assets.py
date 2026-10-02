@@ -101,11 +101,11 @@ def hero_mobile(lang, animated):
 
 def project_mobile(lang, animated):
     zh = lang == "zh"
-    body = text(36, 43, "状态与评测" if zh else "STATE & EVALUATION", 23, MINT, 600)
+    body = text(36, 43, "状态与评测" if zh else "STATE & EVALUATION", 26, MINT, 600)
     body += text(36, 105, "MCP State Twin", 44, INK, 700)
     body += text(36, 153, "同一起点，不同路径，" if zh else "Same start. Different paths.", 29, MUTED)
     body += text(36, 192, "可比较的最终状态。" if zh else "Comparable outcomes.", 29, MUTED)
-    body += text(36, 243, "开发预览 · Go · MCP" if zh else "Development preview · Go · MCP", 26, "#397565", 500)
+    body += text(36, 243, "开发预览 · Go · MCP" if zh else "Development preview · Go · MCP", 28, "#397565", 500)
     body += project_flow("twin", True)
     return svg(body, 310, "MCP State Twin", animated, 720)
 
@@ -209,13 +209,13 @@ def project_card(key, lang, animated, mobile=False):
     categories = {"hashmm": ("知识与行动", "KNOWLEDGE & ACTION"), "resume": ("浏览器工具", "BROWSER TOOL"), "applykit": ("桌面工具", "DESKTOP TOOL"), "autumn": ("信息整理", "INFORMATION ORGANIZATION")}
     x = 36 if mobile else 44
     body = project_flow(key, mobile)
-    body += text(x, 43, categories[key][locale], 23 if mobile else 18, MINT, 600, 'letter-spacing="1"')
+    body += text(x, 43, categories[key][locale], 26 if mobile else 18, MINT, 600, 'letter-spacing="1"')
     body += text(x, 105, name, 44 if mobile else 42, INK, 700)
     body += text(x, 154, captions[locale], 29 if mobile else 25, "#526F7B")
     if mobile:
         tag_parts = tags[locale].split(" · ", 1)
         for i, line in enumerate(tag_parts):
-            body += text(x, 206+i*37, line, 26, "#397565", 500)
+            body += text(x, 206+i*37, line, 28, "#397565", 500)
     else:
         body += text(x, 215, tags[locale], 21, "#397565", 500)
     return svg(body, height, name + " · " + captions[locale], animated, width)

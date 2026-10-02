@@ -74,7 +74,7 @@ From retrieval to action, and from execution back to verifiable evidence.
 
 A local workspace connecting **knowledge retrieval, cited evidence and recoverable tasks**. This links to the published historical edition.
 
-[Explore the code →](https://github.com/augety121/HashMM-RAG-Agent) &nbsp; [Overview](https://github.com/augety121/HashMM-RAG-Agent#readme) &nbsp; [Contribute](https://github.com/augety121/HashMM-RAG-Agent/blob/main/COMMUNITY.md)
+[Source →](https://github.com/augety121/HashMM-RAG-Agent) &nbsp; [Overview](https://github.com/augety121/HashMM-RAG-Agent#readme) &nbsp; [Contribute](https://github.com/augety121/HashMM-RAG-Agent/blob/main/COMMUNITY.md)
 
 <br/>
 
@@ -91,7 +91,7 @@ A local workspace connecting **knowledge retrieval, cited evidence and recoverab
 
 A **reproducible MCP test environment** for agents: fork runs from the same snapshot, use tools in isolation, and compare final states.
 
-[Explore the code →](https://github.com/augety121/MCP-State-Twin) &nbsp; [Read the docs](https://github.com/augety121/MCP-State-Twin/tree/main/docs) &nbsp; [Discuss an issue](https://github.com/augety121/MCP-State-Twin/issues)
+[Source →](https://github.com/augety121/MCP-State-Twin) &nbsp; [Docs](https://github.com/augety121/MCP-State-Twin/tree/main/docs) &nbsp; [Issues](https://github.com/augety121/MCP-State-Twin/issues)
 
 ### Practical tools
 
@@ -110,7 +110,7 @@ Organize information, prepare documents, and automate repetitive steps—while k
 
 A **local form-filling assistant** for Chrome / Edge. Review facts and field mappings before filling selected content. No model calls by default; it never submits applications automatically.
 
-[Explore the code →](https://github.com/augety121/jianlitianxie) &nbsp; [Installation & usage](https://github.com/augety121/jianlitianxie/blob/main/docs/INSTALL-0.4.3.md) &nbsp; [Privacy & permissions](https://github.com/augety121/jianlitianxie/blob/main/docs/PRIVACY-0.4.3.md)
+[Source →](https://github.com/augety121/jianlitianxie) &nbsp; [Install guide](https://github.com/augety121/jianlitianxie/blob/main/docs/INSTALL-0.4.3.md) &nbsp; [Privacy](https://github.com/augety121/jianlitianxie/blob/main/docs/PRIVACY-0.4.3.md)
 
 <br/>
 
@@ -127,7 +127,7 @@ A **local form-filling assistant** for Chrome / Edge. Review facts and field map
 
 **Crop images, convert PDFs and compress files locally** to meet document requirements. Keeps originals and does not upload documents to the internet.
 
-[Explore the code →](https://github.com/augety121/ApplyKit) &nbsp; [Download](https://github.com/augety121/ApplyKit/releases) &nbsp; [User guide](https://github.com/augety121/ApplyKit#readme)
+[Source →](https://github.com/augety121/ApplyKit) &nbsp; [Download](https://github.com/augety121/ApplyKit/releases) &nbsp; [User guide](https://github.com/augety121/ApplyKit#readme)
 
 <br/>
 
@@ -144,7 +144,7 @@ A **local form-filling assistant** for Chrome / Edge. Review facts and field map
 
 Turns **official company campus hiring announcements** into filterable Excel records, preserving sources and human review. No automatic login, verification bypass or applications.
 
-[Explore the code →](https://github.com/augety121/autumn-jobs-crawler) &nbsp; [User guide](https://github.com/augety121/autumn-jobs-crawler#readme) &nbsp; [Safety boundaries](https://github.com/augety121/autumn-jobs-crawler/blob/main/SECURITY.md)
+[Source →](https://github.com/augety121/autumn-jobs-crawler) &nbsp; [User guide](https://github.com/augety121/autumn-jobs-crawler#readme) &nbsp; [Safety](https://github.com/augety121/autumn-jobs-crawler/blob/main/SECURITY.md)
 
 <details>
 <summary>Reading guide & project boundaries</summary>

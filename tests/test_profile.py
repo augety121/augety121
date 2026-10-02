@@ -59,7 +59,7 @@ class ProfileTests(unittest.TestCase):
                 self.assertFalse(any(el.attrib.get("class") == "project-motif" for el in desktop.iter()))
                 mobile = ET.fromstring(visuals.project_card(key, lang, True, True))
                 labels = mobile.findall(f".//{ns}text")
-                self.assertTrue(all(int(el.attrib["font-size"]) >= 23 for el in labels))
+                self.assertTrue(all(int(el.attrib["font-size"]) >= 26 for el in labels))
                 self.assertTrue(all(int(el.attrib["y"]) < 260 for el in labels))
                 self.assertTrue(any(el.attrib.get("class") == "flow-slow" for el in mobile.iter()))
 
