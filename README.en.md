@@ -53,7 +53,8 @@ This is where I share open-source work, from **MCP tool environments and reprodu
 Some projects explore what agents can do and where their boundaries lie. Others take repetitive work out of everyday life.
 
 <p align="center">
-  <a href="#project-hashmm">Workspace</a> &nbsp; / &nbsp; <a href="#project-twin">Evaluation</a> &nbsp; / &nbsp; <a href="#project-resume">Form filling</a> &nbsp; / &nbsp; <a href="#project-applykit">Documents</a> &nbsp; / &nbsp; <a href="#project-autumn">Job posts</a>
+  <a href="#project-hashmm">Workspace</a> &nbsp; · &nbsp; <a href="#project-twin">Evaluation</a><br/>
+  <a href="#project-resume">Form filling</a> &nbsp; · &nbsp; <a href="#project-applykit">Documents</a> &nbsp; · &nbsp; <a href="#project-autumn">Job posts</a>
 </p>
 
 ### Agents & evaluation

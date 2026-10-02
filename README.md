@@ -53,7 +53,8 @@
 一部分项目探索 Agent 的能力与边界，一部分工具解决真实生活里的重复工作。
 
 <p align="center">
-  <a href="#project-hashmm">知识工作空间</a> &nbsp; / &nbsp; <a href="#project-twin">Agent 评测</a> &nbsp; / &nbsp; <a href="#project-resume">简历填写</a> &nbsp; / &nbsp; <a href="#project-applykit">材料处理</a> &nbsp; / &nbsp; <a href="#project-autumn">公告聚合</a>
+  <a href="#project-hashmm">知识工作空间</a> &nbsp; · &nbsp; <a href="#project-twin">Agent 评测</a><br/>
+  <a href="#project-resume">简历填写</a> &nbsp; · &nbsp; <a href="#project-applykit">材料处理</a> &nbsp; · &nbsp; <a href="#project-autumn">公告聚合</a>
 </p>
 
 ### Agent 与评测
