@@ -63,19 +63,18 @@ def hero(lang, animated):
 
 def project(lang, animated):
     zh = lang == "zh"
-    body = text(44, 43, "正在探索 / 精选开源" if zh else "IN FOCUS / OPEN SOURCE", 14, MUTED, 600, 'letter-spacing="2"')
-    body += text(44, 99, "MCP State Twin", 39, INK, 700)
-    body += text(44, 140, "同一起点，不同路径，可比较的最终状态。" if zh else "Same start. Different paths. Comparable outcomes.", 20 if zh else 17, MUTED)
-    body += '<rect x="44" y="168" width="110" height="29" rx="14" fill="#DCEFE8"/>'
-    body += text(99, 188, "开发预览" if zh else "PREVIEW", 13, "#397565", 600, 'text-anchor="middle"')
-    body += text(174, 188, "Go · MCP · 评测环境" if zh else "Go · MCP · Evaluation", 15, MUTED)
+    body = text(44, 43, "状态与评测" if zh else "STATE & EVALUATION", 18, MINT, 600, 'letter-spacing="2"')
+    body += text(44, 105, "MCP State Twin", 42, INK, 700)
+    body += text(44, 154, "同一起点，不同路径，可比较的最终状态。" if zh else "Same start. Different paths. Comparable outcomes.", 24 if zh else 21, MUTED)
+    body += text(44, 215, "开发预览 · Go · MCP" if zh else "Development preview · Go · MCP", 21, "#397565", 500)
+    body += '<circle cx="991" cy="130" r="204" fill="url(#glow)"/>'
     for route, color in [("M766 121 C797 121 795 74 826 74 M960 74 C1005 74 1006 127 1050 127", BLUE), ("M766 121 C797 121 795 190 826 190 M960 190 C1005 190 1006 127 1050 127", MINT)]:
         body += f'<path d="{route}" fill="none" stroke="#C7E0E4" stroke-width="2"/><path class="flow" d="{route}" fill="none" stroke="{color}" stroke-width="3" stroke-linecap="round"/>'
     for x, y, w, label, color in [(656,90,110,"快照" if zh else "Snapshot",BLUE),(826,47,134,"运行 A" if zh else "Run A",BLUE),(826,163,134,"运行 B" if zh else "Run B",MINT),(1050,100,104,"比较终态" if zh else "Compare",MINT)]:
         body += f'<rect x="{x}" y="{y}" width="{w}" height="54" rx="17" fill="#FFFFFF" stroke="#D5E6E9"/>'
         body += text(x+w/2, y+34, label, 17 if zh else 16, color, 600, 'text-anchor="middle"')
     body += text(711, 175, "相同起点" if zh else "Same start", 14, MUTED, 400, 'text-anchor="middle"')
-    return svg(body, 235, "MCP State Twin · " + ("开发预览" if zh else "Development preview"), animated)
+    return svg(body, 260, "MCP State Twin · " + ("开发预览" if zh else "Development preview"), animated)
 
 
 def footer(lang, animated):
@@ -102,13 +101,13 @@ def hero_mobile(lang, animated):
 
 def project_mobile(lang, animated):
     zh = lang == "zh"
-    body = text(36, 40, "正在探索 / 精选开源" if zh else "IN FOCUS / OPEN SOURCE", 18, MUTED, 600)
-    body += text(36, 105, "MCP State Twin", 46, INK, 700)
-    body += text(36, 153, "同一起点，不同路径，" if zh else "Same start. Different paths.", 30, MUTED)
-    body += text(36, 193, "可比较的最终状态。" if zh else "Comparable outcomes.", 30, MUTED)
-    body += text(36, 246, "开发预览 · Go · MCP" if zh else "Development preview · Go · MCP", 28, MINT, 500)
-    body += '<path d="M36 278 H684" stroke="#D0E4E6"/><path class="flow" d="M36 278 H684" stroke="#63ADBF" stroke-width="3"/>'
-    return svg(body, 300, "MCP State Twin", animated, 720)
+    body = text(36, 43, "状态与评测" if zh else "STATE & EVALUATION", 23, MINT, 600)
+    body += text(36, 105, "MCP State Twin", 44, INK, 700)
+    body += text(36, 153, "同一起点，不同路径，" if zh else "Same start. Different paths.", 29, MUTED)
+    body += text(36, 192, "可比较的最终状态。" if zh else "Comparable outcomes.", 29, MUTED)
+    body += text(36, 243, "开发预览 · Go · MCP" if zh else "Development preview · Go · MCP", 26, "#397565", 500)
+    body += project_flow("twin", True)
+    return svg(body, 310, "MCP State Twin", animated, 720)
 
 
 def craft(lang, animated, mobile=False):
@@ -175,15 +174,30 @@ PROJECT_CARDS = {
 }
 
 
-def project_motif(key):
-    """Distinct code-native line illustrations, all within a 180 x 125 box."""
-    motifs = {
-        "resume": '<rect x="4" y="6" width="164" height="112" rx="14"/><path d="M4 32 H168 M22 54 H70 M22 79 H70 M22 103 H70"/><circle cx="19" cy="19" r="2"/><circle cx="29" cy="19" r="2"/><rect x="91" y="47" width="57" height="14" rx="4"/><rect x="91" y="72" width="57" height="14" rx="4"/><path d="M111 99 L119 107 L134 92"/>',
-        "applykit": '<rect x="8" y="6" width="112" height="96" rx="12"/><rect x="48" y="26" width="112" height="96" rx="12"/><circle cx="130" cy="50" r="7"/><path d="M62 102 L87 72 L105 88 L121 70 L146 102 Z M64 43 H89 M62 108 H146"/>',
-        "autumn": '<rect x="2" y="5" width="44" height="25" rx="7"/><rect x="2" y="49" width="44" height="25" rx="7"/><rect x="2" y="93" width="44" height="25" rx="7"/><path d="M46 17 H65 V61 H90 M46 61 H90 M46 105 H65 V61"/><rect x="90" y="25" width="83" height="74" rx="10"/><path d="M90 48 H173 M90 72 H173 M117 25 V99 M146 25 V99"/>',
-        "hashmm": '<rect x="4" y="8" width="47" height="56" rx="10"/><path d="M15 25 H39 M15 37 H33 M51 37 H88 V65 H119 M51 97 H88 V65"/><rect x="4" y="78" width="47" height="37" rx="10"/><circle cx="142" cy="65" r="26"/><path d="M132 65 L139 72 L153 57"/>',
-    }
-    return f'<g class="project-motif" data-kind="{key}" fill="#FFFFFF" fill-opacity=".85" stroke="#80B8BD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{motifs[key]}</g>'
+def project_flow(key, mobile=False):
+    """A quiet flowing signature: the same visual language as the hero."""
+    if mobile:
+        routes = ["M-20 295 C115 251 210 320 350 283 S570 264 740 283",
+                  "M-20 313 C170 260 224 338 382 301 S571 279 740 303"]
+        body = '<g class="project-flow" opacity=".75">'
+    else:
+        variants = {
+            "hashmm": ["M790 188 C886 188 831 65 978 88 S1094 192 1230 80", "M801 85 C891 20 946 223 1062 155 S1157 61 1230 121"],
+            "resume": ["M825 147 C892 44 968 55 1003 118 S1122 204 1230 88", "M831 180 C947 146 924 40 1049 83 S1150 159 1230 144"],
+            "applykit": ["M815 105 C924 27 909 211 1032 148 S1120 65 1230 115", "M827 167 C918 224 971 52 1095 102 S1190 202 1230 155"],
+            "autumn": ["M816 80 C926 43 898 193 1021 126 S1140 86 1230 173", "M830 187 C944 132 925 48 1061 114 S1169 149 1230 100"],
+        }
+        routes = variants[key]
+        body = '<g class="project-flow"><circle cx="1030" cy="117" r="206" fill="url(#glow)"/>'
+    for i, route in enumerate(routes):
+        color = "#78B8D9" if i == 0 else "#72BEAA"
+        body += f'<path d="{route}" fill="none" stroke="{color}" stroke-width="{16 if mobile else 22}" opacity=".09"/>'
+        body += f'<path d="{route}" fill="none" stroke="{color}" stroke-width="1.2" opacity=".5"/>'
+        body += f'<path class="{"flow" if i == 0 else "flow-slow"}" d="{route}" fill="none" stroke="{color}" stroke-width="3" stroke-linecap="round"/>'
+    if not mobile:
+        body += '<g class="float"><circle cx="1009" cy="119" r="35" fill="#FFFFFF" fill-opacity=".76" stroke="#D5E7E8"/><circle cx="1009" cy="119" r="19" fill="url(#paper)" stroke="#A7D2D2"/><circle cx="1009" cy="119" r="5" fill="#76B9B2"/></g>'
+        body += '<circle class="breathe" cx="856" cy="115" r="5" fill="#8BBFD4"/><circle cx="1151" cy="158" r="7" fill="#FFFFFF" stroke="#9ACBBF"/>'
+    return body + '</g>'
 
 
 def project_card(key, lang, animated, mobile=False):
@@ -191,21 +205,19 @@ def project_card(key, lang, animated, mobile=False):
     locale = 0 if lang == "zh" else 1
     name = name[locale] if isinstance(name, tuple) else name
     width = 720 if mobile else 1200
-    featured = key == "hashmm"
-    height = 258 if mobile else 235 if featured else 181
-    body = '<rect x="36" y="14" width="30" height="3" rx="1.5" fill="url(#accent)"/>'
-    body += text(36, 82 if mobile or featured else 70, name, 44 if mobile else 42, INK, 700)
-    body += text(36, 129 if mobile or featured else 112, captions[locale], 30 if mobile else 25, "#526F7B")
+    height = 310 if mobile else 260
+    categories = {"hashmm": ("知识与行动", "KNOWLEDGE & ACTION"), "resume": ("浏览器工具", "BROWSER TOOL"), "applykit": ("桌面工具", "DESKTOP TOOL"), "autumn": ("信息整理", "INFORMATION ORGANIZATION")}
+    x = 36 if mobile else 44
+    body = project_flow(key, mobile)
+    body += text(x, 43, categories[key][locale], 23 if mobile else 18, MINT, 600, 'letter-spacing="1"')
+    body += text(x, 105, name, 44 if mobile else 42, INK, 700)
+    body += text(x, 154, captions[locale], 29 if mobile else 25, "#526F7B")
     if mobile:
         tag_parts = tags[locale].split(" · ", 1)
         for i, line in enumerate(tag_parts):
-            body += text(36, 177+i*38, line, 30, "#397565", 500)
+            body += text(x, 206+i*37, line, 26, "#397565", 500)
     else:
-        body += text(36, 182 if featured else 153, tags[locale], 21, "#397565", 500)
-        body += f'<g transform="translate(958 {55 if featured else 28})">{project_motif(key)}</g>'
-    y = height-18
-    end = width-36 if mobile else 820
-    body += f'<path d="M36 {y} H{end}" stroke="#DCEAEA"/><path class="flow-slow" d="M36 {y} H{end}" stroke="#69B6B5" stroke-width="2"/>'
+        body += text(x, 215, tags[locale], 21, "#397565", 500)
     return svg(body, height, name + " · " + captions[locale], animated, width)
 
 

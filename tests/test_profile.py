@@ -52,16 +52,15 @@ class ProfileTests(unittest.TestCase):
     def test_project_visual_hierarchy_and_mobile_type(self):
         ns = "{http://www.w3.org/2000/svg}"
         for lang in ("zh", "en"):
-            featured = ET.fromstring(visuals.project_card("hashmm", lang, True))
             for key in visuals.PROJECT_CARDS:
                 desktop = ET.fromstring(visuals.project_card(key, lang, True))
-                motif = [el for el in desktop.iter() if el.attrib.get("class") == "project-motif"]
-                self.assertEqual(motif[0].attrib["data-kind"], key)
-                if key != "hashmm":
-                    self.assertLess(int(desktop.attrib["height"]), int(featured.attrib["height"]))
+                self.assertEqual(desktop.attrib["height"], "260")
+                self.assertTrue(any(el.attrib.get("class") == "project-flow" for el in desktop.iter()))
+                self.assertFalse(any(el.attrib.get("class") == "project-motif" for el in desktop.iter()))
                 mobile = ET.fromstring(visuals.project_card(key, lang, True, True))
                 labels = mobile.findall(f".//{ns}text")
-                self.assertTrue(all(int(el.attrib["font-size"]) >= 30 for el in labels))
+                self.assertTrue(all(int(el.attrib["font-size"]) >= 23 for el in labels))
+                self.assertTrue(all(int(el.attrib["y"]) < 260 for el in labels))
                 self.assertTrue(any(el.attrib.get("class") == "flow-slow" for el in mobile.iter()))
 
     def test_public_project_showcase(self):
