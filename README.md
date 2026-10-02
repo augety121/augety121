@@ -30,18 +30,14 @@
   <img src="./assets/profile/focus-zh.svg" width="100%" alt="关注方向：上下文工程（检索、重排、知识图谱）、工具运行时（MCP、状态、恢复）、可靠评测（追踪、断言、可复现性）。" />
 </picture>
 
-<details>
-<summary>最近在探索 · 我在意的工程细节</summary>
-
 ### 最近在探索
 
-- **让检索更懂任务**：从相关性出发，关注查询规划、混合检索与重排，让证据真正服务于当前问题。
-- **让工具环境可以复现**：围绕 MCP、状态快照与隔离运行，探索多步 Agent 行为如何被可靠地比较。
-- **让上下文成为可管理的资源**：关注记忆选择、上下文预算与工具信息组织，在质量、成本和延迟之间寻找平衡。
+- **检索与记忆** — 让证据贴近任务，让上下文保持有效。
+- **工具与状态** — 让多步执行可以追踪、隔离与恢复。
+- **评测与反馈** — 从相同起点出发，比较真正的改进。
 
-我希望把这些探索沉淀成清晰的代码、可运行的实验和有依据的文档，也让这里成为一个持续成长的工程笔记本。
-
-### 我在意的工程细节
+<details>
+<summary>我在意的工程细节</summary>
 
 - **上下文的质量**：相关、有依据，比单纯增加长度更重要。
 - **工具的边界**：权限、预算和失败语义，是系统设计的一部分。
@@ -54,14 +50,16 @@
 
 ## 精选项目
 
-从 Agent 工作空间、评测环境，到解决日常问题的小工具，这些是我的公开实践。
+一部分项目探索 Agent 的能力与边界，一部分工具解决真实生活里的重复工作。
 
-<p>
-  <strong>Agent</strong> &nbsp; <a href="#project-hashmm">知识工作空间</a> &nbsp; · &nbsp; <a href="#project-twin">评测环境</a><br/>
-  <strong>工具</strong> &nbsp; <a href="#project-resume">简历填写</a> &nbsp; · &nbsp; <a href="#project-applykit">材料处理</a> &nbsp; · &nbsp; <a href="#project-autumn">招聘信息</a>
+<p align="center">
+  <a href="#project-hashmm">知识工作空间</a> &nbsp; · &nbsp; <a href="#project-twin">Agent 评测</a><br/>
+  <a href="#project-resume">简历填写</a> &nbsp; · &nbsp; <a href="#project-applykit">材料处理</a> &nbsp; · &nbsp; <a href="#project-autumn">公告聚合</a>
 </p>
 
 ### Agent 与评测
+
+从检索到行动，也从运行结果回到可验证的证据。
 
 <a id="project-hashmm"></a>
 
@@ -74,9 +72,11 @@
 </picture>
 </a>
 
-将**知识检索、证据引用与可恢复任务**组织到一个工作空间，涵盖桌面端、Android 与工具扩展。公开仓库保留历史版本，功能边界见项目说明。
+将**知识检索、证据引用与可恢复任务**连接到同一个本地工作空间。这里展示公开的历史版本。
 
 [查看源码 →](https://github.com/augety121/HashMM-RAG-Agent) &nbsp; [项目概览](https://github.com/augety121/HashMM-RAG-Agent#readme) &nbsp; [参与协作](https://github.com/augety121/HashMM-RAG-Agent/blob/main/COMMUNITY.md)
+
+<br/>
 
 <a id="project-twin"></a>
 
@@ -89,13 +89,13 @@
 </picture>
 </a>
 
-为 AI Agent 评测构建**可复现、可分叉、有状态的 MCP 测试世界**。不同运行从同一快照出发，在隔离环境里调用工具，再比较最终状态。
+面向 Agent 的**可复现 MCP 测试环境**：从同一快照分叉运行，在隔离环境中调用工具，比较最终状态。
 
 [查看源码 →](https://github.com/augety121/MCP-State-Twin) &nbsp; [阅读文档](https://github.com/augety121/MCP-State-Twin/tree/main/docs) &nbsp; [交流问题](https://github.com/augety121/MCP-State-Twin/issues)
 
-<sub>开发预览；已实现能力以项目文档为准。</sub>
-
 ### 实用工具
+
+从信息整理到材料准备，把重复步骤留给工具，把最后的判断留给自己。
 
 <a id="project-resume"></a>
 
@@ -108,11 +108,11 @@
 </picture>
 </a>
 
-面向 Chrome / Edge 的**本地资料与填表助手**：核实资料、预览映射、填写选中内容。默认本地模式不调用模型，可选临时 MCP 协作；不自动提交申请。
+面向 Chrome / Edge 的**本地填表助手**。先核对资料与字段，再填写选中内容；默认不调用模型，不自动提交申请。
 
 [查看源码 →](https://github.com/augety121/jianlitianxie) &nbsp; [安装与使用](https://github.com/augety121/jianlitianxie/blob/main/docs/INSTALL-0.4.3.md) &nbsp; [隐私与权限](https://github.com/augety121/jianlitianxie/blob/main/docs/PRIVACY-0.4.3.md)
 
-<sub>网站与控件支持范围见项目说明；填写后仍需人工检查。</sub>
+<br/>
 
 <a id="project-applykit"></a>
 
@@ -125,9 +125,11 @@
 </picture>
 </a>
 
-面向投递材料的 **Windows 本地工具**：裁剪图片、转换 PDF、压缩文件，让材料符合网站的大小要求。保留原件，不上传材料到互联网。
+在本地完成**图片裁剪、PDF 转换与文件压缩**，让投递材料符合要求。保留原件，不上传材料到互联网。
 
 [查看源码 →](https://github.com/augety121/ApplyKit) &nbsp; [下载使用](https://github.com/augety121/ApplyKit/releases) &nbsp; [使用说明](https://github.com/augety121/ApplyKit#readme)
+
+<br/>
 
 <a id="project-autumn"></a>
 
@@ -140,11 +142,9 @@
 </picture>
 </a>
 
-把**企业官方公开校园招聘公告**整理成可筛选、可跟踪的 Excel。结合来源检查、限速、去重和人工确认队列；不自动登录、绕过验证或投递。
+将**企业官方校园招聘公告**整理成可筛选的 Excel，保留来源与人工确认环节。不自动登录、绕过验证或投递。
 
 [查看源码 →](https://github.com/augety121/autumn-jobs-crawler) &nbsp; [使用说明](https://github.com/augety121/autumn-jobs-crawler#readme) &nbsp; [安全边界](https://github.com/augety121/autumn-jobs-crawler/blob/main/SECURITY.md)
-
-[浏览全部公开仓库 →](https://github.com/augety121?tab=repositories&type=public)
 
 <details>
 <summary>项目阅读指南与使用边界</summary>
@@ -152,9 +152,13 @@
 - **先看概览，再看实现**：每个仓库的 README 说明用途和上手方式，文档记录设计与限制。
 - **HashMM** 展示历史开源版本；**MCP State Twin** 仍处于开发预览阶段，不把路线图当作已实现功能。
 - **简历填写助手** 只处理明确选中的资料，不自动提交；**ApplyKit** 保留原材料；**秋招公告聚合** 在访问受限或不确定时交人工确认。
+- 简历填写助手支持可选的临时 MCP 协作；网站与控件的支持范围见文档，填写后仍需人工检查。
+- HashMM 历史版本涵盖桌面端、Android 与工具扩展；公告聚合包含限速、去重和来源检查。具体能力以各项目文档为准。
 - 深入了解 MCP State Twin 可从 [项目概览](https://github.com/augety121/MCP-State-Twin#readme)、[设计文档](https://github.com/augety121/MCP-State-Twin/tree/main/docs) 和 [Issues](https://github.com/augety121/MCP-State-Twin/issues) 开始。
 
 </details>
+
+<p align="right"><a href="https://github.com/augety121?tab=repositories&amp;type=public">浏览全部公开仓库 →</a></p>
 
 <a id="craft"></a>
 
@@ -169,14 +173,9 @@
   <img src="./assets/profile/craft-zh.svg" width="100%" alt="开发反馈循环：拆解问题、小步实现、证据验证、复盘迭代。" />
 </picture>
 
-<details>
-<summary>展开开发原则</summary>
-
 - **小而完整的实现**：让每次改动有清楚的目标、输入输出和适用范围。
 - **能够复查的结果**：把成功路径、失败案例和关键取舍一起记录下来。
 - **持续演进的设计**：先理解真实约束，再决定抽象、接口与扩展方式。
-
-</details>
 
 <a id="stack"></a>
 

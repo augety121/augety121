@@ -30,18 +30,14 @@ This is where I share open-source work, from **MCP tool environments and reprodu
   <img src="./assets/profile/focus-en.svg" width="100%" alt="Engineering focus: context (retrieval, reranking, knowledge graphs), runtime (MCP, state, recovery), and evaluation (traces, assertions, reproducibility)." />
 </picture>
 
-<details>
-<summary>Current explorations & engineering details</summary>
-
 ### Currently exploring
 
-- **Task-aware retrieval**: query planning, hybrid search and reranking, with evidence that actually helps answer the question at hand.
-- **Reproducible tool environments**: MCP, state snapshots and isolated runs that make multi-step agent behavior easier to compare reliably.
-- **Context as a managed resource**: memory selection, context budgets and tool information, balancing quality, cost and latency.
+- **Retrieval & memory** — relevant evidence and context that stays useful.
+- **Tools & state** — multi-step execution that can be traced, isolated and recovered.
+- **Evaluation & feedback** — the same starting point, with measurable improvements.
 
-I want to turn these explorations into clear code, runnable experiments and evidence-backed documentation—and make this space a growing engineering notebook.
-
-### Engineering details I care about
+<details>
+<summary>Engineering details I care about</summary>
 
 - **Context quality**: relevance and evidence matter more than simply adding length.
 - **Tool boundaries**: permissions, budgets and failure semantics belong in the architecture.
@@ -54,14 +50,16 @@ I want to turn these explorations into clear code, runnable experiments and evid
 
 ## Selected work
 
-Public work spanning agent workspaces, evaluation environments and practical everyday tools.
+Some projects explore what agents can do and where their boundaries lie. Others take repetitive work out of everyday life.
 
-<p>
-  <strong>Agents</strong> &nbsp; <a href="#project-hashmm">Workspace</a> &nbsp; · &nbsp; <a href="#project-twin">Evaluation</a><br/>
-  <strong>Tools</strong> &nbsp; <a href="#project-resume">Form filling</a> &nbsp; · &nbsp; <a href="#project-applykit">Documents</a> &nbsp; · &nbsp; <a href="#project-autumn">Job posts</a>
+<p align="center">
+  <a href="#project-hashmm">Workspace</a> &nbsp; · &nbsp; <a href="#project-twin">Evaluation</a><br/>
+  <a href="#project-resume">Form filling</a> &nbsp; · &nbsp; <a href="#project-applykit">Documents</a> &nbsp; · &nbsp; <a href="#project-autumn">Job posts</a>
 </p>
 
 ### Agents & evaluation
+
+From retrieval to action, and from execution back to verifiable evidence.
 
 <a id="project-hashmm"></a>
 
@@ -74,9 +72,11 @@ Public work spanning agent workspaces, evaluation environments and practical eve
 </picture>
 </a>
 
-A workspace bringing together **knowledge retrieval, cited evidence and recoverable tasks**, with desktop, Android and tool extensions. This links to the published historical edition; see the repository for its capabilities and limitations.
+A local workspace connecting **knowledge retrieval, cited evidence and recoverable tasks**. This links to the published historical edition.
 
-[Explore the code →](https://github.com/augety121/HashMM-RAG-Agent) &nbsp; [Overview](https://github.com/augety121/HashMM-RAG-Agent#readme) &nbsp; [Contribute](https://github.com/augety121/HashMM-RAG-Agent/blob/main/COMMUNITY.md)
+[Source →](https://github.com/augety121/HashMM-RAG-Agent) &nbsp; [Overview](https://github.com/augety121/HashMM-RAG-Agent#readme) &nbsp; [Contribute](https://github.com/augety121/HashMM-RAG-Agent/blob/main/COMMUNITY.md)
+
+<br/>
 
 <a id="project-twin"></a>
 
@@ -89,13 +89,13 @@ A workspace bringing together **knowledge retrieval, cited evidence and recovera
 </picture>
 </a>
 
-Building **reproducible, forkable, stateful MCP test worlds** for AI agent evaluation. Runs start from the same snapshot, use tools in isolated environments, and compare their final states.
+A **reproducible MCP test environment** for agents: fork runs from the same snapshot, use tools in isolation, and compare final states.
 
-[Explore the code →](https://github.com/augety121/MCP-State-Twin) &nbsp; [Read the docs](https://github.com/augety121/MCP-State-Twin/tree/main/docs) &nbsp; [Discuss an issue](https://github.com/augety121/MCP-State-Twin/issues)
-
-<sub>Development preview; see the docs for implemented capabilities.</sub>
+[Source →](https://github.com/augety121/MCP-State-Twin) &nbsp; [Docs](https://github.com/augety121/MCP-State-Twin/tree/main/docs) &nbsp; [Issues](https://github.com/augety121/MCP-State-Twin/issues)
 
 ### Practical tools
+
+Organize information, prepare documents, and automate repetitive steps—while keeping the final decision with the person.
 
 <a id="project-resume"></a>
 
@@ -108,11 +108,11 @@ Building **reproducible, forkable, stateful MCP test worlds** for AI agent evalu
 </picture>
 </a>
 
-A **local form-filling assistant** for Chrome / Edge: verify facts, review mappings and fill selected fields. Local mode makes no model calls; temporary MCP collaboration is optional. It never submits applications automatically.
+A **local form-filling assistant** for Chrome / Edge. Review facts and field mappings before filling selected content. No model calls by default; it never submits applications automatically.
 
-[Explore the code →](https://github.com/augety121/jianlitianxie) &nbsp; [Installation & usage](https://github.com/augety121/jianlitianxie/blob/main/docs/INSTALL-0.4.3.md) &nbsp; [Privacy & permissions](https://github.com/augety121/jianlitianxie/blob/main/docs/PRIVACY-0.4.3.md)
+[Source →](https://github.com/augety121/jianlitianxie) &nbsp; [Install guide](https://github.com/augety121/jianlitianxie/blob/main/docs/INSTALL-0.4.3.md) &nbsp; [Privacy](https://github.com/augety121/jianlitianxie/blob/main/docs/PRIVACY-0.4.3.md)
 
-<sub>See the project for supported sites and controls; always review the filled form.</sub>
+<br/>
 
 <a id="project-applykit"></a>
 
@@ -125,9 +125,11 @@ A **local form-filling assistant** for Chrome / Edge: verify facts, review mappi
 </picture>
 </a>
 
-A **local Windows utility** for preparing application documents: crop images, convert PDFs and compress files to meet upload limits. Keeps originals and does not upload documents to the internet.
+**Crop images, convert PDFs and compress files locally** to meet document requirements. Keeps originals and does not upload documents to the internet.
 
-[Explore the code →](https://github.com/augety121/ApplyKit) &nbsp; [Download](https://github.com/augety121/ApplyKit/releases) &nbsp; [User guide](https://github.com/augety121/ApplyKit#readme)
+[Source →](https://github.com/augety121/ApplyKit) &nbsp; [Download](https://github.com/augety121/ApplyKit/releases) &nbsp; [User guide](https://github.com/augety121/ApplyKit#readme)
+
+<br/>
 
 <a id="project-autumn"></a>
 
@@ -140,11 +142,9 @@ A **local Windows utility** for preparing application documents: crop images, co
 </picture>
 </a>
 
-Turns **public campus hiring announcements from official company websites** into filterable Excel records. Includes source checks, rate limits, deduplication and a manual review queue; no automatic login, verification bypass or job applications.
+Turns **official company campus hiring announcements** into filterable Excel records, preserving sources and human review. No automatic login, verification bypass or applications.
 
-[Explore the code →](https://github.com/augety121/autumn-jobs-crawler) &nbsp; [User guide](https://github.com/augety121/autumn-jobs-crawler#readme) &nbsp; [Safety boundaries](https://github.com/augety121/autumn-jobs-crawler/blob/main/SECURITY.md)
-
-[Browse all public repositories →](https://github.com/augety121?tab=repositories&type=public)
+[Source →](https://github.com/augety121/autumn-jobs-crawler) &nbsp; [User guide](https://github.com/augety121/autumn-jobs-crawler#readme) &nbsp; [Safety](https://github.com/augety121/autumn-jobs-crawler/blob/main/SECURITY.md)
 
 <details>
 <summary>Reading guide & project boundaries</summary>
@@ -152,9 +152,13 @@ Turns **public campus hiring announcements from official company websites** into
 - **Start with the overview**: each README explains the use case and setup; documentation covers design and limitations.
 - **HashMM** is a historical open-source edition; **MCP State Twin** remains a development preview. Roadmaps are not implemented features.
 - **Resume Fill Assistant** uses explicitly selected facts and never submits applications automatically; **ApplyKit** preserves originals; **Autumn Jobs Crawler** routes restricted or uncertain sources to manual review.
+- Resume Fill Assistant offers optional temporary MCP collaboration. See the docs for supported sites and controls, and review the filled form.
+- The historical HashMM edition includes desktop, Android and tool extensions. Job aggregation includes rate limits, deduplication and source checks. Each project's docs define its supported capabilities.
 - Explore MCP State Twin through its [overview](https://github.com/augety121/MCP-State-Twin#readme), [design docs](https://github.com/augety121/MCP-State-Twin/tree/main/docs) and [Issues](https://github.com/augety121/MCP-State-Twin/issues).
 
 </details>
+
+<p align="right"><a href="https://github.com/augety121?tab=repositories&amp;type=public">Browse all public repositories →</a></p>
 
 <a id="craft"></a>
 
@@ -169,14 +173,9 @@ I prefer to start with a concrete problem and a small, verifiable loop, then gra
   <img src="./assets/profile/craft-en.svg" width="100%" alt="An engineering feedback loop: define, build, verify and iterate." />
 </picture>
 
-<details>
-<summary>Explore my engineering principles</summary>
-
 - **Small, complete implementations**: give each change a clear goal, inputs, outputs and scope.
 - **Reviewable results**: document successful paths, failure cases and important trade-offs together.
 - **Evolving designs**: understand real constraints before choosing abstractions, interfaces and extension points.
-
-</details>
 
 <a id="stack"></a>
 
