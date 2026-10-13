@@ -62,20 +62,20 @@ def fetch_profile(token, username):
 
 def render_stats(profile, lang, mobile=False):
     zh = lang == "zh"
-    body = text(36, 38, "持续积累 / GitHub 足迹" if zh else "SMALL STEPS / GITHUB ACTIVITY", 15, MUTED, 600)
+    body = text(36, 42 if mobile else 38, "持续积累 / GitHub 足迹" if zh else "SMALL STEPS / GITHUB ACTIVITY", 26 if mobile else 18, MUTED, 600)
     labels = ["公开原创仓库", "获得星标", "近一年贡献", "关注者"] if zh else ["Public non-fork repos", "Stars received", "Contributions / year", "Followers"]
     for i, (key, label) in enumerate(zip(("repositories", "stars", "contributions", "followers"), labels)):
         x = 36 + (i % 2) * 350 if mobile else 36 + i * 292
-        y = (i // 2) * 110 if mobile else 0
+        y = (i // 2) * 124 if mobile else 0
         value = profile.get(key)
-        body += text(x, 98+y, f"{value:,}" if isinstance(value, int) else "—", 44 if mobile else 40, BLUE if i % 2 == 0 else MINT, 650)
-        body += text(x, 129+y, label, 20 if mobile else 17, MUTED)
+        body += text(x, (111 if mobile else 98)+y, f"{value:,}" if isinstance(value, int) else "—", 52 if mobile else 40, BLUE if i % 2 == 0 else MINT, 650)
+        body += text(x, (149 if mobile else 129)+y, label, 26 if mobile else 19, MUTED)
         if i and not mobile:
             body += f'<path d="M{x-24} 62 V132" stroke="#DAE8E8"/>'
     updated = profile.get("updated")
     caption = ("更新于 " if zh else "Updated ") + updated if updated else ("等待首次 Actions 更新 · 不展示模拟数据" if zh else "Awaiting the first Actions update · No simulated data")
-    body += text(36, 283 if mobile else 170, caption, 16 if mobile else 13, MUTED)
-    return svg(body, 310 if mobile else 192, "GitHub 动态" if zh else "GitHub activity", False, 720 if mobile else 1200)
+    body += text(36, 328 if mobile else 170, caption, 24 if mobile else 15, MUTED)
+    return svg(body, 354 if mobile else 192, "GitHub 动态" if zh else "GitHub activity", False, 720 if mobile else 1200)
 
 
 def render_calendar(profile):

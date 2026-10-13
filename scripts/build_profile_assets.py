@@ -83,6 +83,13 @@ def footer(lang, animated):
     return svg(body, 105, "保持好奇，持续构建" if lang == "zh" else "Stay curious. Keep building.", animated)
 
 
+def footer_mobile(lang, animated):
+    body = '<path d="M-20 105 C150 -5 215 151 398 82 S610 29 745 97" fill="none" stroke="#BEDDDF" stroke-width="2"/><path class="flow-slow" d="M-20 105 C150 -5 215 151 398 82 S610 29 745 97" fill="none" stroke="#64ACAA" stroke-width="3"/><rect x="80" y="39" width="560" height="68" rx="34" fill="#F4FAFA"/>'
+    label = "保持好奇，持续构建。" if lang == "zh" else "Stay curious. Keep building."
+    body += text(360, 84, label, 32, MUTED, 500, 'text-anchor="middle"')
+    return svg(body, 150, label, animated, 720)
+
+
 def hero_mobile(lang, animated):
     zh = lang == "zh"
     body = text(42, 45, "开发者 / 开源实践" if zh else "DEVELOPER / OPEN SOURCE", 18, MUTED, 600)
@@ -113,13 +120,15 @@ def project_mobile(lang, animated):
 def craft(lang, animated, mobile=False):
     zh = lang == "zh"
     title = "把问题变成可验证的进展" if zh else "Turn questions into verifiable progress"
-    body = text(36, 44, title, 24 if mobile else 26, INK, 600)
+    if mobile:
+        title = "让每一步，都有依据" if zh else "Make every step verifiable"
+    body = text(36, 44, title, 30 if mobile else 26, INK, 600)
     labels = [("拆解问题", "明确目标与边界"), ("小步实现", "做出最小完整闭环"), ("证据验证", "用测试与轨迹检查结果"), ("复盘迭代", "把经验沉淀为下一步")] if zh else [("Define", "Goals and boundaries"), ("Build", "A small, complete loop"), ("Verify", "Tests, traces and results"), ("Iterate", "Learn and improve")]
     if mobile:
-        positions = [(36, 80), (384, 80), (384, 234), (36, 234)]
-        width, height, card_width = 720, 398, 300
-        path = "M336 138 H384 M534 196 V234 M384 292 H336 M186 234 V196"
-        arrows = ["M358 133 L366 138 L358 143", "M529 211 L534 219 L539 211", "M362 287 L354 292 L362 297", "M181 219 L186 211 L191 219"]
+        positions = [(48, 80+i*144) for i in range(4)]
+        width, height, card_width = 720, 694, 624
+        path = "M360 196 V224 M360 340 V368 M360 484 V512 M48 570 H22 V138 H48"
+        arrows = ["M355 206 L360 214 L365 206", "M355 350 L360 358 L365 350", "M355 494 L360 502 L365 494", "M34 133 L42 138 L34 143"]
     else:
         positions = [(36 + i * 288, 83) for i in range(4)]
         width, height, card_width = 1200, 260, 264
@@ -132,10 +141,10 @@ def craft(lang, animated, mobile=False):
         color = BLUE if i < 2 else MINT
         body += f'<rect x="{x}" y="{y}" width="{card_width}" height="116" rx="18" fill="#FFFFFF" fill-opacity=".88" stroke="#D8E9EA"/>'
         body += f'<rect x="{x+22}" y="{y+24}" width="4" height="25" rx="2" fill="{color}"/>'
-        body += text(x+40, y+45, label, 26 if mobile else 24, INK, 600)
-        body += text(x+22, y+86, description, 20 if mobile else 17, MUTED)
+        body += text(x+40, y+45, label, 36 if mobile else 24, INK, 600)
+        body += text(x+40 if mobile else x+22, y+86, description, 28 if mobile else 17, MUTED)
     caption = "保持反馈，让每次迭代都有依据。" if zh else "Keep the feedback loop open."
-    body += text(width/2, height-19, caption, 17 if mobile else 15, MUTED, 400, 'text-anchor="middle"')
+    body += text(width/2, height-19, caption, 26 if mobile else 15, MUTED, 400, 'text-anchor="middle"')
     return svg(body, height, title, animated, width)
 
 
@@ -164,6 +173,37 @@ def focus(lang, animated, mobile=False):
 
 def focus_mobile(lang, animated):
     return focus(lang, animated, mobile=True)
+
+
+def toolbox(lang, animated, mobile=False):
+    """A local, low-saturation toolbox; names are factual, not skill ratings."""
+    zh = lang == "zh"
+    width, height = (720, 572) if mobile else (1200, 292)
+    groups = [
+        ("编程语言" if zh else "Languages", ["Python", "TypeScript", "Go", "Kotlin"], BLUE),
+        ("工程工具" if zh else "Engineering tools", ["Docker", "PostgreSQL", "Redis", "Git", "GitHub Actions"], MINT),
+    ]
+    body = ""
+    for index, (title, names, color) in enumerate(groups):
+        x, y, w, h = (1, 1+index*294, 718, 276) if mobile else (1+index*614, 1, 584, 290)
+        body += f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="26" fill="{"#F4FAFE" if index == 0 else "#F0F9F5"}" stroke="#DDEBEA"/>'
+        body += f'<rect x="{x+30}" y="{y+29}" width="4" height="30" rx="2" fill="{color}"/>'
+        body += text(x+51, y+55, title, 34 if mobile else 30, INK, 600)
+        rows = [names[:2], names[2:]] if index == 0 else [names[:3], names[3:]]
+        for row_index, row in enumerate(rows):
+            cursor = x+30
+            for name in row:
+                chip_width = ((len(name)*18)+38) if mobile else ((len(name)*14)+36)
+                cy = y+85+row_index*72
+                body += f'<rect class="tool-chip" x="{cursor}" y="{cy}" width="{chip_width}" height="54" rx="16" fill="#FFFFFF" fill-opacity=".88" stroke="#DCEAE9"/>'
+                body += text(cursor+chip_width/2, cy+36, name, 30 if mobile else 25, "#3D596C", 500, 'text-anchor="middle"')
+                cursor += chip_width+14
+        body += f'<path d="M{x+30} {y+h-29} H{x+w-30}" stroke="#DCEAE9"/><path class="flow-slow" d="M{x+30} {y+h-29} H{x+w-30}" stroke="{color}" stroke-width="2"/>'
+    return svg(body, height, "技术栈" if zh else "Toolbox", animated, width, framed=False)
+
+
+def toolbox_mobile(lang, animated):
+    return toolbox(lang, animated, True)
 
 
 PROJECT_CARDS = {
@@ -224,7 +264,7 @@ def project_card(key, lang, animated, mobile=False):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for lang in ("zh", "en"):
-        for name, renderer in (("hero", hero), ("project", project), ("footer", footer), ("hero-mobile", hero_mobile), ("project-mobile", project_mobile), ("craft", craft), ("craft-mobile", craft_mobile), ("focus", focus), ("focus-mobile", focus_mobile)):
+        for name, renderer in (("hero", hero), ("project", project), ("footer", footer), ("footer-mobile", footer_mobile), ("hero-mobile", hero_mobile), ("project-mobile", project_mobile), ("craft", craft), ("craft-mobile", craft_mobile), ("focus", focus), ("focus-mobile", focus_mobile), ("toolbox", toolbox), ("toolbox-mobile", toolbox_mobile)):
             for animated in (True, False):
                 suffix = "" if animated else "-static"
                 (OUT / f"{name}-{lang}{suffix}.svg").write_text(renderer(lang, animated), encoding="utf-8", newline="\n")
@@ -234,7 +274,7 @@ def main():
                     suffix = "" if animated else "-static"
                     variant = "-mobile" if mobile else ""
                     (OUT / f"project-{key}{variant}-{lang}{suffix}.svg").write_text(project_card(key, lang, animated, mobile), encoding="utf-8", newline="\n")
-    print(f"Generated {36 + len(PROJECT_CARDS) * 8} bilingual desktop/mobile profile assets.")
+    print(f"Generated {48 + len(PROJECT_CARDS) * 8} bilingual desktop/mobile profile assets.")
 
 
 if __name__ == "__main__":
