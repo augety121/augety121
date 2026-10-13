@@ -104,7 +104,7 @@ class ProfileTests(unittest.TestCase):
                 self.assertNotIn("<script", source)
                 self.assertNotIn("<foreignObject", source)
                 self.assertNotRegex(source, r'(?:href|src)=[\"\']https?://')
-        for renderer in (visuals.hero, visuals.hero_mobile, visuals.project, visuals.project_mobile, visuals.footer, visuals.craft, visuals.craft_mobile, visuals.focus, visuals.focus_mobile):
+        for renderer in (visuals.hero, visuals.hero_mobile, visuals.project, visuals.project_mobile, visuals.footer, visuals.footer_mobile, visuals.craft, visuals.craft_mobile, visuals.focus, visuals.focus_mobile, visuals.toolbox, visuals.toolbox_mobile):
             for lang in ("zh", "en"):
                 self.assertIn("@keyframes", renderer(lang, True))
                 self.assertIn("prefers-reduced-motion", renderer(lang, True))
@@ -148,6 +148,72 @@ class ProfileTests(unittest.TestCase):
             for asset in (f"focus-{lang}.svg", f"focus-mobile-{lang}.svg", f"contribution-{lang}.svg", f"contribution-mobile-{lang}.svg"):
                 self.assertIn(asset, source)
             self.assertIn('href="#top"', source)
+
+    def test_static_contribution_keeps_real_cells_and_frame(self):
+        source = (ROOT / "assets/profile/contribution-snake.svg").read_text(encoding="utf-8")
+        calendar = (ROOT / "assets/profile/contributions-static.svg").read_text(encoding="utf-8")
+        ns = "{http://www.w3.org/2000/svg}"
+        def dates(root):
+            return [el.text for el in root.iter(f"{ns}title") if re.fullmatch(r"\d{4}-\d{2}-\d{2}: \d+", el.text or "")]
+        original = dates(ET.fromstring(calendar))
+        self.assertTrue(original)
+        for lang in ("zh", "en"):
+            for mobile in (False, True):
+                rendered = snake_frame.render_static(calendar, source, lang, mobile)
+                static = ET.fromstring(rendered)
+                animated = ET.fromstring(snake_frame.render(source, lang, mobile))
+                self.assertEqual(dates(static), original)
+                self.assertEqual(static.attrib["viewBox"], animated.attrib["viewBox"])
+                self.assertNotIn("@keyframes", rendered)
+                variant = "mobile-" if mobile else ""
+                self.assertEqual((ROOT / f"assets/profile/contribution-{variant}{lang}-static.svg").read_text(encoding="utf-8"), rendered)
+
+    def test_mobile_lower_sections_have_readable_type(self):
+        ns = "{http://www.w3.org/2000/svg}"
+        for lang in ("zh", "en"):
+            samples = [visuals.craft_mobile(lang, True), visuals.footer_mobile(lang, True), visuals.toolbox_mobile(lang, True), data.render_stats({}, lang, True)]
+            for source in samples:
+                root = ET.fromstring(source)
+                self.assertEqual(root.attrib["width"], "720")
+                self.assertTrue(all(float(el.attrib["font-size"]) >= 24 for el in root.iter(f"{ns}text")))
+
+    def test_responsive_motion_source_order(self):
+        class Pictures(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.items, self.current = [], None
+            def handle_starttag(self, tag, attrs):
+                if tag == "picture":
+                    self.current = []
+                    self.items.append(self.current)
+                elif tag == "source" and self.current is not None:
+                    self.current.append(dict(attrs))
+            def handle_endtag(self, tag):
+                if tag == "picture":
+                    self.current = None
+        for lang, filename in (("zh", "README.md"), ("en", "README.en.md")):
+            parser = Pictures()
+            parser.feed((ROOT / filename).read_text(encoding="utf-8"))
+            for sources in parser.items:
+                if len(sources) == 3:
+                    self.assertIn("max-width: 600px", sources[0]["media"])
+                    self.assertIn("prefers-reduced-motion: reduce", sources[0]["media"])
+                    self.assertIn("-mobile-", sources[0]["srcset"])
+                    self.assertTrue(sources[0]["srcset"].endswith(f"{lang}-static.svg"))
+                    self.assertTrue(sources[1]["srcset"].endswith(f"{lang}-static.svg"))
+                    self.assertTrue(sources[2]["srcset"].endswith(f"{lang}.svg"))
+
+    def test_toolbox_names_and_chip_bounds(self):
+        ns = "{http://www.w3.org/2000/svg}"
+        expected = {"Python", "TypeScript", "Go", "Kotlin", "Docker", "PostgreSQL", "Redis", "Git", "GitHub Actions"}
+        for lang in ("zh", "en"):
+            for mobile in (False, True):
+                root = ET.fromstring(visuals.toolbox(lang, True, mobile))
+                labels = {e.text for e in root.iter(f"{ns}text")}
+                self.assertTrue(expected.issubset(labels))
+                for chip in root.iter(f"{ns}rect"):
+                    if chip.attrib.get("class") == "tool-chip":
+                        self.assertLessEqual(float(chip.attrib["x"])+float(chip.attrib["width"]), float(root.attrib["width"])-25)
 
     def test_new_section_and_responsive_assets(self):
         for lang, filename in (("zh", "README.md"), ("en", "README.en.md")):

@@ -181,17 +181,24 @@ I prefer to start with a concrete problem and a small, verifiable loop, then gra
 
 ## Toolbox
 
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/toolbox-mobile-en-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/toolbox-en-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/toolbox-mobile-en.svg" />
+  <img src="./assets/profile/toolbox-en.svg" width="100%" alt="Languages: Python, TypeScript, Go, Kotlin. Engineering tools: Docker, PostgreSQL, Redis, Git, GitHub Actions." />
+</picture>
+
+<details>
+<summary>Text version & engineering habits</summary>
+
+**Languages** &nbsp; Python · TypeScript · Go · Kotlin<br/>
+**Engineering tools** &nbsp; Docker · PostgreSQL · Redis · Git · GitHub Actions
+
 <p>
   <a href="https://github.com/tandpfun/skill-icons">
     <img src="https://skillicons.dev/icons?i=py,ts,go,kotlin,docker,postgres,redis,git,github&amp;theme=light&amp;perline=9" width="440" alt="Python, TypeScript, Go, Kotlin, Docker, PostgreSQL, Redis, Git, GitHub" />
   </a>
 </p>
-
-**Languages** &nbsp; Python · TypeScript · Go · Kotlin<br/>
-**Engineering tools** &nbsp; Docker · PostgreSQL · Redis · Git · GitHub Actions
-
-<details>
-<summary>Beyond the technology stack</summary>
 
 Interfaces and data contracts, testing and continuous integration, logs and execution traces, resource budgets, permission boundaries, and documentation that helps the next reader understand the system.
 
@@ -212,7 +219,8 @@ Tools change. What I want to keep improving is the ability to analyze problems, 
 
 <p>
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/contributions-static.svg" />
+    <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/contribution-mobile-en-static.svg" />
+    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/contribution-en-static.svg" />
     <source media="(max-width: 600px)" srcset="./assets/profile/contribution-mobile-en.svg" />
     <img src="./assets/profile/contribution-en.svg" width="100%" alt="Mint-colored snake animation generated from the real GitHub contribution calendar" />
   </picture>
@@ -229,7 +237,9 @@ Interested in **RAG, context engineering, MCP or agent evaluation**? Let's start
 [My repositories](https://github.com/augety121?tab=repositories) &nbsp; · &nbsp; [Project discussions](https://github.com/augety121/MCP-State-Twin/issues) &nbsp; · &nbsp; [Profile feedback](https://github.com/augety121/augety121/issues)
 
 <picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/footer-mobile-en-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/footer-en-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/footer-mobile-en.svg" />
   <img src="./assets/profile/footer-en.svg" width="100%" alt="Stay curious. Keep building." />
 </picture>
 

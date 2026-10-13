@@ -60,6 +60,10 @@ jobs:
             assets/profile/contribution-en.svg
             assets/profile/contribution-mobile-zh.svg
             assets/profile/contribution-mobile-en.svg
+            assets/profile/contribution-zh-static.svg
+            assets/profile/contribution-en-static.svg
+            assets/profile/contribution-mobile-zh-static.svg
+            assets/profile/contribution-mobile-en-static.svg
 
   publish:
     needs: generate
@@ -82,6 +86,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add assets/profile/stats-zh.svg assets/profile/stats-en.svg assets/profile/stats-mobile-zh.svg assets/profile/stats-mobile-en.svg assets/profile/contributions-static.svg assets/profile/contribution-snake.svg
           git add assets/profile/contribution-zh.svg assets/profile/contribution-en.svg assets/profile/contribution-mobile-zh.svg assets/profile/contribution-mobile-en.svg
+          git add assets/profile/contribution-zh-static.svg assets/profile/contribution-en-static.svg assets/profile/contribution-mobile-zh-static.svg assets/profile/contribution-mobile-en-static.svg
           if git diff --cached --quiet; then
             echo '数据没有变化'
             exit 0

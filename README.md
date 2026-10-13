@@ -181,17 +181,24 @@
 
 ## 技术栈
 
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/toolbox-mobile-zh-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/toolbox-zh-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/toolbox-mobile-zh.svg" />
+  <img src="./assets/profile/toolbox-zh.svg" width="100%" alt="编程语言：Python、TypeScript、Go、Kotlin。工程工具：Docker、PostgreSQL、Redis、Git、GitHub Actions。" />
+</picture>
+
+<details>
+<summary>文字版技术栈与工程习惯</summary>
+
+**编程语言** &nbsp; Python · TypeScript · Go · Kotlin<br/>
+**工程工具** &nbsp; Docker · PostgreSQL · Redis · Git · GitHub Actions
+
 <p>
   <a href="https://github.com/tandpfun/skill-icons">
     <img src="https://skillicons.dev/icons?i=py,ts,go,kotlin,docker,postgres,redis,git,github&amp;theme=light&amp;perline=9" width="440" alt="Python, TypeScript, Go, Kotlin, Docker, PostgreSQL, Redis, Git, GitHub" />
   </a>
 </p>
-
-**编程语言** &nbsp; Python · TypeScript · Go · Kotlin<br/>
-**工程工具** &nbsp; Docker · PostgreSQL · Redis · Git · GitHub Actions
-
-<details>
-<summary>技术之外，我也关注</summary>
 
 接口与数据契约、测试与持续集成、日志与执行追踪、资源预算、权限边界，以及让后来者能快速理解系统的文档。
 
@@ -212,7 +219,8 @@
 
 <p>
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/contributions-static.svg" />
+    <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/contribution-mobile-zh-static.svg" />
+    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/contribution-zh-static.svg" />
     <source media="(max-width: 600px)" srcset="./assets/profile/contribution-mobile-zh.svg" />
     <img src="./assets/profile/contribution-zh.svg" width="100%" alt="由真实 GitHub 贡献日历生成的薄荷色贪吃蛇动画" />
   </picture>
@@ -229,7 +237,9 @@
 [我的仓库](https://github.com/augety121?tab=repositories) &nbsp; · &nbsp; [项目讨论](https://github.com/augety121/MCP-State-Twin/issues) &nbsp; · &nbsp; [主页反馈](https://github.com/augety121/augety121/issues)
 
 <picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/profile/footer-mobile-zh-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile/footer-zh-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/profile/footer-mobile-zh.svg" />
   <img src="./assets/profile/footer-zh.svg" width="100%" alt="保持好奇，持续构建。" />
 </picture>
 
