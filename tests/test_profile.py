@@ -203,6 +203,28 @@ class ProfileTests(unittest.TestCase):
                     self.assertTrue(sources[1]["srcset"].endswith(f"{lang}-static.svg"))
                     self.assertTrue(sources[2]["srcset"].endswith(f"{lang}.svg"))
 
+    def test_desktop_lower_sections_keep_full_width_and_readable_type(self):
+        ns = "{http://www.w3.org/2000/svg}"
+        snake = (ROOT / "assets/profile/contribution-snake.svg").read_text(encoding="utf-8")
+        for lang in ("zh", "en"):
+            for animated in (False, True):
+                craft = ET.fromstring(visuals.craft(lang, animated))
+                footer = ET.fromstring(visuals.footer(lang, animated))
+                for root in (craft, footer):
+                    self.assertEqual(root.attrib["width"], "1200")
+                    self.assertTrue(all(float(el.attrib["font-size"]) >= 22 for el in root.iter(f"{ns}text")))
+                self.assertEqual(craft.attrib["height"], "324")
+                self.assertEqual(footer.attrib["height"], "164")
+                steps = [e for e in craft.iter(f"{ns}rect") if e.attrib.get("class") == "craft-step"]
+                self.assertEqual(len(steps), 4)
+                self.assertEqual({e.attrib["y"] for e in steps}, {"88"})
+                self.assertEqual(float(steps[-1].attrib["x"])+float(steps[-1].attrib["width"]), 1164)
+            contribution = ET.fromstring(snake_frame.render(snake, lang))
+            # Check only the wrapper labels; the nested calendar is upstream data.
+            labels = contribution.find(f"{ns}g").findall(f"{ns}text")
+            self.assertEqual(len(labels), 2)
+            self.assertTrue(all(float(el.attrib["font-size"]) >= 22 for el in labels))
+
     def test_toolbox_names_and_chip_bounds(self):
         ns = "{http://www.w3.org/2000/svg}"
         expected = {"Python", "TypeScript", "Go", "Kotlin", "Docker", "PostgreSQL", "Redis", "Git", "GitHub Actions"}

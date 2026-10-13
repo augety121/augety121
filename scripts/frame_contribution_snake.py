@@ -41,14 +41,14 @@ def render(source, lang, mobile=False):
     inner_height = round(inner_width*viewbox[3]/viewbox[2])
     if inner_height > width:
         raise ValueError("Unexpected contribution graph aspect ratio")
-    root.attrib.update(x="28", y="102" if mobile else "84", width=str(inner_width), height=str(inner_height))
+    root.attrib.update(x="28", y="102", width=str(inner_width), height=str(inner_height))
     root.attrib["aria-hidden"] = "true"
     title = "贡献轨迹" if lang == "zh" else "Contribution trail"
     subtitle = "每一次投入，都留下可见的痕迹。" if lang == "zh" else "Small steps. A visible trail."
-    body = text(36, 44 if mobile else 38, title, 32 if mobile else 24, INK, 600)
-    body += text(36, 82 if mobile else 66, subtitle, 26 if mobile else 17, MUTED)
+    body = text(36, 44, title, 32 if mobile else 30, INK, 600)
+    body += text(36, 82, subtitle, 26 if mobile else 22, MUTED)
     body += ET.tostring(root, encoding="unicode")
-    return svg(body, inner_height+(128 if mobile else 106), title, False, width)
+    return svg(body, inner_height+128, title, False, width)
 
 
 def render_static(calendar_source, layout_source, lang, mobile=False):
