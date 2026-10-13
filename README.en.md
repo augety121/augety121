@@ -188,11 +188,11 @@ I prefer to start with a concrete problem and a small, verifiable loop, then gra
   <img src="./assets/profile/toolbox-en.svg" width="100%" alt="Languages: Python, TypeScript, Go, Kotlin. Engineering tools: Docker, PostgreSQL, Redis, Git, GitHub Actions." />
 </picture>
 
+<details>
+<summary>Text version & engineering habits</summary>
+
 **Languages** &nbsp; Python · TypeScript · Go · Kotlin<br/>
 **Engineering tools** &nbsp; Docker · PostgreSQL · Redis · Git · GitHub Actions
-
-<details>
-<summary>Tool icons & engineering habits</summary>
 
 <p>
   <a href="https://github.com/tandpfun/skill-icons">

@@ -188,11 +188,11 @@
   <img src="./assets/profile/toolbox-zh.svg" width="100%" alt="编程语言：Python、TypeScript、Go、Kotlin。工程工具：Docker、PostgreSQL、Redis、Git、GitHub Actions。" />
 </picture>
 
+<details>
+<summary>文字版技术栈与工程习惯</summary>
+
 **编程语言** &nbsp; Python · TypeScript · Go · Kotlin<br/>
 **工程工具** &nbsp; Docker · PostgreSQL · Redis · Git · GitHub Actions
-
-<details>
-<summary>工具图标与工程习惯</summary>
 
 <p>
   <a href="https://github.com/tandpfun/skill-icons">
