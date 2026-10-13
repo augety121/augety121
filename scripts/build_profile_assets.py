@@ -78,9 +78,10 @@ def project(lang, animated):
 
 
 def footer(lang, animated):
-    body = '<path d="M0 78 Q180 -12 380 65 T790 56 T1230 46" fill="none" stroke="#BEDDDF" stroke-width="1.5"/><path class="flow-slow" d="M0 78 Q180 -12 380 65 T790 56 T1230 46" fill="none" stroke="#64ACAA" stroke-width="3"/><rect x="421" y="29" width="358" height="50" rx="25" fill="#F4FAFA"/>'
-    body += text(600, 60, "保持好奇，持续构建。" if lang == "zh" else "Stay curious. Keep building.", 21, MUTED, 500, 'text-anchor="middle"')
-    return svg(body, 105, "保持好奇，持续构建" if lang == "zh" else "Stay curious. Keep building.", animated)
+    route = "M-20 119 C164 10 272 145 440 94 S696 41 850 93 S1073 153 1220 57"
+    body = f'<path d="{route}" fill="none" stroke="#BEDDDF" stroke-width="2"/><path class="flow-slow" d="{route}" fill="none" stroke="#64ACAA" stroke-width="3"/><rect x="294" y="42" width="612" height="80" rx="40" fill="#F4FAFA"/>'
+    body += text(600, 94, "保持好奇，持续构建。" if lang == "zh" else "Stay curious. Keep building.", 34, "#426775", 500, 'text-anchor="middle"')
+    return svg(body, 164, "保持好奇，持续构建" if lang == "zh" else "Stay curious. Keep building.", animated)
 
 
 def footer_mobile(lang, animated):
@@ -122,7 +123,7 @@ def craft(lang, animated, mobile=False):
     title = "把问题变成可验证的进展" if zh else "Turn questions into verifiable progress"
     if mobile:
         title = "让每一步，都有依据" if zh else "Make every step verifiable"
-    body = text(36, 44, title, 30 if mobile else 26, INK, 600)
+    body = text(36, 44 if mobile else 49, title, 30 if mobile else 32, INK, 600)
     labels = [("拆解问题", "明确目标与边界"), ("小步实现", "做出最小完整闭环"), ("证据验证", "用测试与轨迹检查结果"), ("复盘迭代", "把经验沉淀为下一步")] if zh else [("Define", "Goals and boundaries"), ("Build", "A small, complete loop"), ("Verify", "Tests, traces and results"), ("Iterate", "Learn and improve")]
     if mobile:
         positions = [(48, 80+i*144) for i in range(4)]
@@ -130,21 +131,26 @@ def craft(lang, animated, mobile=False):
         path = "M360 196 V224 M360 340 V368 M360 484 V512 M48 570 H22 V138 H48"
         arrows = ["M355 206 L360 214 L365 206", "M355 350 L360 358 L365 350", "M355 494 L360 502 L365 494", "M34 133 L42 138 L34 143"]
     else:
-        positions = [(36 + i * 288, 83) for i in range(4)]
-        width, height, card_width = 1200, 260, 264
-        path = "M300 141 H324 M588 141 H612 M876 141 H900 M1032 199 V221 H168 V199"
-        arrows = ["M307 136 L315 141 L307 146", "M595 136 L603 141 L595 146", "M883 136 L891 141 L883 146", "M614 216 L606 221 L614 226"]
+        positions = [(36 + i * 288, 88) for i in range(4)]
+        width, height, card_width = 1200, 324, 264
+        path = "M300 164 H324 M588 164 H612 M876 164 H900 M1032 240 V268 H168 V240"
+        arrows = ["M307 159 L315 164 L307 169", "M595 159 L603 164 L595 169", "M883 159 L891 164 L883 169", "M614 263 L606 268 L614 273"]
     body += f'<path d="{path}" fill="none" stroke="#C2DFE3" stroke-width="2"/><path class="flow" d="{path}" fill="none" stroke="#59AAA9" stroke-width="3"/>'
     for arrow in arrows:
         body += f'<path class="craft-arrow" d="{arrow}" fill="none" stroke="#69AAA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
     for i, ((x, y), (label, description)) in enumerate(zip(positions, labels)):
         color = BLUE if i < 2 else MINT
-        body += f'<rect x="{x}" y="{y}" width="{card_width}" height="116" rx="18" fill="#FFFFFF" fill-opacity=".88" stroke="#D8E9EA"/>'
+        body += f'<rect class="craft-step" x="{x}" y="{y}" width="{card_width}" height="{116 if mobile else 152}" rx="18" fill="#FFFFFF" fill-opacity=".88" stroke="#D8E9EA"/>'
         body += f'<rect x="{x+22}" y="{y+24}" width="4" height="25" rx="2" fill="{color}"/>'
-        body += text(x+40, y+45, label, 36 if mobile else 24, INK, 600)
-        body += text(x+40 if mobile else x+22, y+86, description, 28 if mobile else 17, MUTED)
+        body += text(x+40, y+45, label, 36 if mobile else 30, INK, 600)
+        if mobile:
+            body += text(x+40, y+86, description, 28, MUTED)
+        else:
+            lines = [("明确目标与边界",), ("做出最小完整闭环",), ("用测试与轨迹", "检查结果"), ("把经验沉淀", "为下一步")] if zh else [("Goals and", "boundaries"), ("A small,", "complete loop"), ("Tests, traces", "and results"), ("Learn and improve",)]
+            for line_index, line in enumerate(lines[i]):
+                body += text(x+22, y+88+line_index*31, line, 23, MUTED)
     caption = "保持反馈，让每次迭代都有依据。" if zh else "Keep the feedback loop open."
-    body += text(width/2, height-19, caption, 26 if mobile else 15, MUTED, 400, 'text-anchor="middle"')
+    body += text(width/2, height-19, caption, 26 if mobile else 22, MUTED, 400, 'text-anchor="middle"')
     return svg(body, height, title, animated, width)
 
 
